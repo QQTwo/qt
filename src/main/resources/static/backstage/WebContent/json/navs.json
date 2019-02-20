@@ -1,0 +1,253 @@
+[{
+	"title" : "后台首页",
+	"icon" : "icon-computer",
+	"href" : "page/main.html",
+	"spread" : false
+}
+,{
+	"title" : "韩汀首页",
+	"icon" : "&#xe609;",
+	"href" : "page/main.html",
+	"spread" : false
+},{
+	"title" : "论坛管理",
+	"icon" : "icon-text",
+	"href" : "",
+	"spread" : false,
+	"children" : [
+		{
+			"title" : "帖子管理",
+			"icon" : "&#xe609;",
+			"href" : "page/news/newsList.html",
+			"spread" : false
+		},
+		{
+			"title" : "帖子版块管理",
+			"icon" : "&#xe609;",
+			"href" : "page/news/tiezibankuai.html",
+			"spread" : false
+			
+		},
+		{
+			"title" : "论坛投诉管理",
+			"icon" : "&#xe609;",
+			"href" : "page/news/luntantousu.html",
+			"spread" : false
+			
+		}
+	]
+},{
+	"title" : "物流管理",
+	"icon" : "&#xe64c;",
+	"href" : "",
+	"spread" : false,
+	"children" : [
+		{
+			"title" : "物流订单详情",
+			"icon" : "&#xe609;",
+			"href" : "page/links/linksList.html",
+			"spread" : false
+		},
+		{
+			"title" : "物流区域管理",
+			"icon" : "&#xe609;",
+			"href" : "page/links/linksList.html",
+			"spread" : false
+			
+		}
+	]
+},{
+	"title" : "服务管理",
+	"icon" : "&#xe631;",
+	"href" : "",
+	"spread" : false,
+	"children" : [
+		{
+			"title" : "服务类别设置",
+			"icon" : "&#xe609;",
+			
+			"href" : "page/service/serviceType.html",
+			"spread" : false
+		},
+		{
+			"title" : "服务审核管理",
+			"icon" : "&#xe609;",
+			"href" : "page/service/serviceCheck.html",
+			"spread" : false
+			
+		}
+		,
+		{
+			"title" : "服务级别设置",
+			"icon" : "&#xe609;",
+			"href" : "page/service/serviceLevel.html",
+			"spread" : false
+		},
+		{
+			"title" : "服务类型预约",
+			"icon" : "&#xe609;",
+			"href" : "page/service/serviceOrder.html",
+			"spread" : false
+		},
+		{
+			"title" : "服务审核",
+			"icon" : "&#xe609;",
+			"href" : "page/service/serviceAllCheck.html",
+			"spread" : false
+		},
+		{
+			"title" : "退款管理",
+			"icon" : "&#xe609;",
+			"href" : "page/service/returnMoney.html",
+			"spread" : false
+			
+		},
+		{
+			"title" : "服务投诉",
+			"icon" : "&#xe609;",
+			"href" : "page/service/serviceTouSu.html",
+			"spread" : false
+			
+		}
+	]
+},{
+	"title" : "会员管理",
+	"icon" : "&#xe61c;",
+	"href" : "",
+	"spread" : false,
+	"children" : [
+		{
+			"title" : "会员审核",
+			"icon" : "&#xe609;",
+			"href" : "page/404.html",
+			"spread" : false
+		},
+		{
+			"title" : "商家管理",
+			"icon" : "&#xe609;",
+			"href" : "page/links/linksList.html",
+			"spread" : false
+			
+		},
+		{
+			"title" : "商家入驻",
+			"icon" : "&#xe609;",
+			"href" : "page/member/shopAllCheckUpdate.html",
+			"spread" : false
+		
+		},
+		{
+			"title" : "鉴定审核",
+			"icon" : "&#xe609;",
+			"href" : "page/links/linksList.html",
+			"spread" : false
+			
+		},
+		{
+			"title" : "商家推荐",
+			"icon" : "&#xe609;",
+			"href" : "page/links/linksList.html",
+			"spread" : false
+			
+		},
+		{
+			"title" : "商家托管",
+			"icon" : "&#xe609;",
+			"href" : "page/links/linksList.html",
+			"spread" : false
+			
+		},
+		{
+			"title" : "评价管理",
+			"icon" : "&#xe609;",
+			"href" : "page/links/linksList.html",
+			"spread" : false
+			
+		},
+		{
+			"title" : "金币记录",
+			"icon" : "&#xe609;",
+			"href" : "page/links/linksList.html",
+			"spread" : false
+			
+		},
+		{
+			"title" : "积分记录",
+			"icon" : "&#xe609;",
+			"href" : "page/links/linksList.html",
+			"spread" : false
+			
+		},
+		{
+			"title" : "充值记录",
+			"icon" : "&#xe609;",
+			"href" : "page/links/linksList.html",
+			"spread" : false
+			
+		},
+		{
+			"title" : "提现记录",
+			"icon" : "&#xe609;",
+			"href" : "page/links/linksList.html",
+			"spread" : false
+			
+		},
+		{
+			"title" : "保证金详情",
+			"icon" : "&#xe609;",
+			"href" : "page/links/linksList.html",
+			"spread" : false
+			
+		},
+		{
+			"title" : "收藏排行",
+			"icon" : "&#xe609;",
+			"href" : "page/links/linksList.html",
+			"spread" : false
+		},
+		{
+			"title" : "服务收藏",
+			"icon" : "&#xe609;",
+			"href" : "page/links/linksList.html",
+			"spread" : false
+		},
+		{
+			"title" : "BBS收藏",
+			"icon" : "&#xe609;",
+			"href" : "page/links/linksList.html",
+			"spread" : false
+		},
+		{
+			"title" : "店铺收藏",
+			"icon" : "&#xe609;",
+			"href" : "page/links/linksList.html",
+			"spread" : false
+		},
+		{
+			"title" : "会员站内信",
+			"icon" : "&#xe609;",
+			"href" : "page/links/linksList.html",
+			"spread" : false
+		},
+		{
+			"title" : "留言反馈",
+			"icon" : "&#xe609;",
+			"href" : "page/links/linksList.html",
+			"spread" : false
+			
+		}
+	]
+},{
+	"title" : "广告位管理",
+	"icon" : "&#xe630;",
+	"href" : "page/main.html",
+	"spread" : false,
+	"children" : [
+		{
+			"title" : "广告位排版",
+			"icon" : "&#xe609;",
+			"href" : "page/links/linksList.html",
+			"spread" : false
+		}
+	]
+}]
