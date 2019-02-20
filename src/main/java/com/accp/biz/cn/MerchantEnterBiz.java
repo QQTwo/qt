@@ -38,7 +38,6 @@ import com.github.pagehelper.PageInfo;
 @Transactional(propagation = Propagation.SUPPORTS, isolation = Isolation.READ_COMMITTED, readOnly = true)
 public class MerchantEnterBiz {
 
-	//@Transactional(propagation = Propagation.REQUIRED, isolation = Isolation.READ_COMMITTED, readOnly = false)
 	@Autowired
 	private IMerchantEnterDao dao;
 	

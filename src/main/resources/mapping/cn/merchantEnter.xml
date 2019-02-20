@@ -169,7 +169,7 @@
 		WHERE `stid` = #{stid}
 	</select>
 	<!-- 根据服务列表条件查询服务 -->
-	<select id="queryServices" resultType="com.accp.vo.lsm.ServicesVO">
+	<select id="queryServices" resultType="com.accp.vo.cn.ServicesVO">
 		SELECT u.`userID`,ser.`serviceID`,ser.`serviceTitle`,ser.`serviceCoverImg`,ser.`servicePrice`,ser.`recommendBool`,u.`shopImg`,u.`shopName`,u.`merchantLevel`
 		FROM `services` AS ser
 		INNER JOIN `user` AS u
@@ -241,7 +241,7 @@
 		</trim>	
 	</select>
 	<!-- 查询服务的商家信息 -->
-	<select id="queryServiceMerchantInfo" resultType="com.accp.vo.lsm.ServiceMerchantInfo">
+	<select id="queryServiceMerchantInfo" resultType="com.accp.vo.cn.ServiceMerchantInfo">
 		SELECT u.`userID`,u.`shopImg`,u.`shopName`,u.`merchantLevel`,
 		(SELECT `serlevelName` FROM `servicelevel` WHERE `stid` = u.`firstServiceID` AND u.`firstServiceMoney` BETWEEN `serviceIntegralMin` AND `serviceIntegralMax`) AS `firstServiceLevelName`,
 		(SELECT `serlevelName` FROM `servicelevel` WHERE `stid` = u.`secondServiceID` AND u.`secondServiceMoney` BETWEEN `serviceIntegralMin` AND `serviceIntegralMax`) AS `SecondServiceLevelName`,
@@ -254,7 +254,7 @@
 		WHERE u.`userID` = #{uid}
 	</select>
 	<!-- 查询服务详情 -->
-	<select id="queryServiceDetailInfo" resultType="com.accp.vo.lsm.ServiceDetailInfo">
+	<select id="queryServiceDetailInfo" resultType="com.accp.vo.cn.ServiceDetailInfo">
 		SELECT u.`userID`,ser.`serviceID`,ser.`serviceTitle`,st.`stName`,ser.`serviceFuTitle`,ser.`servicePrice`,ser.`serviceHour`,ser.`serviceCostInclude`,ser.`serviceStartDate`,ser.`serviceEndDate`,ser.`serviceIntro`,ser.`serviceCity`,u.`height`,u.`age`,u.`constellation`,u.`profession`,ser.`serviceCostTypeID`,ser.`schoolRegion`,ser.`schoolNameByCN`,ser.`schoolNameByROK`,ser.`majoyNameByCN`,ser.`majoyNameByROK`,ser.`serviceCoverImg`,ser.`serviceImgUrlOne`,ser.`serviceImgUrlTwo`,ser.`serviceImgUrlThree`,ser.`serviceImgUrlFour`
 		FROM `services` AS ser
 		INNER JOIN `user` AS u
@@ -270,7 +270,7 @@
 		WHERE `serviceID` = #{sid}
 	</select>
 	<!-- map：查询服务评价 -->
-	<resultMap type="com.accp.vo.lsm.EvaluationserviceVO" id="evaluationserviceVOMap">
+	<resultMap type="com.accp.vo.cn.EvaluationserviceVO" id="evaluationserviceVOMap">
 		<id column="serviceAppraiseID" property="serviceAppraiseID"/>
 		<result column="userID" property="userID"/>
 		<result column="userImgPath" property="userImgPath"/>
@@ -289,7 +289,7 @@
 		WHERE `serviceAppraisePID` = 0 AND `serviceID` = #{sid}
 	</select>
 	<!-- 查询服务评价回复 -->
-	<select id="queryEvaluationserviceVOByReply" resultType="com.accp.vo.lsm.EvaluationserviceVO">
+	<select id="queryEvaluationserviceVOByReply" resultType="com.accp.vo.cn.EvaluationserviceVO">
 		SELECT es.`serviceAppraiseID`,u.`userID`,u.`userImgPath`,u.`userName`,es.`serviceAppraiseLevel`,es.`serviceAppraiseContent`,es.`serviceAppraiseDate`
 		FROM `evaluationservice` AS es
 		INNER JOIN `user` AS u
@@ -297,7 +297,7 @@
 		WHERE `serviceAppraisePID` = #{0}
 	</select>
 	<!-- 查询服务评价星级 -->
-	<select id="queryEsLevelVO" resultType="com.accp.vo.lsm.EsLevelVO">
+	<select id="queryEsLevelVO" resultType="com.accp.vo.cn.EsLevelVO">
 		SELECT (SELECT COUNT(1) FROM `evaluationservice` WHERE `serviceAppraisePID` = 0 AND `serviceID` = #{sid} AND `serviceAppraiseLevel` = 5) AS `level5`,
 		(SELECT COUNT(1) FROM `evaluationservice` WHERE `serviceAppraisePID` = 0 AND `serviceID` = #{sid} AND `serviceAppraiseLevel` = 4) AS `level4`,
 		(SELECT COUNT(1) FROM `evaluationservice` WHERE `serviceAppraisePID` = 0 AND `serviceID` = #{sid} AND `serviceAppraiseLevel` = 3) AS `level3`,
@@ -307,7 +307,7 @@
 		LIMIT 1
 	</select>
 	<!-- 查询同城同类型服务 -->
-	<select id="querySameServiceVO" resultType="com.accp.vo.lsm.SameServiceVO">
+	<select id="querySameServiceVO" resultType="com.accp.vo.cn.SameServiceVO">
 		SELECT ser.`serviceID`,ser.`serviceTitle`,ser.`serviceCoverImg`,ser.`servicePrice`,u.`userID`,u.`shopName`,u.`shopImg`
 		FROM `services` AS ser
 		INNER JOIN `user` AS u
@@ -401,13 +401,13 @@
 		VALUES(#{sid},#{uid},NOW())
 	</insert>
 	<!-- 根据广告版块类别编号查询图片宽高 -->
-	<select id="queryImgWidthAndHeightVO" resultType="com.accp.vo.lsm.ImageWidthAndHeightVO">
+	<select id="queryImgWidthAndHeightVO" resultType="com.accp.vo.cn.ImageWidthAndHeightVO">
 		SELECT SUBSTRING_INDEX(`atpx`,'*',1) AS `width`,SUBSTRING_INDEX(`atpx`,'*',-1) AS `height`
 		FROM `advertisementtype`
 		WHERE `atid` = #{0}
 	</select>
 	<!-- Map：查询首页广告位 -->
-	<resultMap type="com.accp.vo.lsm.AdvertisementVO" id="AdvertisementVOMap">
+	<resultMap type="com.accp.vo.cn.AdvertisementVO" id="AdvertisementVOMap">
 		<id column="aid" property="aid"/>
 		<result column="atid" property="atid"/>
 		<result column="atitle" property="atitle"/>
@@ -445,7 +445,7 @@
 		</if>
 	</select>
 	<!-- 首页社区服务星级服务商家推荐 -->
-	<select id="querySerRecommendVO" resultType="com.accp.vo.lsm.SerRecommendVO">
+	<select id="querySerRecommendVO" resultType="com.accp.vo.cn.SerRecommendVO">
 		SELECT u.`userID`,u.`userName`,u.`userImgPath`,u.`shopImg`,u.`selfIntroduction`,u.`merchantLevel`
 		FROM `user` AS u
 		WHERE (u.`firstServiceID` = #{stid} OR `secondServiceID` = #{stid}) AND u.`auditStatus` = 2
@@ -453,7 +453,7 @@
 		LIMIT 9
 	</select>
 	<!-- 查询首页社区服务最新帖子 --> 
-	<select id="queryHomePostVO" resultType="com.accp.vo.lsm.HomePostVO">
+	<select id="queryHomePostVO" resultType="com.accp.vo.cn.HomePostVO">
 		SELECT p.`postID`,p.`title`,u.`userID`,u.`userName`,u.`userImgPath`,f.`fmName`,IF(TIMESTAMPDIFF(HOUR,p.`releaseTime`,NOW())>=24,CONCAT(TIMESTAMPDIFF(DAY,p.`releaseTime`,NOW()),'天'), CONCAT(CONCAT(FLOOR(TIMESTAMPDIFF(MINUTE,p.`releaseTime`,NOW())/60),'小时'),CONCAT(FLOOR(SUBSTRING_INDEX(TIMESTAMPDIFF(MINUTE,p.`releaseTime`,NOW())/60,'.',-1)/10000*60),'分钟'))) AS 'releaseTime',
 		(SELECT u.`userID` FROM `postcomment` AS pc INNER JOIN `user` AS u ON u.`userID` = pc.`commentator` WHERE `postID` = p.`postID` AND pid = 0 AND `operatingState` = 1 ORDER BY `reviewTime` DESC LIMIT 1) AS `replyUserID`,
 		(SELECT u.`userName` FROM `postcomment` AS pc INNER JOIN `user` AS u ON u.`userID` = pc.`commentator` WHERE `postID` = p.`postID` AND pid = 0 AND `operatingState` = 1 ORDER BY `reviewTime` DESC LIMIT 1) AS `replyUserName`,

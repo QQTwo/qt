@@ -30,7 +30,7 @@ import com.accp.vo.cn.SerRecommendVO;
 
 /**
  * 商家入驻和服务Dao层
- * @author lsm
+ * @author cn
  *
  */
 public interface IMerchantEnterDao {

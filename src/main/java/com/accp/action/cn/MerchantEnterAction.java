@@ -19,7 +19,6 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.accp.biz.cn.MerchantEnterBiz;
 
-import com.accp.pojo.Advertisement;
 import com.accp.pojo.Complainttype;
 import com.accp.pojo.Languagetype;
 import com.accp.pojo.Majortype;
