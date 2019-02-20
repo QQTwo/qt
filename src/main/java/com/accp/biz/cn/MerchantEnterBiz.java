@@ -43,7 +43,7 @@ public class MerchantEnterBiz {
 	private IMerchantEnterDao dao;
 	
 	/**
-	 * 商家入驻
+	 * 商家入驻haha
 	 * @return
 	 */
 	@Transactional(propagation = Propagation.REQUIRED, isolation = Isolation.READ_COMMITTED, readOnly = false)
