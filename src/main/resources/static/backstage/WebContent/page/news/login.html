@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+	<style type="text/css">
+		.changeFont {
+			color: red;
+			font-size: 18px;
+		}
+		
+		body {
+		 display: table-cell;
+   			 vertical-align: middle;
+		}
+		
+		.div {
+			 display: table-cell;
+   			 vertical-align: middle;
+   			 text-align: center; 
+		}
+	</style>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+		<meta charset="utf-8">
+		<title>404--layui后台管理模板</title>
+		<meta name="renderer" content="webkit">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="format-detection" content="telephone=no">
+	</head>
+
+	<body class="childrenBody">
+		<div class="" style="text-align: center; padding:110;padding-top:110px;border: 1px solid gray; width: 800px;height: 300px;margin: 0px 360px;">
+			<h3><img src="123.jpg"style="height: 30px;width: 30px;">成功登陆！</h3>
+			<p style="font-size: 20px; font-weight: 300; color: #999;"> <span id="spanTime"></span></p>
+		</div>
+	</body>
+
+</html>
+<script type="text/javascript">
+	window.onload = function() {
+		//1.首先声明seconds
+		var seconds = 9999999;
+		//2.声明定时器
+		var timer = null;
+		//3.开启定时器
+		timer = setInterval(show, 1000);
+		//开启定时器后要执行的函数
+		function show() {
+			if(seconds == 0) {
+				clearInterval(timer); //清除定时器
+				window.location.href = "http://www.baidu.com"; //跳转到百度首页
+				return;
+			}
+			//将不断变化的秒数显示在页面上
+			document.getElementById('spanTime').innerHTML = '<span class="changeFont">' + seconds + '</span>' + "秒后跳转页面！"; //这里添加的class仅仅是为了改变 变化的秒数的样式
+			seconds--;
+		}
+	};
+</script>
+
+</html>
