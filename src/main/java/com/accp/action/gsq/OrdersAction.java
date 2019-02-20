@@ -18,7 +18,7 @@ import com.accp.pojo.Servicetype;
 import com.accp.pojo.User;
 
 @Controller
-@RequestMapping("/c/szy")
+@RequestMapping("/c/gsq")
 public class OrdersAction {
 	@Autowired
 	private OrdersBiz biz;

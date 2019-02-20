@@ -37,7 +37,7 @@ import com.accp.vo.gsq.TimeOutEmailDateVo;
 import com.github.pagehelper.PageInfo;
 
 @Controller
-@RequestMapping("/c/szy")
+@RequestMapping("/c/gsq")
 public class UserAction {
 	
 	@Autowired
