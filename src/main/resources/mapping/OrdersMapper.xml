@@ -27,7 +27,7 @@
 		SELECT * FROM `services`
 		WHERE `serviceID`=#{0}
 	</select>
-	<resultMap type="com.accp.vo.szy.OrderInfoVo" id="queryOrders">
+	<resultMap type="com.accp.vo.gsq.OrderInfoVo" id="queryOrders">
 		<id column="orderID" property="orderid"/>
 		<result column="userID" property="userid"/>
 		<result column="serviceID" property="serviceid"/>

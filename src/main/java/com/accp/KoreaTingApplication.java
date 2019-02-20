@@ -6,15 +6,10 @@ import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 
 @SpringBootApplication
-public class KoreaTingApplication extends SpringBootServletInitializer  {
+public class KoreaTingApplication{
 
 	public static void main(String[] args) {
 		SpringApplication.run(KoreaTingApplication.class, args);
-	}
-	
-	@Override
-	public SpringApplicationBuilder configure(SpringApplicationBuilder builder) {
-		return builder.sources(KoreaTingApplication.class);
 	}
 }
 
