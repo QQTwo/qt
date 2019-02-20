@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>服务级别管理</title>
+	<meta name="renderer" content="webkit">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="format-detection" content="telephone=no">
+	<link rel="stylesheet" href="../../layui/css/layui.css" media="all" />
+	<link rel="stylesheet" href="//at.alicdn.com/t/font_tnyc012u2rlwstt9.css" media="all" />
+	<link rel="stylesheet" href="../../css/news.css" media="all" />
+</head>
+<body class="childrenBody">
+	<blockquote class="layui-elem-quote news_search">
+		<div class="layui-inline" style="font-weight: bolder;">服务级别管理：
+			
+			<div class="layui-input-inline">
+		    	<select type="text" value="" placeholder="请输入关键字" class="layui-input search_input">
+		    		<option value="0">所有的</option>
+                            <option value="4">微整形</option><option value="5">留学中介</option><option value="6">韩语翻译</option><option value="7">学习资源</option><option value="217">sxd</option><option value="229">qwe</option><option value="3">自驾游</option>
+		    	</select>
+		    </div>
+		    <a class="layui-btn search_btn">搜索</a>
+		</div>
+		<div class="layui-inline">
+			<a class="layui-btn layui-btn-danger batchDel">批量删除</a>
+		</div>
+	</blockquote>
+	<div class="layui-form links_list">
+	  	<table class="layui-table">
+		    <colgroup>
+				<col width="10%">
+				<col width="10%">
+				<col width="13%">
+				<col width="20%">
+				<col width="15%">
+				<col width="15%">
+				<col width="13%"/>
+		    </colgroup>
+		    <thead>
+				<tr>
+					<th><input type="checkbox" name="" lay-skin="primary" lay-filter="allChoose" id="allChoose"></th>
+					<th>ID</th>
+					<th>级别名称</th>
+					<th>分类</th>
+					<th>最小值</th>
+					<th>最大值</th>
+					<th>操作</th>
+				</tr> 
+		    </thead>
+		    <tbody class="links_content">
+		    	
+		    </tbody>
+		</table>
+	</div>
+	<div id="page"></div>
+	<div><a class="layui-btn search_btn">更新</a><a class="layui-btn layui-btn-normal newsAdd_btn">增加级别</a>
+	<script type="text/javascript" src="../../layui/layui.js"></script>
+	<script type="text/javascript" src="../service/serviceLevel.js"></script>
+	<script type="text/javascript" src="../service/serviceLevelAdd.js"></script>
+	<!--<script type="text/javascript" src="../service/serviceCheckUpdate.js"></script>-->
+</body>
+</html>
