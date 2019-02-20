@@ -55,7 +55,7 @@ public class MerchantEnterAction {
  * @param session
  * @return	点击商家入驻进入，先判断是否登录，没登录跳请先登录提示页面，已登录，再判断用户状态，
  * 			如果为待审核，跳入已提交审核资料页面，如果为审核通过，跳入已开通商家页面，
- * 			如果为null，跳入商家入驻下一步页面
+ * 			如果为null，跳入商家入驻下一步页面 .
  */
 	@GetMapping("merchantEnterUrlCheck")
 	public String merchantEnterUrlCheck(HttpSession session) {
