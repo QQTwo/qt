@@ -1,4 +1,4 @@
-package com.accp.vo.gsq;
+package com.accp.vo.cn;
 
 import java.util.Date;
 

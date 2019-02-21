@@ -1,4 +1,4 @@
-package com.accp.dao.gsq;
+package com.accp.dao.cn;
 
 import java.util.List;
 
@@ -6,7 +6,7 @@ import org.apache.ibatis.annotations.Param;
 
 import com.accp.pojo.Orders;
 import com.accp.pojo.Servicetype;
-import com.accp.vo.gsq.OrderInfoVo;
+import com.accp.vo.cn.OrderInfoVo;
 
 public interface IOrdersDao {
 	/**

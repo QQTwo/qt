@@ -1,5 +1,5 @@
 $(".top_right").html("");
-$.getJSON("/c/szy/user/queryAUser",function(data){
+$.getJSON("/c/gsq/user/queryAUser",function(data){
 	if(data==null){
 		$(".top_right").append($('<a href="/szy-login.html">登录</a><span class="ht_line"></span><a href="/szy-zuce.html">注册</a>'));
 	}else{

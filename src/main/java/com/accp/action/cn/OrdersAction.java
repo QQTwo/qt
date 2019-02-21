@@ -1,4 +1,4 @@
-package com.accp.action.gsq;
+package com.accp.action.cn;
 
 import java.util.List;
 
@@ -11,14 +11,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.accp.biz.gsq.OrdersBiz;
+import com.accp.biz.cn.OrdersBiz;
 import com.accp.biz.gsq.UserBiz;
 import com.accp.pojo.Orders;
 import com.accp.pojo.Servicetype;
 import com.accp.pojo.User;
 
 @Controller
-@RequestMapping("/c/gsq")
+@RequestMapping("/c/cn")
 public class OrdersAction {
 	@Autowired
 	private OrdersBiz biz;
@@ -73,7 +73,7 @@ public class OrdersAction {
 			break;
 		}
 		userBiz.saveXtxx(userID, content);
-		return "redirect:/c/gsq/order/queryAllOrder?orderStatus=0&refundstatus=-1&pageNum=1&pageSize=5&orderID=";
+		return "redirect:/c/cn/order/queryAllOrder?orderStatus=0&refundstatus=-1&pageNum=1&pageSize=5&orderID=";
 	}
 	/**
 	 * 查询所有订单信息

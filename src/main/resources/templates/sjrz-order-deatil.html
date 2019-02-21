@@ -189,7 +189,7 @@
 <script type="text/javascript" src="/Public/js/grzx-interlinkage.js"></script>
 <script type="text/javascript" th:inline="javascript">
 var stid=[[${order.ser.stid}]];
-$.getJSON("/c/szy/order/querySerType",{"stid":stid},function(data){
+$.getJSON("/c/cn/order/querySerType",{"stid":stid},function(data){
 	$("[name=ser]").html(data.stname);
 })
 </script>
