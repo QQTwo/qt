@@ -73,7 +73,6 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
-<<<<<<< HEAD
 		<!--图片上传  -->
 		<dependency>
 			<groupId>commons-fileupload</groupId>
@@ -98,12 +97,11 @@
 			<groupId>com.alipay.sdk</groupId>
 			<artifactId>alipay-sdk-java</artifactId>
 			<version>3.3.49.ALL</version>
-=======
+		</dependency>
 		<dependency>
 			<groupId>com.github.pagehelper</groupId>
 			<artifactId>pagehelper</artifactId>
 			<version>4.1.4</version>
->>>>>>> branch 'master' of https://github.com/QQTwo/KoreaTing.git
 		</dependency>
 		<dependency>
 			<groupId>org.bouncycastle</groupId>
