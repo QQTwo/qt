@@ -46,6 +46,7 @@ public class UserBiz {
 	 */
 	public User login(String email,String password) {
 		return dao.login(email, password);
+		
 	}
 	/**
 	 * 修改密码

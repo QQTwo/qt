@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>预约订单查看</title>
+	<meta name="renderer" content="webkit">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="format-detection" content="telephone=no">
+	<link rel="stylesheet" href="../../layui/css/layui.css" media="all" />
+	<style>
+		.tableline {
+	BACKGROUND-COLOR: #7E8888; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif; COLOR: #000000; FONT-SIZE: 14px; TEXT-DECORATION: none;
+}
+TABLE.tablesorter {
+	BACKGROUND-COLOR: #cdcdcd; MARGIN: 10px 0pt 15px; WIDTH: 100%; FONT-FAMILY: Verdana; FONT-SIZE: 10pt
+}
+TABLE.tablesorter THEAD TR TH {
+	BORDER-BOTTOM: #fff 1px solid; BORDER-LEFT: #fff 1px solid; PADDING-BOTTOM: 4px; BACKGROUND-COLOR: #FEFCEC; PADDING-LEFT: 4px; PADDING-RIGHT: 4px; FONT-SIZE: 10pt; BORDER-TOP: #fff 1px solid; BORDER-RIGHT: #fff 1px solid; PADDING-TOP: 4px;text-align: center;
+}
+TABLE.tablesorter TFOOT TR TH {
+	BORDER-BOTTOM: #fff 1px solid; BORDER-LEFT: #fff 1px solid; PADDING-BOTTOM: 4px; BACKGROUND-COLOR: #FEFCEC; PADDING-LEFT: 4px; PADDING-RIGHT: 4px; FONT-SIZE: 10pt; BORDER-TOP: #fff 1px solid; BORDER-RIGHT: #fff 1px solid; PADDING-TOP: 4px
+}
+TABLE.tablesorter THEAD TR .header {
+	BACKGROUND-REPEAT: no-repeat; BACKGROUND-POSITION: right center; CURSOR: pointer
+}
+TABLE.tablesorter TBODY TD {
+	PADDING-BOTTOM: 4px; PADDING-LEFT: 4px; PADDING-RIGHT: 4px; COLOR: #3d3d3d; VERTICAL-ALIGN: top; PADDING-TOP: 4px; text-align: center;
+}
+#header TABLE.tablesorter TBODY TD {
+	text-align: left;
+}
+TABLE.tablesorter TBODY tr {
+     BACKGROUND-COLOR: #fff;
+}
+
+TABLE.tablesorter checkbox {
+    border-width: 0;
+}
+	</style>
+</head>
+<body class="childrenBody">
+	<blockquote class="layui-elem-quote news_search" style="font-weight: bolder;">预约订单查看
+	</blockquote>
+	<form class="">
+		 <TABLE class="tablesorter" bdata=0 cellSpacing=1 cellPadding=6 width="100%">
+        <TBODY>
+          <TR>
+            <TD width="13%" align=right noWrap>会员:</TD>
+            <TD >
+              <input name="userid" type="text" id="userid" value="470" size="10" maxlength="10" style="display:none;" />
+            瓶</TD>
+            <TD >商家:</TD>
+            <TD >暖暖哒</TD>
+          </TR>
+          <TR>
+            <TD noWrap align=right>类别:</TD>
+            <TD >鼻部整形</TD>
+            <TD align="right">&nbsp;</TD>
+            <TD >&nbsp;</TD>
+          </TR>
+          <TR>
+            <TD noWrap align=right>订单编号:</TD>
+            <TD >15480506008977</TD>
+            <TD >订单金额:</TD>
+            <TD >3.0金币</TD>
+          </TR>
+          <TR>
+            <TD noWrap align=right>服务:</TD>
+            <TD ><img src="/Uploads/image/2017-12/20171220034427-19586.jpeg" alt="机关干部沟沟壑壑" width="135" /></TD>
+            <TD colspan="2"  valign="top">
+            <p>名称：机关干部沟沟壑壑</p>
+            <p>价格：3</p>
+            </TD>
+          </TR>
+                    	                      <TR>
+            <TD noWrap align=right>备注:</TD>
+            <TD colspan="3" >吃吃吃</TD>
+          </TR>          <TR>
+            <TD noWrap align=right><span class="c_4 f12">下单时间</span>:</TD>
+            <TD >2019年01月21日</TD>
+            <TD align="right"><span class="c_4 f12">付款时间</span>:</TD>
+            <TD >-</TD>
+          </TR>
+          <TR>
+            <TD noWrap align=right><span class="c_4 f12">接单时间</span>:</TD>
+            <TD >-</TD>
+            <TD align="right"><span class="c_4 f12">服务时间</span>:</TD>
+            <TD >-</TD>
+          </TR>
+          <TR>
+            <TD align="right"><span class="c_4 f12">完成时间</span>:</TD>
+            <TD >              -</TD>
+            <TD align="right">&nbsp;</TD>
+            <TD >&nbsp;</TD>
+          </TR>
+          <TR>
+            <TD noWrap align=right>订单状态:</TD>
+            <TD width="12%" >待付款</TD>
+            <TD width="7%" align="right">&nbsp;</TD>
+            <TD width="68%" >&nbsp;</TD>
+          </TR>
+          <TR>
+            <TD><input name="orderid" type="hidden" id="orderid" value="100814">
+            <input name="continue" type="hidden" id="continue" value="aHR0cDovL3lwaHRpbmcuemdseGtqLmNvbS9pbmRleC5waHAvQWRtaW5jcC9PcmRlci9pbmRleC5odG1s">
+            <input name="continueurl" type="hidden" id="continueurl" value="http://yphting.zglxkj.com/index.php/Admincp/Order/index.html">
+            </TD>
+            <TD colspan="3" >
+<input type="button" class="layui-btn layui-btn-primary" onclick="javascript:history.go(-1)" value="返回">
+</tr>
+        </tbody>
+      </table>
+
+	</form>
+</body>
+</html

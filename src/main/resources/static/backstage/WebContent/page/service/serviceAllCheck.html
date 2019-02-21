@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>服务审核</title>
+	<meta name="renderer" content="webkit">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="format-detection" content="telephone=no">
+	<link rel="stylesheet" href="../../layui/css/layui.css" media="all" />
+	<link rel="stylesheet" href="//at.alicdn.com/t/font_tnyc012u2rlwstt9.css" media="all" />
+	<link rel="stylesheet" href="../../css/news.css" media="all" />
+</head>
+<body class="childrenBody">
+	<blockquote class="layui-elem-quote news_search">
+		<div style="font-weight: bolder;">服务审核</div>
+		<div class="layui-inline">
+			<div class="layui-input-inline" style="padding-left: 20px;">
+				标题:
+                      <input name="title" type="text" value='' id="title" size="15">
+                      时间:
+                      <input type="text" value="" name="starttime" id="starttime" size="14" class="Wdate" onFocus="WdatePicker({doubleCalendar:true,skin:'default',firstDayOfWeek:1,dateFmt:'yyyy-MM-dd HH:mm:00'})"/>
+                      ——
+                      <input type="text" value="" name="endtime" id="endtime" size="14" class="Wdate" onFocus="WdatePicker({doubleCalendar:true,skin:'default',firstDayOfWeek:1,dateFmt:'yyyy-MM-dd HH:mm:59'})"/>
+服务类别：
+		    	<select name="catid" id="catid">
+                    <option value="0">不限</option>
+                    <option value="4">微整形</option><option value="5">留学中介</option><option value="6">韩语翻译</option><option value="7">学习资源</option><option value="217">sxd</option><option value="229">qwe</option><option value="3">自驾游</option>                  </select>
+                  状态:
+                  <select name="status" id="status">
+					<option value="0">不限</option>
+					<option value="1" >待付款</option><option value="2" >待接单</option><option value="3" >待提供服务</option><option value="4" >待提供服务</option><option value="5" >已提供服务</option><option value="6" >服务完成</option><option value="7" >服务取消</option><option value="8" >未接单</option><option value="9" >已退款</option>                  </select>
+ <input type="hidden" name="p" value="1" />
+
+		    </div>
+		    <a class="layui-btn search_btn">查询</a>
+			
+		</div>
+		
+	</blockquote>
+	<div class="layui-form links_list">
+	  	<table class="layui-table" lay-size="sm">
+		    <colgroup>
+		    	<col width="35" height="1em">
+				<col width="8%" height="1em">
+				<col width="15%" height="1em">
+				<col width="8%" height="1em">
+				<col width="8%" height="1em">
+				<col width="8%" height="1em">
+				<col width="12%" height="1em">
+				<col width="15%" height="1em">
+				<col width="8%" height="1em">
+				<col align="center" height="1em">
+				<col width="5%"  height="1em">
+		    </colgroup>
+		    <thead>
+				<tr>
+					<th>&nbsp;</th>
+                    <th>ID</th>
+                    <TH>类型</TH>
+                    <TH>标题</TH>
+                    <TH>会员</TH>
+                    <TH>审核状态</TH>
+                    <TH>营业状态</TH>
+                    <TH>发布时间</TH>
+                    <TH>推荐状态</TH>
+                    <TH>排序</TH>
+                    <TH>&nbsp;</TH>
+				</tr> 
+		    </thead>
+		    <tbody class="links_content">
+		    	
+		    </tbody>
+		    
+		</table>
+	</div>
+	<div id="page"></div>
+	<table width="100%" border="0" >
+                            <tr>
+                                <td width="20%" nowrap>
+                                    <INPUT id="select" value="选择所有" type=button name="select">
+                                    <INPUT id="delete" value="删除选择" type="submit" name="button">
+                                </td>
+
+                                <td width="80%" nowrap>
+                                      &nbsp;&nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;  &nbsp; 
+                                推荐状态：
+                               
+                                    <input type="radio" name="is_recommend" value="1" checked > 推荐
+                                    <input type="radio" name="is_recommend" value="0" > 不推荐　
+                                    <INPUT id="recommend" value="批量推荐" type="button" onclick='recommend1()' >   
+                                     <span>&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp;&nbsp; </span>
+                                    审核状态:
+                                                                            <label><input type="radio" name="zt" value="0" checked />待审核　</label>                                        <label><input type="radio" name="zt" value="1"  />审核成功　</label>                                        <label><input type="radio" name="zt" value="2"  />未通过　</label>                                    <INPUT  value=""  name="admin_reason"  id='admin_reason'  placeholder="若未通过审核，请填写未能通过审核原因"  size="40">
+                                    <INPUT id="verify" value="批量审核" type="button" onclick='javascript:batchVerify();' >
+                                    <span> &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp;&nbsp;</span>
+                                    营业状态：
+                                    <input type="radio" name="close" value="1" > 停业　
+                                    <input type="radio" name="close" value="0" checked> 营业　
+                                    <INPUT id="close" value="批量开关" type="button" onclick='javascript:batchClose();' >
+                                </td>
+                            </tr>
+                        </table>
+
+	
+	<script type="text/javascript" src="../../layui/layui.js"></script>
+	<script type="text/javascript" src="../service/serviceAllCheck.js"></script>
+	<script type="text/javascript" src="serviceTypeAdd.js"></script>
+</body>
+</html>

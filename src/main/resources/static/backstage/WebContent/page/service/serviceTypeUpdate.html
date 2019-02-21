@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>服务栏目编辑</title>
+	<meta name="renderer" content="webkit">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="format-detection" content="telephone=no">
+	<link rel="stylesheet" href="../../layui/css/layui.css" media="all" />
+</head>
+<body class="childrenBody">
+	<form class="">
+		<div class="layui-form-item">
+			<div class="layui-inline">
+				<label class="layui-form-label">上级服务名:</label>
+				<div class="layui-input-inline">
+				<select>
+                	<option value="1" >服务</option>
+                	<option value="4">微整形</option>
+                    <option value="165">—眼部整形</option><option value="161">—鼻部整形</option><option value="166">—脸部轮廓整形</option><option value="167">—胸部整形</option><option value="168">—抗衰老</option><option value="169">—形体整形</option><option value="170">—皮肤科</option><option value="171">—男性整形</option><option value="172">—牙科矫正</option><option value="5">留学中介</option>
+                    <option value="175">—韩国留学</option><option value="176">—日本留学</option><option value="6">韩语翻译</option>
+                    <option value="7">学习资源</option>
+                    <option value="152">—英语资料</option><option value="183">—毕业论文</option><option value="204">—校园资料</option><option value="153">—韩语资料</option><option value="217">sxd</option>
+                    <option value="218">—dd</option><option value="229">qwe</option>
+                    <option value="3">自驾游</option>
+                    <option value="203">—观光类</option>           
+				</select>
+				</div>
+			</div>
+		</div>
+		<div class="layui-form-item">
+			<label class="layui-form-label">服务分类名:</label>
+			<div class="layui-input-inline">
+				<input type="text" class="layui-input-inline" value="xxxx观光旅游">
+			</div>
+		</div>
+		<div class="layui-form-item">
+			<label class="layui-form-label">排序:</label>
+			<div class="layui-input-inline">
+				<input type="text" class="layui-input-inline" size=40 type="text" name="sort" value="--1"> 
+			</div>
+		</div>
+		<div class="layui-form-item">
+			<label class="layui-form-label">是否显示：</label>
+			<input type="radio"  size=40 type="text" name="showok" value="1" />是&nbsp;&nbsp;
+			<input type="radio"   size=40 type="text" name="showok" value="0" />否
+		</div>
+		
+		<div class="layui-form-item">
+			<div class="layui-input-block">
+				<button class="layui-btn" lay-submit="" lay-filter="addNews">保存</button>
+				<input type="button" class="layui-btn layui-btn-primary" onclick="javascript:history.go(-1)" value="返回">
+		    </div>
+		</div>
+	</form>
+	
+</body>
+</html

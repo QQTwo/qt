@@ -37,7 +37,7 @@ import com.accp.vo.gsq.TimeOutEmailDateVo;
 import com.github.pagehelper.PageInfo;
 
 @Controller
-@RequestMapping("/c/szy")
+@RequestMapping("/c/gsq")
 public class UserAction {
 	
 	@Autowired
@@ -84,7 +84,7 @@ public class UserAction {
 			}
 			
 			System.out.println("执行Email新增=========");
-			Email.sendSimpleMail(email, "用户注册", EmailBoard.register(username, "http://127.0.0.1/c/szy/user/emailYanz?email="+email+"&nickName="+username+"&codeId="+codeId));
+			Email.sendSimpleMail(email, "用户注册", EmailBoard.register(username, "http://127.0.0.1/c/gsq/user/emailYanz?email="+email+"&nickName="+username+"&codeId="+codeId));
 			System.out.println("====================\n发送成功\n====================\n");
 		} catch (UnsupportedEncodingException | MessagingException e) {
 			e.printStackTrace();
@@ -349,7 +349,7 @@ public class UserAction {
 		u.setUserid(userID);
 		biz.updateUserDpxx(u);
 		session.setAttribute("USER", biz.queryUser(userID));
-		return "redirect:/c/szy/user/getdpszInfo";
+		return "redirect:/c/gsq/user/getdpszInfo";
 	}
 	/**
 	 * 分页查询用户系统信息
@@ -521,7 +521,7 @@ public class UserAction {
 		n.setMessagegroup(messagegroup);
 		n.setAddressee(thesender);
 		biz.saveZnx(n);
-		return "redirect:/c/szy/user/queryZnxXq?groupID="+messagegroup+"&thesender="+thesender;
+		return "redirect:/c/gsq/user/queryZnxXq?groupID="+messagegroup+"&thesender="+thesender;
 	}
 	
 	/**

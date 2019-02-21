@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>服务审核</title>
+	<meta name="renderer" content="webkit">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="format-detection" content="telephone=no">
+	<link rel="stylesheet" href="../../layui/css/layui.css" media="all" />
+	<style>
+		.tableline {
+	
+	FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif; COLOR: #000000; FONT-SIZE: 14px; TEXT-DECORATION: none;
+}
+TABLE.tablesorter {
+	
+	 MARGIN: 10px 0pt 15px; WIDTH: 100%; FONT-FAMILY: Verdana; FONT-SIZE: 10pt
+}
+TABLE.tablesorter THEAD TR TH {
+	BORDER-BOTTOM: #fff 1px solid; BORDER-LEFT: #fff 1px solid; PADDING-BOTTOM: 4px;  PADDING-LEFT: 4px; PADDING-RIGHT: 4px; FONT-SIZE: 10pt; BORDER-TOP: #fff 1px solid; BORDER-RIGHT: #fff 1px solid; PADDING-TOP: 4px;text-align: center;
+}
+TABLE.tablesorter TFOOT TR TH {
+	BORDER-BOTTOM: #fff 1px solid; BORDER-LEFT: #fff 1px solid; PADDING-BOTTOM: 4px; PADDING-LEFT: 4px; PADDING-RIGHT: 4px; FONT-SIZE: 10pt; BORDER-TOP: #fff 1px solid; BORDER-RIGHT: #fff 1px solid; PADDING-TOP: 4px
+}
+TABLE.tablesorter THEAD TR .header {
+	BACKGROUND-REPEAT: no-repeat; BACKGROUND-POSITION: right center; CURSOR: pointer
+}
+TABLE.tablesorter TBODY TD {
+	PADDING-BOTTOM: 4px; PADDING-LEFT: 4px; PADDING-RIGHT: 4px; COLOR: #3d3d3d; VERTICAL-ALIGN: top; PADDING-TOP: 4px; text-align: center;
+}
+#header TABLE.tablesorter TBODY TD {
+	text-align: left;
+}
+
+
+TABLE.tablesorter checkbox {
+    border-width: 0;
+}
+	</style>
+</head>
+<body class="childrenBody">
+	<blockquote class="layui-elem-quote news_search">
+		<div class="layui-inline" style="font-weight: bolder;">服务审核
+		</div>
+	</blockquote>
+	<form class="">
+		<TABLE class=tableline border=0 cellSpacing=1 cellPadding=6 width="100%">
+        <TBODY>
+          <TR>
+            <TD align=right noWrap><strong>会员：</strong></TD>
+            <TD >万家灯火</TD>
+          </TR>
+          <TR>
+            <TD align=right noWrap><strong>商家：</strong></TD>
+            <TD >不告诉你</TD>
+          </TR>
+          <TR>
+            <TD align=right noWrap>&nbsp;</TD>
+            <TD >&nbsp;</TD>
+          </TR>
+          <TR>
+            <TD width="13%" align=right noWrap>标题:</TD>
+            <TD >fdbfdb</TD>
+          </TR>
+          <TR>
+            <TD noWrap align=right>服务类型:</TD>
+            <TD >
+			观光类 203</TD>
+          </TR>
+          <TR>
+            <TD noWrap align=right>发布时间:</TD>
+            <TD >
+            2019-01-21 11:14            </TD>
+          </TR>
+          <!--<TR style="display:none;">-->
+            <!--<TD noWrap align=right>排序:</TD>-->
+            <!--<TD ><INPUT name="sortid" type="text" id="sortid" value="" size="8" maxlength="9" class="validate[required,custom[number]]">数字</TD>-->
+          <!--</TR>-->
+                    <TR style="display:none;">
+              <TD noWrap align=right>是否推荐:</TD>
+              <TD >
+                              </TD>
+            </TR>
+          <TR>
+            <TD noWrap align=right>图片:</TD>
+            <TD >
+            <img src ="/Uploads/image/2019-01/20190121111407-70004.png" width="80" /> 
+                                                                        </TD>
+          </TR>
+                    <TR style="display:;">
+            <TD noWrap align=right valign="top">价格标题:</TD>
+            <TD >bfdbdfbfdbfdb</TD>
+          </TR>
+          <TR style="display:;">
+            <TD noWrap align=right valign="top">金币价格:</TD>
+            <TD >300</TD>
+          </TR>
+                              <TR style="display:;">
+            <TD noWrap align=right valign="top">费用包含:</TD>
+            <TD >
+                        小费,油费,导游费,            </TD>
+          </TR>          
+          <TR style="display:;">
+            <TD noWrap align=right valign="top">费用说明:</TD>
+            <TD >dfbfdbfbfntrjtr            </TD>
+          </TR>
+
+          <TR style="display:;">
+            <TD noWrap align=right valign="top">服务介绍:</TD>
+            <TD ></TD>
+          </TR>
+                              
+          <TR>
+            <TD align="right">审核状态:</TD>
+            <TD >
+                        <label><input type="radio" name="zt" value="0"  />待审核　</label>            <label><input type="radio" name="zt" value="1" checked />审核成功　</label>            <label><input type="radio" name="zt" value="2"  />未通过　</label>            　　　
+            营业状态：
+            <input type="radio" name="close" value="1" > 停业　
+            <input type="radio" name="close" value="0" checked> 营业
+            </TD>
+          </tr>
+          <TR >
+              <TD noWrap align=right>排序:</TD>
+              <TD ><INPUT name="sortid" type="text" id="sortid" value="" size="8" maxlength="9" class="validate[required,custom[number]]">数字
+              </TD>
+          </TR>
+          <TR >
+              <TD align="right">服务推荐:</TD>
+              <TD >
+                  <input type="radio" name="is_recommend" value="1" > 推荐　
+                  <input type="radio" name="is_recommend" value="0" checked> 不推荐　
+              </TD>
+          </tr>
+		  <TR>
+            <TD align="right">管理员意见:</TD>
+            <TD >
+				<textarea name="admin_reason" id="admin_reason" rows="7" cols="80"></textarea>
+			</TD>
+          </tr>
+          <!--<TR style="display:none;">-->
+            <!--<TD align="right">推荐:</TD>-->
+            <!--<TD >-->
+            <!--<input type="checkbox" name="flag" value="h"  />-->
+            <!--首页显示</TD>-->
+          <!--</tr>-->
+          <TR>
+            <TD><input type="hidden" name="articleid" value="741">
+            <input type="hidden" name="pid" value="1">
+            <input type="hidden" name="continue" value="aHR0cDovL3lwaHRpbmcuemdseGtqLmNvbS9pbmRleC5waHAvQWRtaW5jcC9TZXJ2aWNlcy9pbmRleC5odG1s">
+            </TD>
+            <TD >
+              <button class="layui-btn" lay-submit="" lay-filter="addNews">保存</button>
+              <input type="button" class="layui-btn layui-btn-primary" onclick="javascript:history.go(-1)" value="返回">
+              </TD>
+          </tr>
+        </tbody>
+      </table>
+	</form>
+	<table width="100%" border="0">
+                            <tr>
+                                <td width="20%" nowrap>
+                                    <INPUT id="select" value="选择所有" type=button name="select">
+                                    <INPUT id="delete" value="删除选择" type="submit" name="button">
+                                </td>
+
+                                <td width="80%" nowrap>
+                                      &nbsp;&nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;  &nbsp; 
+                                推荐状态：
+                               
+                                    <input type="radio" name="is_recommend" value="1" checked > 推荐
+                                    <input type="radio" name="is_recommend" value="0" > 不推荐　
+                                    <INPUT id="recommend" value="批量推荐" type="button" onclick='recommend1()' >   
+                                     <span>&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp;&nbsp; </span>
+                                    审核状态:
+                                                                            <label><input type="radio" name="zt" value="0" checked />待审核　</label>                                        <label><input type="radio" name="zt" value="1"  />审核成功　</label>                                        <label><input type="radio" name="zt" value="2"  />未通过　</label>                                    <INPUT  value=""  name="admin_reason"  id='admin_reason'  placeholder="若未通过审核，请填写未能通过审核原因"  size="40">
+                                    <INPUT id="verify" value="批量审核" type="button" onclick='javascript:batchVerify();' >
+                                    <span> &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp;&nbsp;</span>
+                                    营业状态：
+                                    <input type="radio" name="close" value="1" > 停业　
+                                    <input type="radio" name="close" value="0" checked> 营业　
+                                    <INPUT id="close" value="批量开关" type="button" onclick='javascript:batchClose();' >
+                                </td>
+                            </tr>
+                        </table>
+
+</body>
+</html

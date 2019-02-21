@@ -62,7 +62,7 @@
 			<div class="b_box">
 				<div class="other_mc">
 					<h1 class="login_title reg_title_o">欢迎您注册韩汀社区</h1>
-					<form  action="/c/szy/user/gotoLogin" method="post" id="formlogin" onsubmit="return yanz();">
+					<form  action="/c/gsq/user/gotoLogin" method="post" id="formlogin" onsubmit="return yanz();">
 						<ul class="login_ul">
 								<li><input type="email" name="email" placeholder="邮箱(请输入邮箱号码)" class="input_c validate[required,custom[email]]">
 								<span class="yzSpan" id="emailYz">*请输入正确邮箱</span>
@@ -142,7 +142,7 @@
 		var reEmail = /^[A-Za-z\d]+([-_.][A-Za-z\d]+)*@([A-Za-z\d]+[-.])+[A-Za-z\d]{2,4}$/;
 		if(reEmail.test(email)) {
 			$("#emailYz").css("display", "none");
-			$.getJSON("/c/szy/user/yzEmail",{"email":email},function(data){
+			$.getJSON("/c/gsq/user/yzEmail",{"email":email},function(data){
 				if(data.code!="200"){
 					$("#emailYz").css("display", "block");
 					$("#emailYz").html("*该邮箱已被注册");

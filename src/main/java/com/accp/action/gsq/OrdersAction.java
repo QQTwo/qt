@@ -18,7 +18,7 @@ import com.accp.pojo.Servicetype;
 import com.accp.pojo.User;
 
 @Controller
-@RequestMapping("/c/szy")
+@RequestMapping("/c/gsq")
 public class OrdersAction {
 	@Autowired
 	private OrdersBiz biz;
@@ -73,7 +73,7 @@ public class OrdersAction {
 			break;
 		}
 		userBiz.saveXtxx(userID, content);
-		return "redirect:/c/szy/order/queryAllOrder?orderStatus=0&refundstatus=-1&pageNum=1&pageSize=5&orderID=";
+		return "redirect:/c/gsq/order/queryAllOrder?orderStatus=0&refundstatus=-1&pageNum=1&pageSize=5&orderID=";
 	}
 	/**
 	 * 查询所有订单信息
