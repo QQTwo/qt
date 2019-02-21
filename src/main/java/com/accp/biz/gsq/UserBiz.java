@@ -206,4 +206,12 @@ public class UserBiz {
 	public boolean saveXtxx(Integer userID,String content) {
 		return dao.saveXtxx(userID, content)>0;
 	}
+	
+	/**
+	 * 新增系统消息
+	 * @param userID 用户ID
+	 */
+	public void updateUserRecentEntry(Integer userID) {
+		dao.updateUserRecentEntry(userID);
+	}
 }

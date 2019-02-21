@@ -82,6 +82,7 @@
 			</div>
 		</div>
 	</body>
+<script type="text/javascript" src="/Public/js/layer/layer.js"></script>
 <script type="text/javascript">
 create_code();
 var flag=false;
@@ -90,7 +91,7 @@ $("[name=email]").blur(function() {
 	var reEmail = /^[A-Za-z\d]+([-_.][A-Za-z\d]+)*@([A-Za-z\d]+[-.])+[A-Za-z\d]{2,4}$/;
 	if(reEmail.test(email)) {
 		$("#emailYz").css("display", "none");
-		$.getJSON("/c/szy/user/yzEmail",{"email":email},function(data){
+		$.getJSON("/c/gsq/user/yzEmail",{"email":email},function(data){
 			if(data.code=="200"){
 				$("#emailYz").css("display", "block");
 				$("#emailYz").html("*该邮箱未被注册");
@@ -108,25 +109,28 @@ $("[name=email]").blur(function() {
 
 $("[name=fasong]").click(function(){
 	if(!flag){
-		alert("请输入正确邮箱！");
+		layer.msg("请输入正确邮箱！");
 		return;
 	}
 	var code=$("[name=code]").val();
 	var yzmCode=$(".yzmCode").html();
 	if(yzmCode.toLowerCase()==code.toLowerCase()){
 		var email = $("[name=email]").val();
-		$.post("/c/szy/user/updatePwd",{"email":email},function(data){
+		layer.load(2,{time:5000});
+		$.post("/c/gsq/user/updatePwd",{"email":email},function(data){
 			if(data.code=="200"){
-				alert("您的密码重置成功，请进入邮箱查看");
-				location.href="szy-login.html";
+				layer.msg("您的密码重置成功，请进入邮箱查看");
+				settimeout(function(){
+					location.href="szy-login.html";
+				},5000)
 			}else{
-				alert("密码重置失败");
+				layer.msg("密码重置失败");
 			}
 		},"json")
 	}else{
 		$("[name=code]").val("");
 		create_code();
-		alert("验证码错误");
+		layer.msg("验证码错误");
 		return;
 	}
 })

@@ -132,4 +132,10 @@ public interface IUserDao {
 	 * @return
 	 */
 	public int saveXtxx(@Param("userid")Integer userID,@Param("content")String content);
+	/**
+	 * 修改最后登入时间
+	 * @param userID
+	 * @return
+	 */
+	public int updateUserRecentEntry(@Param("userid")Integer userID);
 }

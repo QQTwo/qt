@@ -8,8 +8,7 @@
 	
 	<select id="login" resultType="com.accp.pojo.User">
 		SELECT * FROM `user`
-		WHERE `userID` = (SELECT `userID` FROM `login` WHERE `userEmail`=#{email}
-		AND `userPwd`=#{password})
+		WHERE `userID` = (SELECT `userID` FROM `login` WHERE `userEmail`=#{email} AND `userPwd`=#{password})
 	</select>
 	<select id="queryEmail" resultType="java.lang.Integer">
 		SELECT COUNT(*) FROM `login`
@@ -225,4 +224,11 @@
 		`news`(`addRessee`,`content`,`sendingTime`,`readState`,`newsType`)
 		VALUES(#{userid},#{content},NOW(),0,1)
 	</insert>
+	<update id="updateUserRecentEntry">
+		UPDATE 
+		  `user` 
+		SET
+		  `recentEntry` = 'recentEntry' 
+		WHERE `userID` = #{userid} ;
+	</update>
 </mapper>

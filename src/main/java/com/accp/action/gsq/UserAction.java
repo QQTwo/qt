@@ -84,7 +84,7 @@ public class UserAction {
 			}
 			
 			System.out.println("执行Email新增=========");
-			Email.sendSimpleMail(email, "用户注册", EmailBoard.register(username, "http://127.0.0.1/c/gsq/user/emailYanz?email="+email+"&nickName="+username+"&codeId="+codeId));
+			Email.sendSimpleMail(email, "用户注册", EmailBoard.register(username, "http://127.0.0.1:7777/c/gsq/user/emailYanz?email="+email+"&nickName="+username+"&codeId="+codeId));
 			System.out.println("====================\n发送成功\n====================\n");
 		} catch (UnsupportedEncodingException | MessagingException e) {
 			e.printStackTrace();
@@ -217,6 +217,8 @@ public class UserAction {
 	 */
 	@RequestMapping(value="/user/close",method=RequestMethod.GET)
 	public String close(HttpSession session) {
+		Integer userID=((User)session.getAttribute("USER")).getUserid();
+		biz.updateUserRecentEntry(userID);
 		session.removeAttribute("USER");
 		session.removeAttribute("Email");
 		return "/szy-login.html";
