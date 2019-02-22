@@ -193,7 +193,7 @@ var newsType=1;
 var pageNum=1;
 var pageSize=8;
 	function queryXX(){
-		$.getJSON("/c/szy/user/queryNewPageInfo",{"newsType":newsType,"pageNum":pageNum,"pageSize":pageSize},function(data){
+		$.getJSON("/c/gsq/user/queryNewPageInfo",{"newsType":newsType,"pageNum":pageNum,"pageSize":pageSize},function(data){
 			$(".member_s_list_ul").html("");
 		
 			$.each(data.list,function(i,obj){
@@ -237,7 +237,7 @@ var pageSize=8;
 			alert("请选择信息");
 			return;
 		}
-		$.post("/c/szy/user/updateXtNews",{"newsID":newsid},function(data){
+		$.post("/c/gsq/user/updateXtNews",{"newsID":newsid},function(data){
 			if(data.code="200"){
 				queryXX();
 				weiduInfo();
@@ -258,7 +258,7 @@ var pageSize=8;
 		if(confirm("确认删除吗？")==false){
 			return;
 		}
-		$.post("/c/szy/user/deleteNews",{"newsID":newsid},function(data){
+		$.post("/c/gsq/user/deleteNews",{"newsID":newsid},function(data){
 			if(data.code="200"){
 				alert("删除成功");
 				queryXX();

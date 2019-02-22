@@ -214,4 +214,14 @@ public class UserBiz {
 	public void updateUserRecentEntry(Integer userID) {
 		dao.updateUserRecentEntry(userID);
 	}
+	/**
+	 * 根据编号获取用户
+	 * 
+	 * @param userid
+	 *            用户编号
+	 * @return
+	 */
+	public User queryUserById(int userid) {
+		return dao.queryUserById(userid);
+	}
 }

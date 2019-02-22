@@ -42,7 +42,7 @@
 					</div>
 					<div class="top_right login_right">
 						<a href="grzx-index.html">[[${session.USER.username}]]</a> <span class="ht_line"></span>
-						<a href="/c/szy/user/close">退出</a>
+						<a href="/c/gsq/user/close">退出</a>
 						<span class="ht_line"></span>
 						<a href=""><img src="Public/images/e_i.png" alt=""></a>
 					</div>
@@ -84,7 +84,7 @@
 					<h1 class="member_left_title">账户设置</h1>
 					<ul class="member_system_ul account_ul_a">
 						<li class="cur">
-							<a href="/c/szy/user/queryGrzxInfo"><span class="msp2 pre_c1"></span>个人资料</a>
+							<a href="/c/gsq/user/queryGrzxInfo"><span class="msp2 pre_c1"></span>个人资料</a>
 						</li>
 						<li>
 							<a href="/zhsz-xgmm.html"><span class="msp2 pre_c2"></span>修改密码</a>
@@ -93,7 +93,7 @@
 							<a href="javascript:void(0)"><span class="msp2 pre_c4"></span>帐号管理</a>
 						</li>
 						<li>
-							<a href="/c/szy/user/getdpszInfo"><span class="msp2 pre_c2"></span>店铺信息</a>
+							<a href="/c/gsq/user/getdpszInfo"><span class="msp2 pre_c2"></span>店铺信息</a>
 						</li>
 					</ul>
 				</div>
@@ -108,7 +108,7 @@
 			                	<div class="cropControls cropControlsUpload">
 			                		<i class="cropControlUpload"></i>
 			                	</div>
-			                	<form action="/c/szy/user/updateUserImg"  id="updateUserImg" method="post" enctype="multipart/form-data" class="cropContainerEyecandy_imgUploadForm" style="visibility: hidden;">
+			                	<form action="/c/gsq/user/updateUserImg"  id="updateUserImg" method="post" enctype="multipart/form-data" class="cropContainerEyecandy_imgUploadForm" style="visibility: hidden;">
 			                		<input type="file" name="img" id="cropContainerEyecandy_imgUploadField">
 			                	</form>
 							</div>
@@ -119,7 +119,7 @@
 						</dd>
 					</dl>
 					<h3 class="h3_sec_t">修改资料</h3>
-					<form action="/c/szy/user/updateUserInfo" id="formcfg" method="post" target="topost">
+					<form action="/c/gsq/user/updateUserInfo" id="formcfg" method="post" target="topost">
 						<ul class="member_zl_ul">
 							<li>
 								<span class="m_zl_sp">用户名</span>
@@ -244,7 +244,7 @@
 		var cityID="[[${session.USER.cityid}]]";
 		//国地址
 		function guo(){
-			$.getJSON("/c/szy/user/querySharea",function(data){
+			$.getJSON("/c/gsq/user/querySharea",function(data){
 				$.each(data,function(i,obj){
 					if(obj.pid==0){
 						var option=$("<option value='"+obj.areaid+"'>"+obj.name+"</option>");
@@ -256,7 +256,7 @@
 		}
 		//省
 		function sheng(){
-			$.getJSON("/c/szy/user/querySharea",function(data){
+			$.getJSON("/c/gsq/user/querySharea",function(data){
 				if(provincialID!=null){
 					$.each(data,function(i,obj){
 						if(obj.pid==provincialID){
@@ -270,7 +270,7 @@
 		}
 		//市
 		function shi(){
-			$.getJSON("/c/szy/user/querySharea",function(data){
+			$.getJSON("/c/gsq/user/querySharea",function(data){
 				if(cityID!=null){
 					$.each(data,function(i,obj){
 						if(obj.pid==cityID){

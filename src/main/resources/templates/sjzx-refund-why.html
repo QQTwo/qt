@@ -82,7 +82,7 @@
 			<!--member right-->
 			<div class="member_right sj_right_box">
 				<div class="member_system_r_top mt10">您不同意退款申请</div>
-				<form method="post" id="formpost" action="/c/lhy/refund/no">
+				<form method="post" id="formpost" action="/c/gsq/refund/no">
 					<input type="hidden" name="orderid" th:value="${orderid}">
 					<ul class="member_zl_ul noagree_ul">
 						<li><span class="m_zl_sp">不同意的原因</span>
@@ -174,7 +174,7 @@
 		function refundOk(orderid) {
 			alert(orderid)
 			$.ajax({
-				url : "/c/lhy/refund/ok",
+				url : "/c/gsq/refund/ok",
 				data : {
 					orderid : orderid
 				},

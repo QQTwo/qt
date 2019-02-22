@@ -37,11 +37,11 @@
 		    <div class="b_box nav_header community_header">
 				<a href="/index.php/" class="logo logo_community">御品韩汀.社区</a>
 				<ul class="nav_ul">
-					<li><a href="/c/lsm/serviceUrl?htmlUrl=fw-zjyTAB&stid=1"><span class="community_sp csp1"></span><br>自驾游</a></li>
-					<li><a href="/c/lsm/serviceUrl?htmlUrl=fw-wzxTAB&stid=2"><span class="community_sp csp2"></span><br>微整形</a></li>
-					<li><a href="/c/lsm/serviceUrl?htmlUrl=fw-lxzjTAB&stid=3"><span class="community_sp csp3"></span><br>留学中介</a></li>
-					<li class="cur"><a href="/c/lsm/serviceUrl?htmlUrl=fw-hyfyTAB&stid=4"><span class="community_sp csp4"></span><br>韩语翻译</a></li>
-					<li><a href="/c/lsm/serviceUrl?htmlUrl=fw-xxzyTAB&stid=5"><span class="community_sp csp5"></span><br>学习资源</a></li>
+					<li><a href="/c/cn/serviceUrl?htmlUrl=fw-zjyTAB&stid=1"><span class="community_sp csp1"></span><br>自驾游</a></li>
+					<li><a href="/c/cn/serviceUrl?htmlUrl=fw-wzxTAB&stid=2"><span class="community_sp csp2"></span><br>微整形</a></li>
+					<li><a href="/c/cn/serviceUrl?htmlUrl=fw-lxzjTAB&stid=3"><span class="community_sp csp3"></span><br>留学中介</a></li>
+					<li class="cur"><a href="/c/cn/serviceUrl?htmlUrl=fw-hyfyTAB&stid=4"><span class="community_sp csp4"></span><br>韩语翻译</a></li>
+					<li><a href="/c/cn/serviceUrl?htmlUrl=fw-xxzyTAB&stid=5"><span class="community_sp csp5"></span><br>学习资源</a></li>
 					<li><a href="#"><span class="community_sp csp6"></span><br>韩汀物流</a></li>
 					<li><a href="#"><span class="community_sp csp7"></span><br>韩汀·论坛 中文</a></li>
 				</ul>
@@ -154,7 +154,7 @@
 									<dd th:text="${serDetailObj.serviceCostInclude}"></dd>
 								</dl>
 							</div>					
-							<form id="formbook" method="post"  action="/c/lsm/serReserveUrl" >
+							<form id="formbook" method="post"  action="/c/cn/serReserveUrl" >
 								<dl class="online_dl">
 									<dt class="wall">
 										<p class="c_4 p_tti">需要翻译份数<input type="text" id="num" onchange="count()" name="quantity" class="input_c fynum"></p>
@@ -283,7 +283,7 @@
 								<div class="item">
 									<ul class="us_ul_list">
 										<li>
-											<a th:href="@{/c/lsm/serviceDetailUrl(htmlUrl=fw-xxzyXQ,sid=${temp.serviceID},uid=${temp.userID})}">
+											<a th:href="@{/c/cn/serviceDetailUrl(htmlUrl=fw-xxzyXQ,sid=${temp.serviceID},uid=${temp.userID})}">
 											<div class="per_pic"><img th:src="${temp.serviceCoverImg}" th:alt="${temp.serviceTitle}"></div>
 											<div class="per_text">
 												<h3 th:text="${temp.serviceTitle}">庆熙大学-环境造景系-地形设计</h3>
@@ -392,7 +392,7 @@
 				queryEvaluationserviceVO:function(num){
 					var vm = this;
 					var sid = [[${param.sid}]];
-					jQuery.getJSON("/c/lsm/api/queryEvaluationserviceVO",{"num":num,"size":1,"sid":parseInt(sid)},function(data){
+					jQuery.getJSON("/c/cn/api/queryEvaluationserviceVO",{"num":num,"size":1,"sid":parseInt(sid)},function(data){
 						vm.page = data;
 					})
 				}
@@ -410,7 +410,7 @@
 		})
 		//提交举报
 		jQuery(".btn_jba").click(function(){
-			jQuery.getJSON("/c/szy/user/queryAUser",function(data){
+			jQuery.getJSON("/c/gsq/user/queryAUser",function(data){
 				if(data!=null){
 					var businessID = [[${serMerchantObj.userID}]];	//商家编号
 					var serviceID = [[${serDetailObj.serviceID}]];	//服务编号
@@ -418,7 +418,7 @@
 					if(jQuery(".pop_sel_jq li label input[name=reason]:checked").length==0){
 						alert("请选择举报原因！");
 					}else{
-						jQuery.post("/c/lsm/api/report",{"businessID":businessID,"serviceID":serviceID,"ctID":ctID},function(result){
+						jQuery.post("/c/cn/api/report",{"businessID":businessID,"serviceID":serviceID,"ctID":ctID},function(result){
 							if(result.code==200){
 								alert(result.msg);
 								jQuery("#pop_bg").hide();
