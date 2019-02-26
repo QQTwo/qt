@@ -1,8 +1,8 @@
-var sjzxHref="/c/szy/user/getUserBySjzx";
-var grzxHref="/c/lhy/center/home";
-var zhszHref="/c/szy/user/queryGrzxInfo";
+var sjzxHref="/c/gsq/user/getUserBySjzx";
+var grzxHref="/c/gsq/center/home";
+var zhszHref="/c/gsq/user/queryGrzxInfo";
 var xxHref="/xx-xtxx.html";
-$.getJSON("/c/szy/user/queryAUser",function(data){
+$.getJSON("/c/gsq/user/queryAUser",function(data){
 	$("#li1 a").attr("href",sjzxHref);
 	$("#li2 a").attr("href",grzxHref);
 	$("#li3 a").attr("href",zhszHref);
