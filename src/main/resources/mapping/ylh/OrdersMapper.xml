@@ -5,18 +5,22 @@
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.accp.dao.ylh.ISericesDao">
-	<select id="queryServicetype " resultMap="servicetype">
+	<!-- <select id="queryServicetype " resultMap="servicetype">
 		SELECT * FROM Servicetype
 		WHERE stpid=#{stpid}
-	</select>
+	</select> -->
 	
 	<insert id="addServices" >
 		insert into Services(stid,userid,resourceid,servicetitle,servicefutitle,downloadtitle,serviceprice,servicecoverimg,serviceimgurlone,serviceimgurltwo,serviceimgurlthree,serviceimgurlfour,servicecosttypeid,serviceintro,servicecity,country,servicecostinclude,servicestartdate,serviceenddate,schoolregion,schoolnamebycn,majoynamebycn,schoolnamebyrok,majoynamebyrok,goodatmajoy,hospitalname,servicehour,uploaddataurl,releasetime,browsenumber,weight,recommendbool,shelfstate,auditstatus)
 		values(#{s.stid},#{s.userid},#{s.resourceid},#{s.servicetitle},#{s.servicefutitle},#{s.downloadtitle},#{s.serviceprice},#{s.servicecoverimg},#{s.serviceimgurlone},#{s.serviceimgurltwo},#{s.serviceimgurlthree},#{s.serviceimgurlfour},#{s.servicecosttypeid},#{s.serviceintro},#{s.servicecity},#{s.country},#{s.servicecostinclude},#{s.servicestartdate},#{s.serviceenddate},#{s.schoolregion},#{s.schoolnamebycn},#{s.majoynamebycn},#{s.schoolnamebyrok},#{s.majoynamebyrok},#{s.goodatmajoy},#{s.hospitalname},#{s.servicehour},#{s.uploaddataurl},#{s.releasetime},#{s.browsenumber},#{s.weight},#{s.recommendbool},#{s.shelfstate},#{s.auditstatus})
 	</insert>
 	
-	<select id="queryServicecosttype " resultMap="servicecosttype">
+	<!-- <select id="queryServicecosttype " resultMap="servicecosttype">
 		SELECT * FROM servicecosttype
 		WHERE stid=#{stid}
-	</select>
+	</select> -->
+	
+	 <select id="queryMajortype" resultType="majortype">
+		SELECT * FROM Majortype
+	</select> 
 </mapper>

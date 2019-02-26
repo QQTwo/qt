@@ -10,7 +10,7 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.accp.dao.ylh.ISericesDao;
-import com.accp.pojo.Servicecosttype;
+import com.accp.pojo.Majortype;
 import com.accp.pojo.Services;
 import com.accp.pojo.Servicetype;
 
@@ -20,19 +20,24 @@ public class SericesBiz {
 	@Autowired
 	private  ISericesDao dao;
 	//服务类别
-		public List<Servicetype> queryServicetype( int stpid)
+		/*public List<Servicetype> queryServicetype( int stpid)
 		{
 			return dao.queryServicetype(stpid);
-		}
+		}*/
 		//新增服务
 		@Transactional(propagation = Propagation.REQUIRED, isolation = Isolation.READ_COMMITTED, readOnly = false)
 		public void addServices (Services services)
 		{
 			dao.addServices(services);
 		}
-		//查询服务费用类型表
+		/*//查询服务费用类型表
 		public List<Servicecosttype> queryServicecosttype(int stid)
 		{
 			return dao.queryServicecosttype(stid);
+		}*/
+		//查询所有专业
+		public List<Majortype> queryMajortype()
+		{
+			return dao.queryMajortype();
 		}
 }
