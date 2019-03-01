@@ -44,7 +44,7 @@
 						<a href="grzx-index.html">[[${session.USER.username}]]</a> <span class="ht_line"></span>
 						<a href="/c/gsq/user/close">退出</a>
 						<span class="ht_line"></span>
-						<a href=""><img src="Public/images/e_i.png" alt=""></a>
+						<a href=""><img src="/Public/images/e_i.png" alt=""></a>
 					</div>
 				</div>
 			</div>
@@ -90,9 +90,6 @@
 							<a href="/zhsz-xgmm.html"><span class="msp2 pre_c2"></span>修改密码</a>
 						</li>
 						<li>
-							<a href="javascript:void(0)"><span class="msp2 pre_c4"></span>帐号管理</a>
-						</li>
-						<li>
 							<a href="/c/gsq/user/getdpszInfo"><span class="msp2 pre_c2"></span>店铺信息</a>
 						</li>
 					</ul>
@@ -119,7 +116,7 @@
 						</dd>
 					</dl>
 					<h3 class="h3_sec_t">修改资料</h3>
-					<form action="/c/gsq/user/updateUserInfo" id="formcfg" method="post" target="topost">
+					<form action="/c/gsq/user/updateUserInfo" id="formcfg" method="post">
 						<ul class="member_zl_ul">
 							<li>
 								<span class="m_zl_sp">用户名</span>
@@ -177,7 +174,7 @@
 							</li>
 						</ul>
 						<div class="rechang_top2 rechang_top3">
-							<a href="javascript:void(0)" onclick="$('#formcfg').submit()" class="btn_jy_a">更新</a>
+							<a href="javascript:void(0)" onclick="PutUser()" class="btn_jy_a">更新</a>
 						</div>
 						<input type="hidden" name="__hash__" value="50a76bd0b36c216a0537cfd4ea89e3bc_4108085a46fdce02fa38d241c6f46cf2">
 					</form>
@@ -192,7 +189,7 @@
 			<dl class="footer_dl">
 				<dt>
 					<div class="footer_ewm_box">
-						<img src="Public/images/footer_ewm.png" alt="">
+						<img src="/Public/images/footer_ewm.png" alt="">
 					</div>
 					<span class="ft_ewm_name">御品韩汀</span>
 				</dt>
@@ -221,7 +218,7 @@
 			</li>
 			<li>
 				<a href="" class="rn_wx">官方微信</a>
-				<div class="over_show"><img src="Public/images/r_ewm.jpg" alt="" class="gw_ewm"></div>
+				<div class="over_show"><img src="/Public/images/r_ewm.jpg" alt="" class="gw_ewm"></div>
 			</li>
 			<li>
 				<a href="" class="rn_kf">在线客服</a>
@@ -236,12 +233,17 @@
 	<script type="text/javascript" src="/Public/js/grzx-interlinkage.js"></script>
 	<script type="text/javascript" src="/Public/js/zhsz-href.js"></script>
 	<script type="text/javascript" src="/Public/js/sessionHeader.js"></script>
-<script type="text/javascript" src="/Public/js/headLeftNav.js"></script>
+	<script type="text/javascript" src="/Public/js/headLeftNav.js"></script>
 <script type="text/javascript" th:inline="javascript">
 		$("#thumb_preview").attr("src",[[${session.USER.userimgpath}]]);
 		$("#cropContainerEyecandy").css("background","url("+[[${session.USER.userimgpath}]]+") no-repeat center center");
 		var provincialID="[[${session.USER.provincialid}]]";
 		var cityID="[[${session.USER.cityid}]]";
+		//提交更新数据
+		function PutUser(){
+			layer.msg('修改成功');
+			$('#formcfg').submit();
+		}
 		//国地址
 		function guo(){
 			$.getJSON("/c/gsq/user/querySharea",function(data){

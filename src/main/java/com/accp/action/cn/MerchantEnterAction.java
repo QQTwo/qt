@@ -310,7 +310,7 @@ public class MerchantEnterAction {
 		obj.setOrderID(orderID);
 		obj.setUserID(loginUserID);
 		biz.submitReserve(obj);
-		return "redirect:/c/lhy/order/query/list";
+		return "redirect:/c/gsq/order/query/list";
 	}
 	/**
 	 * 收藏服务

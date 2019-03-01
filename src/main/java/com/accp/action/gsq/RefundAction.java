@@ -56,7 +56,7 @@ public class RefundAction {
 		refund.setOrderid(orderid);
 		refund.setAdminstatus(1);
 		refundBiz.applyAdmin(order, refund);
-		return "redirect:/c/lhy/refund/detail?orderid=" + orderid;
+		return "redirect:/c/gsq/refund/detail?orderid=" + orderid;
 	}
 
 	/**
@@ -146,7 +146,7 @@ public class RefundAction {
 		refund.setAudittime(new Date());
 		refund.setAuditstatus(3);
 		refundBiz.refundNo(order, refund);
-		return "redirect:/c/lhy/refund/list";
+		return "redirect:/c/gsq/refund/list";
 	}
 
 	/**

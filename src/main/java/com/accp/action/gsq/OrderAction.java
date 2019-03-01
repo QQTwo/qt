@@ -48,7 +48,7 @@ public class OrderAction {
 		updateOrder.setOrderstatus(2);
 		updateOrder.setPaymenttime(new Date());
 		orderBiz.payOrder(order.getSmallplan(), userId, updateOrder);
-		return "redirect:/c/lhy/order/query/list";
+		return "redirect:/c/gsq/order/query/list";
 	}
 
 	/**
@@ -69,7 +69,7 @@ public class OrderAction {
 		order.setOrderid(updateid);
 		order.setOrderstatus(6);
 		orderBiz.cancelOrder(order);
-		return "redirect:/c/lhy/order/query/list?page=" + page + "&orderid=" + orderid;
+		return "redirect:/c/gsq/order/query/list?page=" + page + "&orderid=" + orderid;
 	}
 
 	/**
@@ -96,7 +96,7 @@ public class OrderAction {
 		updateOrder.setCommentstatus(1);
 		updateOrder.setRefundstatus(0);
 		orderBiz.ok(order.getSmallplan(), order.getService().getUser().getUserid(), updateOrder);
-		return "redirect:/c/lhy/order/query/list?page=" + page + "&orderid=" + orderid;
+		return "redirect:/c/gsq/order/query/list?page=" + page + "&orderid=" + orderid;
 	}
 
 	/**
@@ -121,7 +121,7 @@ public class OrderAction {
 		updateOrder.setOrderid(orderid);
 		updateOrder.setCommentstatus(2);
 		orderBiz.evaluateOk(evaluate, updateOrder);
-		return "redirect:/zsp/c/EvaluationService";
+		return "redirect:/ylh/c/EvaluationService";
 	}
 
 	/**
@@ -155,7 +155,7 @@ public class OrderAction {
 		order.setOrderid(refund.getOrderid());
 		order.setRefundstatus(1);
 		orderBiz.refundok(refund, order);
-		return "redirect:/c/lhy/refund/detail?orderid=" + refund.getOrderid();
+		return "redirect:/c/gsq/refund/detail?orderid=" + refund.getOrderid();
 	}
 
 	/**
