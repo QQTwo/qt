@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 广告管理 -->
+
+<mapper namespace="com.accp.dao.wdg.AdvDao">
+<select id="queryAllAdv"
+		resultType="com.accp.pojo.Advertisementtype">
+		SELECT *FROM advertisementtype
+	</select>
+	<select id="queryAllAdvVo"
+		resultType="com.accp.vo.wdg.AdvertisementVo">
+		SELECT *FROM advertisement INNER JOIN advertisementtype
+		ON
+		advertisement.atid=advertisementtype.`atid`
+		<where>
+			<if test="atid!=0">
+				advertisement.atid=#{atid}
+			</if>
+		</where>
+	</select>
+	<update id="updateAdv">
+		UPDATE `advertisement` SET
+		atid=#{a.atid},`atitle`=#{a.atitle},`aorder`=#{a.aorder},`aimgPath`=#{a.aimgpath}
+		,`apcUrl`=#{a.apcurl},`aappUrl`=#{a.aappurl},`adescribe`=#{a.adescribe}
+		WHERE aid=#{a.aid}
+	</update>
+	<insert id="addAdv">
+		INSERT INTO `advertisement`(`atid`,`atitle`,`aorder`,`aimgPath`,`apcUrl`,`aappUrl`,`adescribe`)
+		VALUES(#{a.atid},#{a.atitle},#{a.aorder},#{a.aimgpath},#{a.apcurl},#{a.aappurl},#{a.adescribe});
+	</insert>
+	<select id="queryObjAdv" resultType="com.accp.pojo.Advertisement">
+		select *from advertisement where aid=#{aid}
+	</select>
+	<delete id="deleteAdv">
+		DELETE FROM advertisement WHERE aid IN
+		<foreach collection="array" item="id" open="(" close=")"
+			separator=",">
+			#{id}
+		</foreach>
+	</delete>
+</mapper>
