@@ -230,6 +230,8 @@
 		<!--right nav end-->
 
 	</body>
+	
+	<script type="text/javascript" src="/Public/js/layer/layer.js"></script>
 	<script type="text/javascript" src="/Public/js/grzx-interlinkage.js"></script>
 	<script type="text/javascript" src="/Public/js/zhsz-href.js"></script>
 	<script type="text/javascript" src="/Public/js/sessionHeader.js"></script>
@@ -242,7 +244,9 @@
 		//提交更新数据
 		function PutUser(){
 			layer.msg('修改成功');
-			$('#formcfg').submit();
+			setimeout(function(){
+				$('#formcfg').submit();
+			},1000)
 		}
 		//国地址
 		function guo(){

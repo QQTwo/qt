@@ -48,8 +48,9 @@ public class Upload {
 	 */
 	private static void deleteFileRoute(String fileName) {
 		fileName = fileName.replace("/api/upload/", "");
-		String path = UPLOADED_FOLDER + fileName;
-		File dest = new File(path);
+		String parent = UPLOADED_FOLDER.replace("//", "/");
+		String path = parent + fileName;
+		File dest = new File(path); 
 		// 如果文件路径所对应的文件存在，并且是一个文件，则直接删除
         if (dest.exists() && dest.isFile()) {
             if (dest.delete()) {
