@@ -8,81 +8,40 @@ layui.config({
 
 	//加载页面数据
 	var linksData = '';
+	loadInfo(0);
+//	$.ajax({
+//		url : "/wdg/advs/0/1/30",
+//		type : "get",
+//		dataType : "json",
+//		success : function(data){
+//			linksData = data.list;
+//			if(window.sessionStorage.getItem("addLinks")){
+//				var addLinks = window.sessionStorage.getItem("addLinks");
+//				linksData = JSON.parse(addLinks).concat(linksData);
+//			}
+//			//执行加载数据的方法
+//			linksList();
+//		}
+//	})
+	//加载广告分类
 	$.ajax({
-		url : "adList.json",
+		url : "/wdg/adv/types",
 		type : "get",
 		dataType : "json",
-		success : function(data){
-			linksData = data;
-			if(window.sessionStorage.getItem("addLinks")){
-				var addLinks = window.sessionStorage.getItem("addLinks");
-				linksData = JSON.parse(addLinks).concat(linksData);
-			}
-			//执行加载数据的方法
-			linksList();
+		success:function(data){
+			$("#types_select").html("");
+			$("#types_select").append("<option value='0'>请选择</option>");
+			$.each(data,function(i,e){
+				$("#types_select").append("<option value="+e.atid+">"+e.atname+"</option>");
+			});
 		}
-	})
-
+	});
 	//查询
 	$(".search_btn").click(function(){
-		var newArray = [];
-		if($(".search_input").val() != ''){
-			var index = layer.msg('查询中，请稍候',{icon: 16,time:false,shade:0.8});
-            setTimeout(function(){
-            	$.ajax({
-					url : "../../json/linksList.json",
-					type : "get",
-					dataType : "json",
-					success : function(data){
-						if(window.sessionStorage.getItem("addLinks")){
-							var addLinks = window.sessionStorage.getItem("addLinks");
-							linksData = JSON.parse(addLinks).concat(data);
-						}else{
-							linksData = data;
-						}
-						for(var i=0;i<linksData.length;i++){
-							var linksStr = linksData[i];
-							var selectStr = $(".search_input").val();
-		            		function changeStr(data){
-		            			var dataStr = '';
-		            			var showNum = data.split(eval("/"+selectStr+"/ig")).length - 1;
-		            			if(showNum > 1){
-									for (var j=0;j<showNum;j++) {
-		            					dataStr += data.split(eval("/"+selectStr+"/ig"))[j] + "<i style='color:#03c339;font-weight:bold;'>" + selectStr + "</i>";
-		            				}
-		            				dataStr += data.split(eval("/"+selectStr+"/ig"))[showNum];
-		            				return dataStr;
-		            			}else{
-		            				dataStr = data.split(eval("/"+selectStr+"/ig"))[0] + "<i style='color:#03c339;font-weight:bold;'>" + selectStr + "</i>" + data.split(eval("/"+selectStr+"/ig"))[1];
-		            				return dataStr;
-		            			}
-		            		}
-		            		//网站名称
-		            		if(linksStr.linksName.indexOf(selectStr) > -1){
-			            		linksStr["linksName"] = changeStr(linksStr.linksName);
-		            		}
-		            		//网站地址
-		            		if(linksStr.linksUrl.indexOf(selectStr) > -1){
-			            		linksStr["linksUrl"] = changeStr(linksStr.linksUrl);
-		            		}
-		            		//
-		            		if(linksStr.showAddress.indexOf(selectStr) > -1){
-			            		linksStr["showAddress"] = changeStr(linksStr.showAddress);
-		            		}
-		            		if(linksStr.linksName.indexOf(selectStr)>-1 || linksStr.linksUrl.indexOf(selectStr)>-1 || linksStr.showAddress.indexOf(selectStr)>-1){
-		            			newArray.push(linksStr);
-		            		}
-		            	}
-		            	linksData = newArray;
-		            	linksList(linksData);
-					}
-				})
-            	
-                layer.close(index);
-            },2000);
-		}else{
-			layer.msg("请输入需要查询的内容");
-		}
+			 var index =  layer.msg('查询中，请稍候',{icon: 16,time:800,shade:0.8});
+			 setTimeout(function(){
+				 loadInfo($("#types_select").val());
+			 },800);
 	})
 
 	//添加友情链接
@@ -117,7 +76,8 @@ layui.config({
 	            	//删除数据
 	            	for(var j=0;j<$checked.length;j++){
 	            		for(var i=0;i<linksData.length;i++){
-							if(linksData[i].linksId == $checked.eq(j).parents("tr").find(".links_del").attr("data-id")){
+							if(linksData[i].aid == $checked.eq(j).parents("tr").find(".links_del").attr("data-id")){
+								deleteAdv(linksData[i].aid);
 								linksData.splice(i,1);
 								linksList(linksData);
 							}
@@ -166,7 +126,8 @@ layui.config({
 		layer.confirm('确定删除此信息？',{icon:3, title:'提示信息'},function(index){
 			//_this.parents("tr").remove();
 			for(var i=0;i<linksData.length;i++){
-				if(linksData[i].linksId == _this.attr("data-id")){
+				if(linksData[i].aid == _this.attr("data-id")){
+					deleteAdv(linksData[i].aid);
 					linksData.splice(i,1);
 					linksList(linksData);
 				}
@@ -174,7 +135,39 @@ layui.config({
 			layer.close(index);
 		});
 	})
-
+	//删除广告
+	function deleteAdv(aid){
+		$.ajax({
+			type:"DELETE",
+			url:"http://127.0.0.1:7777/wdg/adv/"+aid,
+			success:function(flag){
+				if (flag==false) {
+					layer.msg("服务器正忙(-500)");
+				}else{
+					layer.msg("删除成功");
+				}
+			}
+		});
+	}
+	
+	
+	function loadInfo(atid){
+		$.ajax({
+			url : "/wdg/advs/"+atid+"/1/30",
+			type : "get",
+			dataType : "json",
+			success : function(data){
+				linksData = data.list;
+				if(window.sessionStorage.getItem("addLinks")){
+					var addLinks = window.sessionStorage.getItem("addLinks");
+					linksData = JSON.parse(addLinks).concat(linksData);
+				}
+				//执行加载数据的方法
+				linksList();
+			}
+		})
+	}
+	
 	function linksList(that){
 		//渲染数据
 		function renderDate(data,curr){
@@ -186,18 +179,19 @@ layui.config({
 			}
 			if(currData.length != 0){
 				for(var i=0;i<currData.length;i++){
-					dataHtml += '<tr>'
-			    	+'<td><input type="checkbox" name="checked" lay-skin="primary" lay-filter="choose"></td>'
-			    	+'<td align="left">'+currData[i].linksName+'</td>'
-			    	+'<td>'+currData[i].linksSort+'</td>'
-			    	+'<td><img src="'+currData[i].img+'" width="200px"/></td>'
-			    	+'<td>'+currData[i].linksTime+'</td>'
-			    	+'<td>'+currData[i].showAddress+'</td>'
-			    	+'<td>'
-					+  '<a class="layui-btn layui-btn-mini links_edit"><i class="iconfont icon-edit"></i> 编辑</a>'
-					+  '<a class="layui-btn layui-btn-danger layui-btn-mini links_del" data-id="'+data[i].linksId+'"><i class="layui-icon">&#xe640;</i> 删除</a>'
-			        +'</td>'
-			    	+'</tr>';
+						dataHtml += '<tr>'
+					    	+'<td><input type="checkbox" name="checked" lay-skin="primary" lay-filter="choose"></td>'
+					    	+'<td align="left">'+currData[i].atitle+'</td>'
+					    	+'<td>'+currData[i].aorder+'</td>'
+					    	+'<td><img src="'+currData[i].aimgPath+'" width="200px"/></td>'
+					    	+'<td>---</td>'
+					    	+'<td>'+currData[i].atname+'</td>'
+					    	+'<td>'
+							+  '<a class="layui-btn layui-btn-mini links_edit"><i class="iconfont icon-edit"></i> 编辑</a>'
+							+  '<a class="layui-btn layui-btn-danger layui-btn-mini links_del" data-id="'+data[i].aid+'"><i class="layui-icon">&#xe640;</i> 删除</a>'
+					        +'</td>'
+					    	+'</tr>';
+					
 				}
 			}else{
 				dataHtml = '<tr><td colspan="7">暂无数据</td></tr>';
@@ -206,7 +200,7 @@ layui.config({
 		}
 
 		//分页
-		var nums = 13; //每页出现的数据量
+		var nums = 6; //每页出现的数据量
 		if(that){
 			linksData = that;
 		}
@@ -221,3 +215,5 @@ layui.config({
 		})
 	}
 })
+
+
