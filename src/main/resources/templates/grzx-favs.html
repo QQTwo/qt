@@ -93,7 +93,7 @@
 					<li class="col_156" th:each="temp,iterState:${PAGE_INFO.list}">
 						<div class="per_pic">
 							<a href="" target="_blank"> <img th:src="${temp.servicecoverimg}"/>
-							</a> <span class="del_collection" rel="156"></span>
+							</a> <span class="del_collection" th:rel="${temp.serviceid}"></span>
 						</div>
 						<div class="per_text">
 							<a href=""
@@ -105,7 +105,7 @@
 									</dt>
 									<dd>
 										<div class="star_pl">
-											<span class="star_pl_sp" style="width: 60%;"></span>
+											<span class="star_pl_sp" th:style="'width:'+${temp.creditScore}+'%'"></span>
 										</div>
 									</dd>
 								</dl>

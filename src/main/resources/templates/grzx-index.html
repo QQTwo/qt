@@ -96,7 +96,8 @@
 							<li><span class="prus psi1">积分</span>[[${user.userintegral}]]</li>
 							<li><span class="prus psi2">金币</span>[[${user.usermoney}]]</li>
 						</ul>
-						<a href="javascript:void(0);" class="qdao" onclick="sign()"><span class="qm_i"></span>签到送积分</a>
+						<a href="javascript:void(0);"  class="qdao2" th:style="${user.signType}==1?'':'display:none'" ><span class="qm_i"></span>今日已签到</a>
+						<a href="javascript:void(0);" class="qdao" th:style="${user.signType}==0?'':'display:none'"  onclick="sign()"><span class="qm_i"></span>签到送积分</a>
 					</dd>
 				</dl>
 				<ul class="pre_about_info">
@@ -202,5 +203,5 @@
 <script type="text/javascript" src="/Public/js/grzx-interlinkage.js"></script>
 <script type="text/javascript" src="/Public/js/headLeftNav.js"></script>
 <script type="text/javascript" src="/Public/js/grzx-href.js"></script>
-
+<script type="text/javascript" src="/Public/js/layer/layer.js"></script>
 </html>

@@ -17,6 +17,19 @@ function showtip(msg){
 	//layer.alert(msg, {closeBtn:1});
 }
 
+//删除收藏服务
+function delservers(id){
+	jQuery.getJSON("/c/cn/api/serviceCollection",{"sid":id},function(result){
+		location.reload();
+	});
+}
+//删除收藏店铺
+function delshops(id){
+	jQuery.getJSON("/c/cn/api/postCollection",{"pid":id},function(result){
+		location.reload();
+	});
+}
+
 function showConfirm(_msg, _func){
 
 	layer.confirm(_msg, {
@@ -25,7 +38,7 @@ function showConfirm(_msg, _func){
 
 		closetip();
 		eval(_func);
-	
+	WW
 	}, function(){
 		closetip();
 	});
@@ -272,13 +285,14 @@ $(function(){
  		_id = $(this).attr('rel');
        showConfirm('是否要删除此收藏？', "delservers("+_id+")");		
 	});
-
+	
 	
 	//删除收藏商家 
 	$('.collection_btndel').click(function(){
 		_id = $(this).attr('rel');
 		showConfirm('是否要删除此收藏？', "delshops("+_id+")");        
 	});
+	
 	
 	//删除站内信
 	$('.smsdel').click(function(){
@@ -496,14 +510,26 @@ function toshipsuccess(_lid){
 	})
 }
 
-$(function(){
-	$('.c_pop_close').click(function(){
-		$('.com_pop_box').hide();
-		$('#pop_bg').hide();
+	$(function(){
+		$('.c_pop_close').click(function(){
+			$('.com_pop_box').hide();
+			$('#pop_bg').hide();
+		});
 	});
-});
-
-function changechk(){
-	$('#chkimg').attr('src','/index.php?m=Home&c=Index&a=verify&t='+(new Date().getTime()));
-}
-
+	
+	function changechk(){
+		$('#chkimg').attr('src','/index.php?m=Home&c=Index&a=verify&t='+(new Date().getTime()));
+	}
+	
+	//签到
+	function sign(){
+		$.post("/c/gsq/user/updateUsersign",function(ret){
+			if(ret.code == 200){
+				layer.msg("签到成功！");
+				jQuery(".qdao").hide();
+				jQuery(".qdao2").show();
+			} else if(ret.code == 500){
+				layer.msg("系统正忙，请稍后再试");
+			}
+		}); 
+	}

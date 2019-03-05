@@ -224,4 +224,17 @@ public class UserBiz {
 	public User queryUserById(int userid) {
 		return dao.queryUserById(userid);
 	}
+	/**
+	 * 
+	    * @Title: updateUsersign
+	    * @Description: 用户签到
+	    * @param @param userid
+	    * @param @return    参数
+	    * @return User    返回类型
+	    * @throws
+	 */
+	@Transactional(propagation = Propagation.REQUIRED, isolation = Isolation.READ_COMMITTED, readOnly = false)
+	public int updateUserSign(int userid) {
+		return dao.updateUserSign(userid, 20);
+	}
 }

@@ -247,4 +247,13 @@
 		  `userMoney` = userMoney+#{usermoney}
 		WHERE `userID` = #{userid} ;
 	</update>
+	<!-- 第二开发追加：签到 -->
+	<update id="updateUserSign">
+		UPDATE 
+		  `user` 
+		SET
+		  `userIntegral` = `userIntegral`+#{signNum},
+		  `signType` = 1
+		WHERE `userID` = #{userid} ;
+	</update>
 </mapper>

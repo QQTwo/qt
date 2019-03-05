@@ -9,6 +9,7 @@ import com.accp.pojo.Complainttype;
 import com.accp.pojo.Languagetype;
 import com.accp.pojo.Majortype;
 import com.accp.pojo.Post;
+import com.accp.pojo.Postcollection;
 import com.accp.pojo.Resouroe;
 import com.accp.pojo.Servicecollection;
 import com.accp.pojo.Servicedes;
@@ -139,26 +140,48 @@ public interface IMerchantEnterDao {
 	 */
 	public int submitReserve(@Param("obj")SerReserveVO obj);
 	/**
-	 * 验证用户是否已经收藏过该商品
+	 * 验证用户是否已经收藏过该服务
 	 * @param uid
 	 * @param sid
 	 * @return
 	 */
 	public Servicecollection queryUserSerCollectionCheck(@Param("uid")Integer uid,@Param("sid")Integer sid);
 	/**
-	 * 取消收藏
+	 * 取消收藏服务
 	 * @param uid	用户编号
 	 * @param sid	服务编号
 	 * @return
 	 */
 	public int deleteSerCollection(@Param("uid")Integer uid,@Param("sid")Integer sid);
 	/**
-	 * 添加收藏
+	 * 添加收藏服务
 	 * @param uid	用户编号
 	 * @param sid	服务编号
 	 * @return
 	 */
 	public int saveSerCollection(@Param("uid")Integer uid,@Param("sid")Integer sid);
+	
+	/**
+	 * 验证用户是否已经收藏过该店铺
+	 * @param uid
+	 * @param pid
+	 * @return
+	 */
+	public Postcollection queryUserPostCollectionCheck(@Param("uid")Integer uid,@Param("pid")Integer pid);
+	/**
+	 * 取消收藏店铺
+	 * @param uid	用户编号
+	 * @param pid	服务编号
+	 * @return
+	 */
+	public int deletePostCollection(@Param("uid")Integer uid,@Param("pid")Integer pid);
+	/**
+	 * 添加收藏店铺
+	 * @param uid	用户编号
+	 * @param pid	服务编号
+	 * @return
+	 */
+	public int savePostCollection(@Param("uid")Integer uid,@Param("pid")Integer pid);
 	/**
 	 * 首页社区服务广告位查询
 	 * @param flag

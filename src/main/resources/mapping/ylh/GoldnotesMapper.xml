@@ -116,7 +116,9 @@ SELECT * FROM `goldnoTes` WHERE recordId=#{recordId};
 WHERE u.userid=#{userId}
 </select>
 <select id="getServicesByUserId" resultType="services">
-    SELECT * FROM `services` WHERE serviceId IN
+    SELECT s.*,u.`creditScore` FROM `services` AS s 
+  	LEFT JOIN `user` AS u ON s.`userID` = u.`userID`
+    WHERE s.serviceId IN
     (SELECT serviceId FROM  ServiceCollection WHERE userId=#{userId})
 </select>
 <resultMap id="billMap" type="com.accp.vo.ylh.userVo">
