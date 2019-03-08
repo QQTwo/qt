@@ -226,11 +226,36 @@
 		`news`(`addRessee`,`content`,`sendingTime`,`readState`,`newsType`)
 		VALUES(#{userid},#{content},NOW(),0,1)
 	</insert>
+	<!-- 第二开发追加：用户退出修改 最后登陆时间 -->
 	<update id="updateUserRecentEntry">
 		UPDATE 
 		  `user` 
 		SET
-		  `recentEntry` = 'recentEntry' 
+		  `recentEntry` = NOW()
+		WHERE `userID` = #{userid} ;
+	</update>
+	<!-- 第二开发追加：由于第一次开发调用出错，所以追加 -->
+	<select id="queryUserById" resultType="com.accp.vo.gsq.User">
+		select *
+		from user
+		where
+		userid=#{0}
+	</select>
+	<!-- 第二开发追加：修改用户金币 -->
+	<update id="updateUserMoney">
+		UPDATE 
+		  `user` 
+		SET
+		  `userMoney` = userMoney+#{usermoney}
+		WHERE `userID` = #{userid} ;
+	</update>
+	<!-- 第二开发追加：签到 -->
+	<update id="updateUserSign">
+		UPDATE 
+		  `user` 
+		SET
+		  `userIntegral` = `userIntegral`+#{signNum},
+		  `signType` = 1
 		WHERE `userID` = #{userid} ;
 	</update>
 </mapper>

@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
 
+import com.accp.pojo.User;
 import com.accp.vo.gsq.Orders;
 
 public interface OrderDao {
@@ -15,7 +16,14 @@ public interface OrderDao {
 	 * @return
 	 */
 	List<Orders> queryOrderList(@Param("order") Orders order);
-
+	/**
+	 * 根据编号获取用户
+	 * 
+	 * @param userid
+	 *            编号
+	 * @return
+	 */
+	User queryUserById(int userid);
 	/**
 	 * 根据编号查询订单
 	 * 

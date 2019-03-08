@@ -26,7 +26,7 @@
 				<div class="top_nav">
 					<a href="/index.php?m=&">首页</a><span class="ht_line"></span><a
 						href="">商家入驻</a><span
-						class="ht_line"></span><a href="">帮助中心</a><span
+						class="ht_line"></span><a href="fw-bzzx.html">帮助中心</a><span
 						class="ht_line"></span><a href="">关于韩汀</a><span
 						class="ht_line"></span><a
 						href="">联系我们</a>
@@ -93,7 +93,7 @@
 					<li class="col_156" th:each="temp,iterState:${PAGE_INFO.list}">
 						<div class="per_pic">
 							<a href="" target="_blank"> <img th:src="${temp.servicecoverimg}"/>
-							</a> <span class="del_collection" rel="156"></span>
+							</a> <span class="del_collection" th:rel="${temp.serviceid}"></span>
 						</div>
 						<div class="per_text">
 							<a href=""
@@ -105,7 +105,7 @@
 									</dt>
 									<dd>
 										<div class="star_pl">
-											<span class="star_pl_sp" style="width: 60%;"></span>
+											<span class="star_pl_sp" th:style="'width:'+${temp.creditScore}+'%'"></span>
 										</div>
 									</dd>
 								</dl>
@@ -189,7 +189,7 @@
 			<dd>
 				<p class="flink">
 					<a href="">商家入驻</a>|<a
-						href="">帮助中心</a>|<a
+						href="fw-bzzx.html">帮助中心</a>|<a
 						href="">人才招聘</a>|<a
 						href="">联系我们</a>|<a
 						href="">网站地图</a>|<a

@@ -133,7 +133,18 @@ public class User {
 
 	private String selfintroduction;
 
-	private String reason;
+	private String reason;	
+	
+	private Integer signType;
+	
+
+	public Integer getSignType() {
+		return signType;
+	}
+
+	public void setSignType(Integer signType) {
+		this.signType = signType;
+	}
 
 	public String getSelfintroduction() {
 		return selfintroduction;

@@ -92,9 +92,6 @@
 							<a href="/zhsz-xgmm.html"><span class="msp2 pre_c2"></span>修改密码</a>
 						</li>
 						<li>
-							<a href="javascript:void(0)"><span class="msp2 pre_c4"></span>帐号管理</a>
-						</li>
-						<li>
 							<a href="/c/gsq/user/getdpszInfo"><span class="msp2 pre_c2"></span>店铺信息</a>
 						</li>
 					</ul>
@@ -181,13 +178,14 @@
 		var pwd=$("[name=password]").val();
 		var pwd2=$("[name=pass2]").val();
 		if(pwd==""||pwd2==""){
-			alert("请填写完整密码信息！");
+			layer.msg("请填写完整密码信息！");
+			return false;
 		}else if(pwd!=pwd2){
-			alert("两次输入密码不一致");
+			layer.msg("两次输入密码不一致");
 			$("[name=pass2]").val("");
 			return false;
 		}else if(pwd.length<6){
-			alert("长度不得少于6位！");
+			layer.msg("长度不得少于6位！");
 			$("[name=pass2]").val("");
 			$("[name=password]").val("");
 			return false;

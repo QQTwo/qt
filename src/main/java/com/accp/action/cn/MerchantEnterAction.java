@@ -336,6 +336,29 @@ public class MerchantEnterAction {
 		return message;
 	}
 	/**
+	 * 收藏店铺
+	 * @param session
+	 * @param sid
+	 * @return
+	 */
+	@GetMapping("api/postCollection")
+	@ResponseBody
+	public Map<String,String> postCollection(HttpSession session,Integer pid){
+		Map<String,String> message = new HashMap<String,String>();
+		User loginUser = (User)session.getAttribute("USER");
+		Integer uid = loginUser.getUserid();
+		if(biz.queryUserPostCollectionCheck(uid, pid)==null) {
+			biz.savePostCollection(uid, pid);
+			message.put("code", "200");
+			message.put("msg", "已收藏");
+		}else {
+			biz.deletePostCollection(uid, pid);
+			message.put("code", "200");
+			message.put("msg", "取消收藏");
+		}
+		return message;
+	}
+	/**
 	 * MVC:首页地址
 	 * @param model
 	 * @return

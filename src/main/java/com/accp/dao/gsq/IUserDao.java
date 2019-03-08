@@ -156,4 +156,14 @@ public interface IUserDao {
 	 * @return
 	 */
 	boolean updateUserMoney(@Param("usermoney") Float usermoney, @Param("userid") int userid);
+	/**
+	 * 
+	    * @Title: updateUsersign
+	    * @Description: 用户签到 获取积分
+	    * @param @param userID
+	    * @param @return    参数
+	    * @return int  返回类型
+	    * @throws
+	 */
+	public int updateUserSign(@Param("userid")Integer userID,@Param("signNum")Integer signNum);
 }

@@ -170,7 +170,7 @@
 	</select>
 	<!-- 根据服务列表条件查询服务 -->
 	<select id="queryServices" resultType="com.accp.vo.cn.ServicesVO">
-		SELECT u.`userID`,ser.`serviceID`,ser.`serviceTitle`,ser.`serviceCoverImg`,ser.`servicePrice`,ser.`recommendBool`,u.`shopImg`,u.`shopName`,u.`merchantLevel`
+		SELECT u.`userID`,u.`creditScore`,ser.`serviceID`,ser.`serviceTitle`,ser.`serviceCoverImg`,ser.`servicePrice`,ser.`recommendBool`,u.`shopImg`,u.`shopName`,u.`merchantLevel`
 		FROM `services` AS ser
 		INNER JOIN `user` AS u
 		ON u.`userID` = ser.`userID`
@@ -385,21 +385,37 @@
 		SET `browseNumber` = `browseNumber` + 1
 		WHERE `serviceID` = #{sid}
 	</update>
-	<!-- 验证用户是否已经收藏过该商品 -->
+	<!-- 验证用户是否已经收藏过该服务 -->
 	<select id="queryUserSerCollectionCheck" resultType="Servicecollection">
 		SELECT *
 		FROM `servicecollection`
 		WHERE `serviceID` = #{sid} AND `userID` = #{uid}
 	</select>
-	<!-- 取消收藏 -->
+	<!-- 取消收藏服务 -->
 	<delete id="deleteSerCollection">
 		DELETE FROM `servicecollection` WHERE `serviceID` = #{sid} AND `userID` = #{uid}
 	</delete>
-	<!-- 添加收藏 -->
+	<!-- 添加收藏服务 -->
 	<insert id="saveSerCollection">
 		INSERT INTO`servicecollection`(`serviceID`,`userID`,`collectionTime`)
 		VALUES(#{sid},#{uid},NOW())
 	</insert>
+	<!-- 验证用户是否已经收藏过该商铺 -->
+	<select id="queryUserPostCollectionCheck" resultType="Postcollection">
+		SELECT *
+		FROM `postcollection`
+		WHERE `pcID` = #{pid} AND `userID` = #{uid}
+	</select>
+	<!-- 取消收藏商品 -->
+	<delete id="deletePostCollection">
+		DELETE FROM `postcollection` WHERE `pcID` = #{pid} AND `userID` = #{uid}
+	</delete>
+	<!-- 添加收藏商铺 -->
+	<insert id="savePostCollection">
+		INSERT INTO `postcollection` (`pcID`,`userID`,`collectionTime`)
+		VALUES(#{pid},#{uid},NOW())
+	</insert>
+	
 	<!-- 根据广告版块类别编号查询图片宽高 -->
 	<select id="queryImgWidthAndHeightVO" resultType="com.accp.vo.cn.ImageWidthAndHeightVO">
 		SELECT SUBSTRING_INDEX(`atpx`,'*',1) AS `width`,SUBSTRING_INDEX(`atpx`,'*',-1) AS `height`

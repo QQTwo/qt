@@ -15,6 +15,7 @@ import com.accp.pojo.Complainttype;
 import com.accp.pojo.Languagetype;
 import com.accp.pojo.Majortype;
 import com.accp.pojo.Post;
+import com.accp.pojo.Postcollection;
 import com.accp.pojo.Resouroe;
 import com.accp.pojo.Servicecollection;
 import com.accp.pojo.Servicedes;
@@ -187,7 +188,7 @@ public class MerchantEnterBiz {
 		return dao.submitReserve(obj);
 	}
 	/**
-	 * 验证用户是否已经收藏过该商品
+	 * 验证用户是否已经收藏过该服务
 	 * @param uid
 	 * @param sid
 	 * @return
@@ -196,7 +197,7 @@ public class MerchantEnterBiz {
 		return dao.queryUserSerCollectionCheck(uid, sid);
 	}
 	/**
-	 * 取消收藏
+	 * 取消收藏服务
 	 * @param uid	用户编号
 	 * @param sid	服务编号
 	 * @return
@@ -205,13 +206,40 @@ public class MerchantEnterBiz {
 		return dao.deleteSerCollection(uid, sid);
 	}
 	/**
-	 * 添加收藏
+	 * 添加收藏服务
 	 * @param uid	用户编号
 	 * @param sid	服务编号
 	 * @return
 	 */
 	public int saveSerCollection(Integer uid,Integer sid) {
 		return dao.saveSerCollection(uid, sid);
+	}
+	/**
+	 * 验证用户是否已经收藏过该店铺
+	 * @param uid
+	 * @param pid
+	 * @return
+	 */
+	public Postcollection queryUserPostCollectionCheck(Integer uid,Integer pid) {
+		return dao.queryUserPostCollectionCheck(uid, pid);
+	}
+	/**
+	 * 取消收藏店铺
+	 * @param uid	用户编号
+	 * @param pid	服务编号
+	 * @return
+	 */
+	public int deletePostCollection(Integer uid,Integer pid) {
+		return dao.deletePostCollection(uid, pid);
+	}
+	/**
+	 * 添加收藏店铺
+	 * @param uid	用户编号
+	 * @param pid	服务编号
+	 * @return
+	 */
+	public int savePostCollection(Integer uid,Integer pid) {
+		return dao.savePostCollection(uid, pid);
 	}
 	/**
 	 * 首页社区服务广告位查询

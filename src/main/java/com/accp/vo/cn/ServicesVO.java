@@ -9,6 +9,16 @@ public class ServicesVO {
 	private boolean recommendBool;	//商家推荐
 	private String shopImg;	//店铺图片路径
 	private String shopName;	//店铺名
+	private Integer creditScore; //店铺信誉星级
+    
+    
+    public Integer getCreditScore() {
+		return creditScore;
+	}
+
+	public void setCreditScore(Integer creditScore) {
+		this.creditScore = creditScore;
+	}
 	public String getServiceTitle() {
 		return serviceTitle;
 	}

@@ -44,6 +44,7 @@ public class UserAction {
 	private UserBiz biz;
 	@Autowired
 	private OrdersBiz orderBiz;
+	
 	/**
 	 * 验证账号
 	 * @param email
@@ -51,7 +52,7 @@ public class UserAction {
 	 */
 	@RequestMapping(value="/user/yzEmail",method=RequestMethod.GET)
 	@ResponseBody
-	public Map<String,String> queryEmail(String email){
+	public  Map<String,String> queryEmail(String email){
 		Map<String,String> map=new HashMap<>();
 		System.out.println("执行邮箱验证");
 		try {
@@ -276,7 +277,7 @@ public class UserAction {
 		if (!file.isEmpty()) {
 			try {
 				Integer userID=((User)session.getAttribute("USER")).getUserid();
-				String url = Upload.uploadFile(file);
+				String url = Upload.uploadFile(file,((User)session.getAttribute("USER")).getUserimgpath());
 				biz.updateUserImg(url, userID);
 				session.setAttribute("USER", biz.queryUser(userID));
 			} catch (IllegalStateException | IOException e) {
@@ -336,16 +337,16 @@ public class UserAction {
 	public String updateUserDpxx(HttpSession session,User u,@RequestParam("thumb") MultipartFile file1,@RequestParam("idcardpic1") MultipartFile file2,@RequestParam("idcardpic2") MultipartFile file3,@RequestParam("vippic") MultipartFile file4) throws IllegalStateException, IOException {
 		System.out.println("1");
 		if(file1.getSize()!= 0) {
-			u.setShopimg(Upload.uploadFile(file1));
+			u.setShopimg(Upload.uploadFile(file1,((User)session.getAttribute("USER")).getUserimgpath()));
 		}
 		if(file2.getSize()!= 0) {
-			u.setIdentitypositiveimg(Upload.uploadFile(file2));
+			u.setIdentitypositiveimg(Upload.uploadFile(file2,((User)session.getAttribute("USER")).getUserimgpath()));
 		}
 		if(file3.getSize()!= 0) {
-			u.setIdentitynegativeimg(Upload.uploadFile(file3));
+			u.setIdentitynegativeimg(Upload.uploadFile(file3,((User)session.getAttribute("USER")).getUserimgpath()));
 		}
 		if(file4.getSize()!= 0) {
-			u.setIdentityhandimg(Upload.uploadFile(file4));
+			u.setIdentityhandimg(Upload.uploadFile(file4,((User)session.getAttribute("USER")).getUserimgpath()));
 		}
 		Integer userID=((User)session.getAttribute("USER")).getUserid();
 		u.setUserid(userID);
@@ -550,4 +551,30 @@ public class UserAction {
 		model.addAttribute("user", this.queryAUser(session));
 		return "/sjzx-index.html";
 	}
+	/**
+	 * 
+	    * @Title: updateUsersign
+	    * @Description: 用户签到
+	    * @param @return    参数
+	    * @return String    返回类型
+	    * @throws
+	 */
+	@RequestMapping(value="/user/updateUsersign",method=RequestMethod.POST)
+	@ResponseBody
+	public Map<String,String> updateUsersign(HttpSession session) {
+		System.out.println("奇怪");
+		Map<String,String> map=new HashMap<>();
+		Integer userID=((User)session.getAttribute("USER")).getUserid();
+		try {
+			if(biz.updateUserSign(userID)>0) {
+				map.put("code", "200");
+			}else {
+				map.put("code", "500");
+			}
+		} catch (Exception e) {
+			map.put("msg", e.getMessage());
+		}
+		return map;
+	}
+	
 }
