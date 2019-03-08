@@ -23,7 +23,7 @@
 <link href="/Public/css/owl.carousel.css" rel="stylesheet" />
 <link href="/Public/css/common.css" rel="stylesheet" />
 <script src="/Public/js/jquery-1.8.3.min.js"></script>
-<script src="/Public/js/common.js"></script>
+<script src="/Public/js/common.js" th:inline="javascript"></script>
 <script src="/Public/js/layer/layer.js"></script>
 <script type="text/javascript" src="/Public/js/jcarousellite.min.js"></script>
 
@@ -118,13 +118,13 @@ function orderShou(_oid){
             	<li ><a href="/index.php/Home/Seller/order.html"><span class="msp2 pre_c1"></span>我收到的预定</a></li>
             	<li ><a href="/index.php/Home/Seller/services.html"><span class="msp2 pre_c2"></span>我发布的服务</a></li>
                 <li ><a href="/index.php/Home/Seller/auth.html"><span class="msp2 pre_c3"></span>我提交的鉴定</a></li>
-                <li class="cur"><a href="/index.php/Home/Seller/comment.html"><span class="msp2 pre_c4"></span>我收到的评价</a></li>
+                <li class="cur"><a href=""><span class="msp2 pre_c4"></span>我收到的评价</a></li>
                 <li ><a href="/index.php/Home/Seller/logistics.html"><span class="msp2 pre_c5"></span>我发出的物流</a></li>
                 <li ><a href="/index.php/Home/Seller/refund.html"><span class="msp2 pre_c6"></span>我收到的退款<span class="sp_acon_1"></span></a></li>
                 <li ><a href="/index.php/Home/Seller/servicecats.html"><span class="msp2 pre_c3"></span>我的服务类别</a></li>
                 <li ><a href="/index.php/Home/Seller/trustservice.html"><span class="msp2 pre_c3"></span>我提交的托管</a></li>
             </ul>
-			<div class="ad_left_1"><a href="http://yphting.zglxkj.com/index.php/Home/About/index/key/40.html"><img src="/Uploads/adv/2018-04/20180430101403-42917.gif" alt="商家图片-0224" /></a></div>        </div>
+		<div class="ad_left_1"><a href="" alt="商家图片-0224" /></a></div>        </div> 
         <!--member left end-->
 		
 <script language="javascript">
@@ -148,9 +148,13 @@ $(function(){
 		
 			<ul class="my_evaluation_list business_comment_list">
                 <li  th:each="temp,iterState:${PAGE_INFO.list}">
-                    <p class="my_evaluation_img"><img th:src="${temp.userimgpath}" th:alt="${temp.username}" /></p>
-					<p class="date_p fr"><a href="javascript:void(0);" class="btna_s2 btna_hy_a f14">回应评价</a></p>
-					                    <div class="my_evaluation_text">
+                <input type="hidden"  th:value="${temp.serviceAppraiseID}">
+               
+                    <p class="my_evaluation_img"><img th:src="${temp.userimgpath}" th:alt="${temp.username}" /></p><br/>
+					<p class="date_p fr" >
+					<a href="javascript:void(0);"  class="btna_s2 btna_hy_a f14" th:attr="pid=${temp.evaluation.serviceappraisepid==null?'-1':'temp.evaluation.serviceappraisepid'}">回应评价</a>
+					</p>
+					 <div class="my_evaluation_text">
                         <h3 class="bbs_text_title c_4"><a href="#" class="name_a_2">[[${temp.username}]]</a>评论了<a href="#">[[${temp.servicetitle}]]</a></h3>
                        <div th:switch="${temp.serviceappraiselevel}">
 						<div th:case="1" > <div class="star_pl"><span class="star_pl_sp" style="width:20%;"></span></div></div>
@@ -160,16 +164,27 @@ $(function(){
 						<div th:case="5" > <div class="star_pl"><span class="star_pl_sp" style="width:100%;"></span></div></div>
 					</div>
                         <p class="pt_text2" th:text="${temp.serviceappraisecontent}"></p>
-						<p class="c_4 f12" th:text="${temp.serviceappraisedate}"></p>
+					 	<p class="c_4 f12" th:text="${#dates.format(temp.serviceappraisedate,'yyyy-MM-dd HH:mm:ss')}"></p>  
 				 </div>
+				 
+			
 					<!--回应-->
 					<div class="my_hy_box">						
-						<textarea placeholder="您的回应" id="replymsg" rel="307" class="input_c my_hy_area"></textarea>
+						<textarea placeholder="您的回应" id="replymsg" rel="307"   class="input_c my_hy_area replymsg"></textarea>
 						<div class="my_hy_btn">
-							<a href="javascript:void(0);" class="btn_jy_a btn_jy_a3 btn_reply">发布</a>
+							<a href="javascript:void(0);" class="btn_jy_a btn_jy_a3 btn_reply" >发布</a>
 							<a href="javascript:void(0);" class="btn_jy_a btn_jy_a4">取消</a>
 						</div>
-					</div>					<!--回应 end-->
+					</div>	
+					<!--回应 end-->
+					
+					
+						 <!-- 商家信息 --> 
+				 	<p  class="sj"  th:style="'display:' + @{(${temp.evaluation.serviceappraisecontent} ? 'block' : 'none')} + ''">
+				 	 <label>店家回复：</label> 
+				 		<span th:text="${temp.evaluation.serviceappraisecontent}"></span>
+				 	</p>
+				 
                 </li>
         			
                 </ul>
@@ -285,7 +300,7 @@ function chktop(){
 		</div>
 		<div class="pcontact_right">
 			<h2 class="contact_us_title">和我们联系吧</h2>
-			<form method="post" id="formtopcontact" action="/index.php/Home/About/contact.html" target="topost" onsubmit="return chktop()">
+			<form method="post" id="formtopcontact" action="" target="topost" onsubmit="return chktop()">
 			<ul class="pcontact_ul3">
 				<li><span class="pcspr pcspr1"></span><input id="name" name="name" class="pop_cus_input validate[required]" placeholder="姓名" type="text"></li>
 				<li><span class="pcspr pcspr2"></span><input name="tel" id="tel" class="pop_cus_input validate[required,custom[phone]]" placeholder="电话" type="text"></li>
@@ -331,7 +346,7 @@ function chktop(){
 <!--联系我们的浮层 end-->
 
 <script src="/Public/js/jquery.scrollto.js"></script>
-
+<script type="text/javascript" src="/Public/js/sjzx-href.js"></script>
 
 
 </body>

@@ -1,6 +1,6 @@
 var sjzxHref="/c/gsq/user/getUserBySjzx";
-var grzxHref="/c/lhy/center/home";
-var zhszHref="/c/szy/user/queryGrzxInfo";
+var grzxHref="/c/gsq/center/home";
+var zhszHref="/c/gsq/user/queryGrzxInfo";
 var xxHref="/xx-xtxx.html";
 $.getJSON("/c/gsq/user/queryAUser",function(data){
 	$("#li1 a").attr("href",sjzxHref);

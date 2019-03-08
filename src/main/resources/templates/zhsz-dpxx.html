@@ -86,7 +86,7 @@
 					<h1 class="member_left_title">账户设置</h1>
 					<ul class="member_system_ul account_ul_a">
 						<li>
-							<a href="/c/szy/user/queryGrzxInfo"><span class="msp2 pre_c1"></span>个人资料</a>
+							<a href="/c/gsq/user/queryGrzxInfo"><span class="msp2 pre_c1"></span>个人资料</a>
 						</li>
 						<li>
 							<a href="/zhsz-xgmm.html"><span class="msp2 pre_c2"></span>修改密码</a>
@@ -95,13 +95,13 @@
 							<a href="javascript:void(0)"><span class="msp2 pre_c4"></span>帐号管理</a>
 						</li>
 						<li class="cur">
-							<a href="/c/szy/user/getdpszInfo"><span class="msp2 pre_c2"></span>店铺信息</a>
+							<a href="/c/gsq/user/getdpszInfo"><span class="msp2 pre_c2"></span>店铺信息</a>
 						</li>
 					</ul>
 				</div>
 				<!--member left end-->
 				<!--member right-->
-				<form action="/c/szy/user/updateUserDpxx" method="post" id="formcfg"  enctype="multipart/form-data" onsubmit="return submit1();">
+				<form action="/c/gsq/user/updateUserDpxx" method="post" id="formcfg"  enctype="multipart/form-data" onsubmit="return submit1();">
 					<div class="member_right sj_right_box">
 						<div class="member_system_r_top pl15 mt20">
 							店铺信息
@@ -427,7 +427,7 @@ var provincialID="[[${User.provincialid}]]";
 var cityID="[[${User.cityid}]]";
 //国地址
 function guo(){
-	$.getJSON("/c/szy/user/querySharea",function(data){
+	$.getJSON("/c/gsq/user/querySharea",function(data){
 		$.each(data,function(i,obj){
 			if(obj.pid==0){
 				var option=$("<option value='"+obj.areaid+"'>"+obj.name+"</option>");
@@ -439,7 +439,7 @@ function guo(){
 }
 //省
 function sheng(){
-	$.getJSON("/c/szy/user/querySharea",function(data){
+	$.getJSON("/c/gsq/user/querySharea",function(data){
 		if(provincialID!=null){
 			$.each(data,function(i,obj){
 				if(obj.pid==provincialID){
@@ -453,7 +453,7 @@ function sheng(){
 }
 //市
 function shi(){
-	$.getJSON("/c/szy/user/querySharea",function(data){
+	$.getJSON("/c/gsq/user/querySharea",function(data){
 		if(cityID!=null){
 			$.each(data,function(i,obj){
 				if(obj.pid==cityID){
@@ -496,7 +496,7 @@ $.each($("[name=majornametext1]"),function(i,obj){
 	}
 })
 
-$.getJSON("/c/szy/user/querySharea",function(data){
+$.getJSON("/c/gsq/user/querySharea",function(data){
 		$.each(data,function(i,obj){
 			if(obj.pid==2){
 				var option=$("<option value='"+obj.areaid+"'>"+obj.name+"</option>");
@@ -508,11 +508,11 @@ $.getJSON("/c/szy/user/querySharea",function(data){
 $("[name=constellation").val("[[${User.constellation}]]");
 var text="";
 var id1="[[${User.firstserviceid}]]";
-$.getJSON("/c/szy/user/getSerType",{"id":id1},function(data){
+$.getJSON("/c/gsq/user/getSerType",{"id":id1},function(data){
 	text=text+" "+data;
 })
 var id2="[[${User.secondserviceid}]]";
-$.getJSON("/c/szy/user/getSerType",{"id":id2},function(data){
+$.getJSON("/c/gsq/user/getSerType",{"id":id2},function(data){
 	text=text+" "+data;
 	$("[name=type]").html(text);
 })

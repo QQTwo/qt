@@ -27,6 +27,7 @@ public class OrdersBiz {
 	 */
 	public  PageInfo<OrderInfoVo>  queryUserOrder(Integer userID,Integer orderStatus,Integer refundstatus,String orderID,Integer pageNum,Integer pageSize){
 		PageHelper.startPage(pageNum, pageSize);
+		System.out.println("订单状态："+orderStatus);
 		return new PageInfo<>(dao.queryUserOrder(userID, orderStatus, refundstatus,orderID));
 	}
 	/**

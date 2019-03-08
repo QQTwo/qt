@@ -58,7 +58,7 @@
 		<div class="h_top">
 			<div class="b_box">
 				<div class="top_nav">
-					<a th:href="@{/c/lsm/homeUrl}">首页</a><span class="ht_line"></span>
+					<a th:href="@{/c/cn/homeUrl}">首页</a><span class="ht_line"></span>
 					<a href="javascript:;">商家入驻</a><span class="ht_line"></span> <a
 						href="/fw-bzzx.html">帮助中心</a><span class="ht_line"></span> <a
 						href="/fw-gyht.html">关于韩汀</a><span class="ht_line"></span> <a
@@ -77,20 +77,20 @@
 		<div class="b_box nav_header community_header">
 			<a href="javascript:void(0);" class="logo logo_community">御品韩汀.社区</a>
 			<ul class="nav_ul">
-				<li><a th:href="@{/c/lsm/serviceUrl?htmlUrl=fw-zjyTAB&stid=1}"><span
+				<li><a th:href="@{/c/cn/serviceUrl?htmlUrl=fw-zjyTAB&stid=1}"><span
 						class="community_sp csp1"></span><br>自驾游</a></li>
-				<li><a th:href="@{/c/lsm/serviceUrl?htmlUrl=fw-wzxTAB&stid=2}"><span
+				<li><a th:href="@{/c/cn/serviceUrl?htmlUrl=fw-wzxTAB&stid=2}"><span
 						class="community_sp csp2"></span><br>微整形</a></li>
-				<li><a th:href="@{/c/lsm/serviceUrl?htmlUrl=fw-lxzjTAB&stid=3}"><span
+				<li><a th:href="@{/c/cn/serviceUrl?htmlUrl=fw-lxzjTAB&stid=3}"><span
 						class="community_sp csp3"></span><br>留学中介</a></li>
-				<li><a th:href="@{/c/lsm/serviceUrl?htmlUrl=fw-hyfyTAB&stid=4}"><span
+				<li><a th:href="@{/c/cn/serviceUrl?htmlUrl=fw-hyfyTAB&stid=4}"><span
 						class="community_sp csp4"></span><br>韩语翻译</a></li>
-				<li><a th:href="@{/c/lsm/serviceUrl?htmlUrl=fw-xxzyTAB&stid=5}"><span
+				<li><a th:href="@{/c/cn/serviceUrl?htmlUrl=fw-xxzyTAB&stid=5}"><span
 						class="community_sp csp5"></span><br>学习资源</a></li>
 				<li><a href="javascript:void(0);"><span
 						class="community_sp csp6"></span><br>韩汀物流</a></li>
 				<li class="cur"><a
-					th:href="@{/c/sxy/column?pid=1&page=1&orderId=1&essence=0}"><span
+					th:href="@{/c/tty/column?pid=1&page=1&orderId=1&essence=0}"><span
 						class="community_sp csp7"></span><br>韩汀·论坛</a></li>
 			</ul>
 		</div>
@@ -111,7 +111,7 @@
 						<!--<img src="/Public/images/bbs_user_i.png" alt=""
 							class="bdu_img_hgi2">-->
 						<a
-							th:href="@{/c/sxy/toCenter(userId=${POSTVO.user.userid},type=1,page=1)}">
+							th:href="@{/c/tty/toCenter(userId=${POSTVO.user.userid},type=1,page=1)}">
 							<img th:src="${POSTVO.user.userimgpath}"
 							th:alt="${POSTVO.user.username}">
 						</a>
@@ -126,7 +126,7 @@
 							<span th:text="${POSTVO.title}">延世大学排名及专业介绍</span>
 							<div th:if="${user.userid==POSTVO.user.userid}"
 								class="tz_title_right">
-								<a th:href="@{/c/sxy/toUpdatePost(postId=${param.postId})}"
+								<a th:href="@{/c/tty/toUpdatePost(postId=${param.postId})}"
 									class="ria3">编辑</a>
 							</div>
 						</h1>
@@ -134,7 +134,7 @@
 							<span
 								th:text="${#dates.format(POSTVO.releasetime, 'yyyy-MM-dd HH:mm')}">2017/03/19</span><span
 								class="dot_i3">•</span><a
-								th:href="@{/c/sxy/toCenter(userId=${POSTVO.user.userid},type=1,page=1)}"><span
+								th:href="@{/c/tty/toCenter(userId=${POSTVO.user.userid},type=1,page=1)}"><span
 								th:text="${POSTVO.user.username}">坏坏带点乖</span>.</a><span
 								class="dot_i3">•</span><a><span
 								th:text="${POSTVO.browsenumber}">381</span>人浏览</a><span
@@ -206,14 +206,14 @@
 						<div class="my_evaluation_text">
 							<h3 class="bbs_text_title">
 								<a
-									th:href="@{/c/sxy/toCenter(userId=${temp.user.userid},type=1,page=1)}"
+									th:href="@{/c/tty/toCenter(userId=${temp.user.userid},type=1,page=1)}"
 									class="name_a_2" th:text="${temp.user.username}">许超雄</a>
 							</h3>
 
 							<!--  回复 -->
 							<div th:if="${temp.pc!=null}" class="hf_show">
 								<span th:text="${temp.pc.content}">墨墨</span> <a
-									th:href="@{/c/sxy/toCenter(userId=${temp.pc.user.userid},type=1,page=1)}"
+									th:href="@{/c/tty/toCenter(userId=${temp.pc.user.userid},type=1,page=1)}"
 									class="btna_s2" th:text="${temp.pc.user.username}">倾心</a>
 							</div>
 
@@ -238,15 +238,15 @@
 						<div class="nav">
 							<a th:if="${PAGE_INFO.isHasPreviousPage()}"
 								class="page_prev prevdisabled"
-								th:href="@{/c/sxy/postDetail(page=${PAGE_INFO.prePage},postId=${param.postId},fmid=${param.fmid},pfmid=${param.pfmid},fmname=${param.fmname})}">上一页</a>
+								th:href="@{/c/tty/postDetail(page=${PAGE_INFO.prePage},postId=${param.postId},fmid=${param.fmid},pfmid=${param.pfmid},fmname=${param.fmname})}">上一页</a>
 							<a
-								th:href="@{/c/sxy/postDetail(page=${item.count},postId=${param.postId},fmid=${param.fmid},pfmid=${param.pfmid},fmname=${param.fmname})}"
+								th:href="@{/c/tty/postDetail(page=${item.count},postId=${param.postId},fmid=${param.fmid},pfmid=${param.pfmid},fmname=${param.fmname})}"
 								th:data-page="${item.count}"
 								th:each="temp,item : ${PAGE_INFO.navigatepageNums}"
 								th:text="${item.count}">1</a> <a
 								th:if="${PAGE_INFO.isHasNextPage()}"
 								class="page_next nextdisabled"
-								th:href="@{/c/sxy/postDetail(page=${PAGE_INFO.nextPage},postId=${param.postId},fmid=${param.fmid},pfmid=${param.pfmid},fmname=${param.fmname})}">下一页</a>
+								th:href="@{/c/tty/postDetail(page=${PAGE_INFO.nextPage},postId=${param.postId},fmid=${param.fmid},pfmid=${param.pfmid},fmname=${param.fmname})}">下一页</a>
 						</div>
 					</div>
 				</div>
@@ -260,9 +260,9 @@
 				<div class="br_part">
 					<h2 class="bbs_r_say_title">
 						韩汀•论坛 - <a
-							th:href="@{/c/sxy/column(pid=${param.pfmid},page=1,orderId=0,essence=0)}"
+							th:href="@{/c/tty/column(pid=${param.pfmid},page=1,orderId=0,essence=0)}"
 							th:text="${FORUM.fmname}">留学简介</a> - <a
-							th:href="@{/c/sxy/column(pid=${param.pfmid},page=1,forumId=${param.fmid},orderId=0,essence=0)}"
+							th:href="@{/c/tty/column(pid=${param.pfmid},page=1,forumId=${param.fmid},orderId=0,essence=0)}"
 							th:text="${FMNAME}">韩国大学简介</a>
 					</h2>
 					<!-- 版主 
@@ -278,13 +278,13 @@
 					<ul class="news_talk_ul_list">
 						<!-- 详情右侧根据版块对应栏目的最新话题列表 -->
 						<li th:each="temp,item : ${NEWLIST}"><a
-							th:href="@{/c/sxy/postDetail(postId=${temp.postid},fmid=${temp.forum.fmid},pfmid=${temp.forum.pid},fmname=${temp.forum.fmname})}"
+							th:href="@{/c/tty/postDetail(postId=${temp.postid},fmid=${temp.forum.fmid},pfmid=${temp.forum.pid},fmname=${temp.forum.fmname})}"
 							class="ntul_atext" th:text="${temp.title}">韩语翻译</a>
 							<p class="ntul_infoa">
 								<a
-									th:href="@{/c/sxy/postDetail(postId=${temp.postid},fmid=${temp.forum.fmid},pfmid=${temp.forum.pid},fmname=${temp.forum.fmname})}"></a><span
+									th:href="@{/c/tty/postDetail(postId=${temp.postid},fmid=${temp.forum.fmid},pfmid=${temp.forum.pid},fmname=${temp.forum.fmname})}"></a><span
 									class="dot_i3">•</span><a
-									th:href="@{/c/sxy/postDetail(postId=${temp.postid},fmid=${temp.forum.fmid},pfmid=${temp.forum.pid},fmname=${temp.forum.fmname})}"><span
+									th:href="@{/c/tty/postDetail(postId=${temp.postid},fmid=${temp.forum.fmid},pfmid=${temp.forum.pid},fmname=${temp.forum.fmname})}"><span
 									th:text="${temp.commentnumber}">0</span>&nbsp;回复</a>
 							</p></li>
 					</ul>
@@ -299,13 +299,13 @@
 					<h2 class="news_talk_title">热门话题</h2>
 					<ul class="news_talk_ul_list">
 						<li th:each="temp,item : ${HOT.list}"><a
-							th:href="@{/c/sxy/postDetail(postId=${temp.postid},fmid=${temp.forum.fmid},pfmid=${temp.forum.pid},fmname=${temp.forum.fmname})}"
+							th:href="@{/c/tty/postDetail(postId=${temp.postid},fmid=${temp.forum.fmid},pfmid=${temp.forum.pid},fmname=${temp.forum.fmname})}"
 							class="ntul_atext" th:text="${temp.title}"> 韩语越说越地道</a>
 							<p class="ntul_infoa">
 								<a
-									th:href="@{/c/sxy/postDetail(postId=${temp.postid},fmid=${temp.forum.fmid},pfmid=${temp.forum.pid},fmname=${temp.forum.fmname})}"></a><span
+									th:href="@{/c/tty/postDetail(postId=${temp.postid},fmid=${temp.forum.fmid},pfmid=${temp.forum.pid},fmname=${temp.forum.fmname})}"></a><span
 									class="dot_i3">•</span><a
-									th:href="@{/c/sxy/postDetail(postId=${temp.postid},fmid=${temp.forum.fmid},pfmid=${temp.forum.pid},fmname=${temp.forum.fmname})}"><span
+									th:href="@{/c/tty/postDetail(postId=${temp.postid},fmid=${temp.forum.fmid},pfmid=${temp.forum.pid},fmname=${temp.forum.fmname})}"><span
 									th:text="${temp.commentnumber}">4</span>&nbsp;回复</a>
 							</p></li>
 					</ul>
@@ -517,7 +517,7 @@
 		var second = new Date().getSeconds();year+"-"+month+"-"+day+" "+hour+":"+minute+":"+second;*/
 		obj["collectiontime"] = new Date();
 		$.ajax({
-			url : "/c/sxy/saveCollection",
+			url : "/c/tty/saveCollection",
 			data : JSON.stringify(obj),
 			type : "post",
 			dataType : "json",
@@ -525,7 +525,7 @@
 			success : function(data) {
 				if (data.code == "100") {
 					alert("请先登录！");
-					location.href = "/szy-login.html";
+					location.href = "/gsq-login.html";
 				} else if (data.code == "300") {
 					alert("请不要重复收藏！");
 				} else if (data.code == "400") {
@@ -550,7 +550,7 @@
 		var second = new Date().getSeconds();year+"-"+month+"-"+day+" "+hour+":"+minute+":"+second;*/
 		obj["fabuloustime"] = new Date();
 		$.ajax({
-			url : "/c/sxy/saveFabulous",
+			url : "/c/tty/saveFabulous",
 			data : JSON.stringify(obj),
 			type : "post",
 			dataType : "json",
@@ -558,7 +558,7 @@
 			success : function(data) {
 				if (data.code == "100") {
 					alert("请先登录！");
-					location.href = "/szy-login.html";
+					location.href = "/gsq-login.html";
 				} else if (data.code == "300") {
 					alert("对不起，每条帖子一天只能点赞一次。");
 				} else if (data.code == "400") {
@@ -596,7 +596,7 @@
 	//查询用户最新评论时间
 	function queryLastcomment(obj) {
 		$.ajax({
-			url : "/c/sxy/queryLastcomment",
+			url : "/c/tty/queryLastcomment",
 			data : {
 				"userId" : obj.commentator,
 				"postId" : obj.postid
@@ -623,7 +623,7 @@
 	//新增评论
 	function savecomment(obj) {
 		$.ajax({
-			url : "/c/sxy/saveComment",
+			url : "/c/tty/saveComment",
 			type : "post",
 			data : JSON.stringify(obj),
 			dataType : "json",
@@ -648,7 +648,7 @@
 		var pcid = $(this).next().attr("data-pcid");
 		if (confirm("确定删除该条评论吗？")) {
 			$.ajax({
-				url : "/c/sxy/removeComment",
+				url : "/c/tty/removeComment",
 				type : "post",
 				data : {
 					"pcid" : pcid

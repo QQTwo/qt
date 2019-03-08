@@ -133,6 +133,7 @@
 		<!--right nav end-->
 	</body>
 	
+	<script type="text/javascript" src="/Public/js/layer/layer.js"></script>
 	<script type="text/javascript" src="/Public/js/headLeftNav.js"></script>
 <script>
 	create_code();
@@ -162,15 +163,16 @@
 			var codeText=$("[name=code]").val();
 			var code=$(".yzmCode").html();
 			if(codeText.toLowerCase()==code.toLowerCase()){
+				layer.load(2);
 				return true;
 			}else{
 				$("[name=code]").val("");
 				create_code();
-				alert("验证码错误");
+				layer.msg("验证码错误");
 				return false;
 			}
 		}else{
-			alert("请填写正确邮箱");
+			layer.msg("请填写正确邮箱");
 			return false;
 		}
 	}

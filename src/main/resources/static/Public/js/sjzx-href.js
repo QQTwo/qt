@@ -1,9 +1,9 @@
  yyHref="/c/cn/order/queryAllOrder?orderStatus=0&refundstatus=-1&pageNum=1&pageSize=5&orderID=";
- fbHref="/zg/c/getServices?pageNum=1&pageSize=5";
- jdHref="/zg/c/queryAppraisalapply";
- pjHref="";
- wlHref="";
- tkHref="/c/lhy/refund/list";
+ fbHref="/cn/c/getServices?pageNum=1&pageSize=5";
+ jdHref="/cn/c/queryAppraisalapply";
+ pjHref="/cn/c/queryEvaluation?pageNum=1&pageSize=2";
+ wlHref="/grzx-logistics.html";
+ tkHref="/c/gsq/refund/list";
  lbHref="";
  tgHref="";
  $(".member_system_ul li:eq(0) a").attr("href",yyHref);

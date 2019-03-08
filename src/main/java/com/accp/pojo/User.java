@@ -4,7 +4,7 @@ import java.util.Date;
 
 public class User {
 	private Integer userid;
-
+	
 	private String userimgpath;
 
 	private String username;
@@ -662,4 +662,95 @@ public class User {
 	public void setRecententry(Date recententry) {
 		this.recententry = recententry;
 	}
+	
+	
+	public User() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public User(Integer userid, String userimgpath, String username, String userrealname, Integer usersex,
+			String userphone, String contactmailbox, Float usermoney, Integer userintegral, Integer country,
+			Integer provincialid, Integer cityid, Integer countyid, String addetail, Integer merchanttype,
+			Date merchantregistrationtime, Integer firstserviceid, Integer secondserviceid, Float firstservicemoney,
+			Float secondservicemoney, String hospitalname, String shopname, String signature, Integer guaranteemoney,
+			String shopimg, Integer identitytype, String identitynumder, String identityrealname,
+			String identitypositiveimg, String identitynegativeimg, String identityhandimg, String languagenametext,
+			String majornametext, Integer livecityid, String merchantemail, String merchantphone, Float merchantlevel,
+			Integer merchantexp, String qq, String wechat, String profession, Float height, String constellation,
+			Integer age, Integer collectcount, Integer ordercount, Integer browsenumber, Boolean trusteeship,
+			Date trusteeshipstarttime, Integer trusteeshipmonth, Integer businessstate, Integer experience,
+			Boolean experiencestatus, Integer auditstatus, Date audittime, Boolean authentication,
+			Boolean authenticationer, Integer creditscore, Boolean stateboolean, Boolean mailboxverification,
+			String registerip, String lastentry, Date userregistrationtime, Date recententry, String selfintroduction,
+			String reason) {
+		super();
+		this.userid = userid;
+		this.userimgpath = userimgpath;
+		this.username = username;
+		this.userrealname = userrealname;
+		this.usersex = usersex;
+		this.userphone = userphone;
+		this.contactmailbox = contactmailbox;
+		this.usermoney = usermoney;
+		this.userintegral = userintegral;
+		this.country = country;
+		this.provincialid = provincialid;
+		this.cityid = cityid;
+		this.countyid = countyid;
+		this.addetail = addetail;
+		this.merchanttype = merchanttype;
+		this.merchantregistrationtime = merchantregistrationtime;
+		this.firstserviceid = firstserviceid;
+		this.secondserviceid = secondserviceid;
+		this.firstservicemoney = firstservicemoney;
+		this.secondservicemoney = secondservicemoney;
+		this.hospitalname = hospitalname;
+		this.shopname = shopname;
+		this.signature = signature;
+		this.guaranteemoney = guaranteemoney;
+		this.shopimg = shopimg;
+		this.identitytype = identitytype;
+		this.identitynumder = identitynumder;
+		this.identityrealname = identityrealname;
+		this.identitypositiveimg = identitypositiveimg;
+		this.identitynegativeimg = identitynegativeimg;
+		this.identityhandimg = identityhandimg;
+		this.languagenametext = languagenametext;
+		this.majornametext = majornametext;
+		this.livecityid = livecityid;
+		this.merchantemail = merchantemail;
+		this.merchantphone = merchantphone;
+		this.merchantlevel = merchantlevel;
+		this.merchantexp = merchantexp;
+		this.qq = qq;
+		this.wechat = wechat;
+		this.profession = profession;
+		this.height = height;
+		this.constellation = constellation;
+		this.age = age;
+		this.collectcount = collectcount;
+		this.ordercount = ordercount;
+		this.browsenumber = browsenumber;
+		this.trusteeship = trusteeship;
+		this.trusteeshipstarttime = trusteeshipstarttime;
+		this.trusteeshipmonth = trusteeshipmonth;
+		this.businessstate = businessstate;
+		this.experience = experience;
+		this.experiencestatus = experiencestatus;
+		this.auditstatus = auditstatus;
+		this.audittime = audittime;
+		this.authentication = authentication;
+		this.authenticationer = authenticationer;
+		this.creditscore = creditscore;
+		this.stateboolean = stateboolean;
+		this.mailboxverification = mailboxverification;
+		this.registerip = registerip;
+		this.lastentry = lastentry;
+		this.userregistrationtime = userregistrationtime;
+		this.recententry = recententry;
+		this.selfintroduction = selfintroduction;
+		this.reason = reason;
+	}
+	
 }

@@ -76,15 +76,15 @@
 						<p class="big_font" th:if="${order.orderstatus==8}">已退款</p>
 						<p class="f12 c_4" th:if="${order.orderstatus==1}">请尽快付款以便商家安排时间</p>
 						<div class="btn_a_mt">
-							<a th:href="@{/c/lhy/order/pay(orderid=${order.orderid})}" class="btna_s1" th:if="${order.orderstatus==1}">支付金币</a>
+							<a th:href="@{/c/gsq/order/pay(orderid=${order.orderid})}" class="btna_s1" th:if="${order.orderstatus==1}">支付金币</a>
 							<br th:if="${order.orderstatus==1}">
-							<a th:href="@{/c/lhy/order/ok(updateid=${order.orderid})}" class="btna_s1" th:if="${order.orderstatus==4}">确认完成</a>
+							<a th:href="@{/c/gsq/order/ok(updateid=${order.orderid})}" class="btna_s1" th:if="${order.orderstatus==4}">确认完成</a>
 							<br th:if="${order.orderstatus==4}">
 							<a th:href="${order.documentpath}" download="" class="btna_s3 mt5" th:if="${order.orderstatus==5&&order.filesatus==2}">下载</a>
 							<br th:if="${order.orderstatus==5&&order.filesatus==2}"/>
 							<a href="" class="btna_s3" th:if="${order.orderstatus==5&&order.commentstatus==1}">评价</a>
 							<br th:if="${order.orderstatus==5&&order.commentstatus==1}"/>
-							<a th:href="@{/c/lhy/order/cancel(updateid=${order.orderid})}" onclick="" th:if="${order.orderstatus==1}">取消服务</a>
+							<a th:href="@{/c/gsq/order/cancel(updateid=${order.orderid})}" onclick="" th:if="${order.orderstatus==1}">取消服务</a>
 							<a href="" onclick="" th:if="${order.orderstatus==5&&order.refundstatus==0}">申请退款</a>
 						</div>
 						<div class="btn_a_mt" th:if="${order.orderstatus==2||order.orderstatus==3}">-</div>

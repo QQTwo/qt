@@ -23,7 +23,7 @@
 		<div class="h_top">
 			<div class="b_box">
 				<div class="top_nav">
-						<a th:href="@{/c/lsm/homeUrl}">首页</a><span class="ht_line"></span>
+						<a th:href="@{/c/cn/homeUrl}">首页</a><span class="ht_line"></span>
 						<a href="javascript:;">商家入驻</a><span class="ht_line"></span>
 						<a href="/fw-bzzx.html">帮助中心</a><span class="ht_line"></span>
 						<a href="/fw-gyht.html">关于韩汀</a><span class="ht_line"></span>
@@ -40,23 +40,23 @@
 			<a href="javascript:;" class="logo logo_community">御品韩汀.社区</a>
 			<ul class="nav_ul">
 					<li>
-						<a th:href="@{/c/lsm/serviceUrl?htmlUrl=fw-zjyTAB&stid=1}"><span class="community_sp csp1"></span><br>自驾游</a>
+						<a th:href="@{/c/cn/serviceUrl?htmlUrl=fw-zjyTAB&stid=1}"><span class="community_sp csp1"></span><br>自驾游</a>
 					</li>
 					<li>
-						<a th:href="@{/c/lsm/serviceUrl?htmlUrl=fw-wzxTAB&stid=2}"><span class="community_sp csp2"></span><br>微整形</a>
+						<a th:href="@{/c/cn/serviceUrl?htmlUrl=fw-wzxTAB&stid=2}"><span class="community_sp csp2"></span><br>微整形</a>
 					</li>
 					<li>
-						<a th:href="@{/c/lsm/serviceUrl?htmlUrl=fw-lxzjTAB&stid=3}"><span class="community_sp csp3"></span><br>留学中介</a>
+						<a th:href="@{/c/cn/serviceUrl?htmlUrl=fw-lxzjTAB&stid=3}"><span class="community_sp csp3"></span><br>留学中介</a>
 					</li>
 					<li>
-						<a th:href="@{/c/lsm/serviceUrl?htmlUrl=fw-hyfyTAB&stid=4}"><span class="community_sp csp4"></span><br>韩语翻译</a>
+						<a th:href="@{/c/cn/serviceUrl?htmlUrl=fw-hyfyTAB&stid=4}"><span class="community_sp csp4"></span><br>韩语翻译</a>
 					</li>
 					<li>
-						<a th:href="@{/c/lsm/serviceUrl?htmlUrl=fw-xxzyTAB&stid=5}"><span class="community_sp csp5"></span><br>学习资源</a>
+						<a th:href="@{/c/cn/serviceUrl?htmlUrl=fw-xxzyTAB&stid=5}"><span class="community_sp csp5"></span><br>学习资源</a>
 					</li>
 				<li><a href="javscript:;"><span class="community_sp csp6"></span><br>韩汀物流</a>
 				</li>
-				<li class="cur"><a th:href="@{/c/sxy/column?pid=1&page=1&orderId=1&essence=0}"><span
+				<li class="cur"><a th:href="@{/c/tty/column?pid=1&page=1&orderId=1&essence=0}"><span
 						class="community_sp csp7"></span><br>韩汀·论坛</a></li>
 			</ul>
 		</div>
@@ -69,13 +69,13 @@
 			<div class="bbs_left_bar">
 				<h1 class="bbs_left_title">韩汀·论坛</h1>
 				<ul class="bbs_left_list">
-					<li><a th:href="@{/c/sxy/hotPost(page=1)}"><span
+					<li><a th:href="@{/c/tty/hotPost(page=1)}"><span
 							class="line"></span>热门话题</a></li>
-					<li class="cur"><a th:href="@{/c/sxy/myPost(type=1,page=1,title=${param.title})}"><span class="line"></span>我的韩汀论坛</a>
+					<li class="cur"><a th:href="@{/c/tty/myPost(type=1,page=1,title=${param.title})}"><span class="line"></span>我的韩汀论坛</a>
 					</li>
 					<!-- 版块列表 -->
 						<li th:each="temp,item : ${BLIST}">
-							<a th:href="@{/c/sxy/column(pid=${temp.fmid},page=1,orderId=${param.orderId},essence=0)}"><span class="line"></span><span th:text="${temp.fmname}"></span></a>
+							<a th:href="@{/c/tty/column(pid=${temp.fmid},page=1,orderId=${param.orderId},essence=0)}"><span class="line"></span><span th:text="${temp.fmname}"></span></a>
 						</li>
 				</ul>
 			</div>
@@ -93,7 +93,7 @@
 						<span class="bbs_top_title">我的韩汀论坛</span>
 					</dt>
 					<dd>
-						<form method="get" th:action="@{/c/sxy/myPost}" id="formfind">
+						<form method="get" th:action="@{/c/tty/myPost}" id="formfind">
 							<div class="search_sec">
 								<input type="hidden" name="type" th:value="${param.type}" /> 
 								<input type="hidden" name="page" th:value="1" /> 
@@ -104,26 +104,26 @@
 					</dd>
 				</dl>
 				<div class="bbs_tag">
-					<a th:data-type="1" th:href="@{/c/sxy/myPost(type=1,page=1)}">我的发贴</a>
-					<a th:data-type="2" th:href="@{/c/sxy/myPost(type=2,page=1)}">我的收藏</a> 
-					<a th:data-type="3"	th:href="@{/c/sxy/myPost(type=3,page=1)}">我的回复</a>
+					<a th:data-type="1" th:href="@{/c/tty/myPost(type=1,page=1)}">我的发贴</a>
+					<a th:data-type="2" th:href="@{/c/tty/myPost(type=2,page=1)}">我的收藏</a> 
+					<a th:data-type="3"	th:href="@{/c/tty/myPost(type=3,page=1)}">我的回复</a>
 				</div>
 				<ul class="bbs_list_ul">
 					<li th:each="temp,item : ${MYPOST_PAGE.list}">
 						<p class="bbs_user_photo">
 							<a
-								th:href="@{/c/sxy/toCenter(userId=${temp.user.userid},type=1,page=1)}"><img
+								th:href="@{/c/tty/toCenter(userId=${temp.user.userid},type=1,page=1)}"><img
 								th:src="${temp.user.userimgpath}" th:alt="${temp.user.username}"> </a>
 						</p>
 						<div class="bbs_user_text">
 							<h3 class="bbs_text_title">
-								<a th:href="@{/c/sxy/postDetail(postId=${temp.postid},fmid=${temp.forum.fmid},pfmid=${temp.forum.pid},fmname=${temp.forum.fmname})}" th:text="${temp.title}">默默</a>
+								<a th:href="@{/c/tty/postDetail(postId=${temp.postid},fmid=${temp.forum.fmid},pfmid=${temp.forum.pid},fmname=${temp.forum.fmname})}" th:text="${temp.title}">默默</a>
 							</h3>
 							<p class="bbs_user_i">
-								<a th:href="@{/c/sxy/column(pid=${temp.forum.pid},page=1,forumId=${temp.forum.fmid},orderId=0,essence=0)}" th:text="${temp.forum.fmname}">生活情感</a><span
-									class="bbs_dot">·</span><a th:href="@{/c/sxy/toCenter(userId=${temp.user.userid},type=1,page=1)}" th:text="${temp.user.username}">倾心</a></a><span
+								<a th:href="@{/c/tty/column(pid=${temp.forum.pid},page=1,forumId=${temp.forum.fmid},orderId=0,essence=0)}" th:text="${temp.forum.fmname}">生活情感</a><span
+									class="bbs_dot">·</span><a th:href="@{/c/tty/toCenter(userId=${temp.user.userid},type=1,page=1)}" th:text="${temp.user.username}">倾心</a></a><span
 									class="bbs_dot">·</span><a
-									th:href="@{/c/sxy/postDetail(postId=${temp.postid},fmid=${temp.forum.fmid},pfmid=${temp.forum.pid},fmname=${temp.forum.fmname})}"><span th:text="${temp.count}">0</span>条回复</a><span
+									th:href="@{/c/tty/postDetail(postId=${temp.postid},fmid=${temp.forum.fmid},pfmid=${temp.forum.pid},fmname=${temp.forum.fmname})}"><span th:text="${temp.count}">0</span>条回复</a><span
 									class="bbs_dot">·</span>
 									<span th:if="${temp.count!=0}">最后回复									
 									<a href="javascript:;" class="lst_nem" th:text="${temp.lastcomment.user.username}">chaki</a></span>
@@ -134,9 +134,9 @@
 				<div class="page_w">
 					<div class="page">
 						<div class="nav">
-							<a th:if="${MYPOST_PAGE.isHasPreviousPage()}" class="page_prev prevdisabled" th:href="@{/c/sxy/myPost(type=${param.type},page=${MYPOST_PAGE.prePage},title=${param.title})}">上一页</a> 
-							<a th:href="@{/c/sxy/myPost(type=${param.type},page=${item.count},title=${param.title})}" th:data-page="${item.count}" th:each="temp,item : ${MYPOST_PAGE.navigatepageNums}" th:text="${item.count}">1</a> 
-							<a th:if="${MYPOST_PAGE.isHasNextPage()}" th:href="@{/c/sxy/myPost(type=${param.type},page=${MYPOST_PAGE.nextPage},title=${param.title})}">下一页</a>
+							<a th:if="${MYPOST_PAGE.isHasPreviousPage()}" class="page_prev prevdisabled" th:href="@{/c/tty/myPost(type=${param.type},page=${MYPOST_PAGE.prePage},title=${param.title})}">上一页</a> 
+							<a th:href="@{/c/tty/myPost(type=${param.type},page=${item.count},title=${param.title})}" th:data-page="${item.count}" th:each="temp,item : ${MYPOST_PAGE.navigatepageNums}" th:text="${item.count}">1</a> 
+							<a th:if="${MYPOST_PAGE.isHasNextPage()}" th:href="@{/c/tty/myPost(type=${param.type},page=${MYPOST_PAGE.nextPage},title=${param.title})}">下一页</a>
 						</div>
 					</div>
 				</div>

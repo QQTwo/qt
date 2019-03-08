@@ -1,16 +1,20 @@
 package com.accp.action.cn;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.accp.biz.cn.MerchantBiz;
 import com.accp.biz.cn.OrdersBiz;
 import com.accp.biz.gsq.UserBiz;
 import com.accp.pojo.Orders;
@@ -24,6 +28,8 @@ public class OrdersAction {
 	private OrdersBiz biz;
 	@Autowired
 	private UserBiz userBiz;
+	@Autowired
+	private  MerchantBiz  merchantBiz;
 	/**
 	 * 查询当前用户所有订单信息
 	 * @param session
@@ -34,6 +40,7 @@ public class OrdersAction {
 	 */
 	@RequestMapping(value="/order/queryAllOrder",method=RequestMethod.GET)
 	public String queryAllOrdes(HttpSession session,Model model,Integer orderStatus,Integer refundstatus,String orderID,Integer pageNum,Integer pageSize) {
+
 		Integer userID=((User)session.getAttribute("USER")).getUserid();
 		model.addAttribute("pageInfo", biz.queryUserOrder(userID, orderStatus, refundstatus, orderID, pageNum, pageSize));
 		return "/sjzx-order.html";

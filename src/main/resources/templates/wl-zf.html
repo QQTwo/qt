@@ -185,14 +185,14 @@ _weburl = 'http://yphting.zglxkj.com';
         	 var logisticsid=[[${Logistics.logisticsid}]];
         	 var usermoney=[[${USER.usermoney}]];
         	 var userprice=usermoney-price
-        	 $.ajax("/zsp/c/updlogistics?logisticsid="+logisticsid+"&userprice="+userprice,{
+        	 $.ajax("/ylh/c/updlogistics?logisticsid="+logisticsid+"&userprice="+userprice,{
     				type:"get",
     				dataType:"json",
     				timeout:5000,
     				success:function(data){
     					if(data.code==200){
     						alert("支付成功");
-    					   	location.href='/zsp/c/getListLogistics';
+    					   	location.href='/ylh/c/getListLogistics';
     					}else{
     						alert("支付失败");
     						location.reload();

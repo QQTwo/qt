@@ -41,7 +41,7 @@
 			<div class="b_box">
 				<div class="other_mc">
 					<h1 class="login_title reg_title_o">欢迎您注册韩汀社区</h1>
-					<form action="/c/szy//user/saveEmail" method="post" id="formlogin" target="topost" onsubmit="return submit1();">
+					<form action="/c/gsq/user/saveEmail" method="post" id="formlogin" target="topost" onsubmit="return submit1();">
 						<ul class="login_ul">
 							<li>&nbsp;邮箱：<span class="urlspan" id="email">[[${user.email}]]</span>
 								<input type="hidden" name="email" th:value="${user.email}">
@@ -106,17 +106,25 @@
 		<!--right nav end-->
 		
 	</body>
+<script type="text/javascript" src="/Public/js/layer/layer.js"></script>
 	<script type="text/javascript">
 		function submit1(){
 			var password=$("[name=password]").val();
 			var cfpassword=$("[name=cfpassword]").val();
 			if(password==""||cfpassword==""){
-				alert("请填写完整信息");
+				layer.msg("请填写完整信息");
+				return false;
+			}else if(password.length<6 || cfpassword.length<6){
+				layer.msg("密码请输入六位字符以上");
 				return false;
 			}else if(password!=cfpassword){
-				alert("两次密码输入不一致");
+				layer.msg("两次密码输入不一致");
 				return false;
 			}else{
+				layer.load(2);
+				settimeout(function(){
+					location.href="szy-login.html";
+				},3000)
 				return true;
 			}
 		}

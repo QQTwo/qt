@@ -82,7 +82,7 @@
 	            	</tbody>
 	        	</table>
 	        </div>
-	        <form id="formbook" method="post" action="/c/lsm/serReserve" enctype="multipart/form-data">
+	        <form id="formbook" method="post" action="/c/cn/serReserve" enctype="multipart/form-data">
 		        <div class="yd_info">
 					<h3 class="yd_sev_h3" th:if="${srVOobj.serviceTypeID==4}">上传文档信息</h3>
 		            <div class="fa_part" th:if="${srVOobj.serviceTypeID==4}">
@@ -221,7 +221,7 @@
 		);
 		//提交预定
 		function submitCheck(){
-			jQuery.getJSON("/c/szy/user/queryAUser",function(data){
+			jQuery.getJSON("/c/gsq/user/queryAUser",function(data){
 				if(data){	//如果已登录
 					var serUserID = [[${serDetailObj.userID}]];
 					var loginUserID = data.userid;

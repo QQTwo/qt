@@ -1,7 +1,7 @@
 function weiduInfo(){
 	var xtxxNum=0;
 	var znxNum=0;
-	$.getJSON("/c/szy/user/queryAllNews",function(data){
+	$.getJSON("/c/gsq/user/queryAllNews",function(data){
 		$.each(data,function(i,obj){
 			if(obj.readstate==false&&obj.newstype==1){
 				xtxxNum=xtxxNum+1;
