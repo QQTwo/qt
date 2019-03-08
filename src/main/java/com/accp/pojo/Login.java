@@ -60,4 +60,20 @@ public class Login {
     public void setUserpwd(String userpwd) {
         this.userpwd = userpwd == null ? null : userpwd.trim();
     }
+
+	public Login(Integer loginid, Integer userid, String opentid, Integer logintype, String useremail, String userpwd) {
+		super();
+		this.loginid = loginid;
+		this.userid = userid;
+		this.opentid = opentid;
+		this.logintype = logintype;
+		this.useremail = useremail;
+		this.userpwd = userpwd;
+	}
+
+	public Login() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+    
 }

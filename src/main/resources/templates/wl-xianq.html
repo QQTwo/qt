@@ -69,7 +69,7 @@
 					<span class="c_4">物流服务状态</span><span class="big_font d_ff">待付款</span>
 				</p>
 				<div class="my_hy_btn wl_btn_yu">
-					<a th:href="@{/zsp/c/getLogisticsByPrice(id=${logistics.logisticsid})}" class="btn_jy_a btn_jy_a3">去支付</a>
+					<a th:href="@{/ylh/c/getLogisticsByPrice(id=${logistics.logisticsid})}" class="btn_jy_a btn_jy_a3">去支付</a>
 				</div>
 			</div>
 
@@ -105,7 +105,7 @@
 						<p class="mt5" th:text="${logistics.useraddr}">
 							中国 湖北 天门市 111 <br>1 1
 						</p>
-						<p class="c_4 f12">您的收货信息        <a th:href="@{/zsp/c/xiugai(id=${logistics.logisticsid})}" class="c_4 f12">修改</a></p>
+						<p class="c_4 f12">您的收货信息        <a th:href="@{/ylh/c/xiugai(id=${logistics.logisticsid})}" class="c_4 f12">修改</a></p>
 						<p class="mt5" th:text="${logistics.collectgoodsaddr}">
 							中国 湖南 怀化市 1111 <br>111 11
 						</p>

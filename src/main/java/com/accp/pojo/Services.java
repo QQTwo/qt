@@ -4,6 +4,8 @@ import java.util.Date;
 
 public class Services {
     private Integer serviceid;  //服务(商品)id
+    
+    private String stname;
 
     private Integer stid;//服务类别编号，外键
 
@@ -67,7 +69,7 @@ public class Services {
 
     private Float weight;//重量
 
-    private Boolean recommendbool;//服务推荐
+    private Integer recommendbool;//服务推荐
 
     private Integer shelfstate;//上架状态(1上架2下架)
 
@@ -78,8 +80,22 @@ public class Services {
     public Integer getServiceid() {
         return serviceid;
     }
+    
+    
 
-    public void setServiceid(Integer serviceid) {
+    public String getStname() {
+		return stname;
+	}
+
+
+
+	public void setStname(String stname) {
+		this.stname = stname;
+	}
+
+
+
+	public void setServiceid(Integer serviceid) {
         this.serviceid = serviceid;
     }
 
@@ -331,15 +347,21 @@ public class Services {
         this.weight = weight;
     }
 
-    public Boolean getRecommendbool() {
-        return recommendbool;
-    }
+   
 
-    public void setRecommendbool(Boolean recommendbool) {
-        this.recommendbool = recommendbool;
-    }
+    public Integer getRecommendbool() {
+		return recommendbool;
+	}
 
-    public Integer getShelfstate() {
+
+
+	public void setRecommendbool(Integer recommendbool) {
+		this.recommendbool = recommendbool;
+	}
+
+
+
+	public Integer getShelfstate() {
         return shelfstate;
     }
 

@@ -436,21 +436,9 @@ p.upload_img_name {
 
 </body>
 <script src="/Public/js/jquery-1.8.3.min.js"></script>
-<script src="/Public/js/common.js"></script>
-<script src="/Public/js/layer/layer.js"></script>
-<script type="text/javascript" src="/Public/js/jcarousellite.min.js"></script>
-
-
-<script type="text/javascript" src="/Public/js/sessionHeader.js"></script>
-<script type="text/javascript" src="/Public/js/headLeftNav.js"></script>
-<script type="text/javascript" src="/Public/js/sjzx-href.js"></script>
-<script type="text/javascript" src="/Public/js/grzx-interlinkage.js"></script>
 <script type="text/javascript" src="/Public/js/vue.js"></script>
-
-
-<script>
-	_weburl = 'http://yphting.zglxkj.com';
-</script>
+<script src="/Public/js/common.js"></script>
+<script type="text/javascript" src="/Public/js/jcarousellite.min.js"></script>
 
 
 
@@ -462,9 +450,86 @@ p.upload_img_name {
 </script>
 
 <script>
+
+writeVm = new Vue({
+	el : "#allDrafts",
+	data : {
+		emailbox : {
+			servicetitle : "",
+			goodatmajoy : "",
+			servicecoverimg : "",
+			serviceimgurlone : "",
+			serviceimgurltwo : "",
+			serviceimgurlthree : "",
+			serviceimgurlfour : "",
+			servicefutitle : "",
+			serviceprice : "",
+			servicecostinclude : "",
+			servicecosttypeid : "",
+			serviceintro : ""
+
+		},
+		majorList:{}
+	},
+	created:function(){
+		var vm=this;
+		vm.cxzye(); 
+	},
+	methods : {
+		 cxzye:function(){
+			var vm=this;
+			/* $.getJSON("/ylh/queryMajortype",function(data){
+				vm.majorList=data;
+				alert(vm.majorList) */
+				
+				$.ajax("/ylh/queryMajortype",{
+					type:"get",
+					dataType:"json",
+					success:function(data){
+						vm.majorList=data;
+					}
+				});
+			 
+		},
+		fabu : function() {
+			var abc = ""
+			var cc = ""
+			$("[name=typeid]").each(function() {
+				if ($(this)[0].checked) {
+					cc += $(this).val() + ","
+				}
+			})
+			$(".a").each(function() {
+				if ($(this)[0].checked) {
+					
+				}
+			})
+			this.emailb
+			emailbox["goodatmajoy"] = cc;
+			alert(emailbox["goodatmajoy"]);
+			alert(cc);
+			this.emailbox["servicecostinclude"] = abc;
+			$.ajax({
+				type : "post",
+				url : "/ylh/addServices",
+				contentType : "application/json",
+				data : JSON.stringify(writeVm.emailbox),
+				dataType : "json",
+				success : function(json) {
+					if (json.code == 200) {
+						alert("发布服务成功");
+					} else {
+						alert("发布失败");
+					}
+				}
+			});
+		}
+	}
+});
 	$(function(){
 		
 		$(".aaa").hide();
+	
 		
 		//选择预览图片
 		$("#serviceCoverImg").on("change",function(){
@@ -588,71 +653,7 @@ p.upload_img_name {
 			};
 		})
 	})
-	writeVm = new Vue({
-		el : "#allDrafts",
-		data : {
-			emailbox : {
-				servicetitle : "",
-				goodatmajoy : "",
-				servicecoverimg : "",
-				serviceimgurlone : "",
-				serviceimgurltwo : "",
-				serviceimgurlthree : "",
-				serviceimgurlfour : "",
-				servicefutitle : "",
-				serviceprice : "",
-				servicecostinclude : "",
-				servicecosttypeid : "",
-				serviceintro : ""
-
-			},
-			majorList:{}
-		},
-		created:function(){
-			var vm=this;
-			vm.cxzye();
-		},
-		methods : {
-			cxzye:function(){
-				var vm=this;
-				$.getJSON("/ylh/queryMajortype",function(data){
-					vm.majorList=data;
-					alert(vm.majorList)
-				});
-			},
-			fabu : function() {
-				var abc = ""
-				var cc = ""
-				$("[name=typeid]").each(function() {
-					if ($(this)[0].checked) {
-						cc += $(this).val() + ","
-					}
-				})
-				$(".a").each(function() {
-					if ($(this)[0].checked) {
-						
-					}
-				})
-				this.emailb
-				ox["goodatmajoy"] = cc;
-				this.emailbox["servicecostinclude"] = abc;
-				$.ajax({
-					type : "post",
-					url : "/ylh/addServices",
-					contentType : "application/json",
-					data : JSON.stringify(writeVm.emailbox),
-					dataType : "json",
-					success : function(json) {
-						if (json.code == 200) {
-							alert("发布服务成功");
-						} else {
-							alert("发布失败");
-						}
-					}
-				});
-			}
-		}
-	});
+	
 </script>
 
 </html>

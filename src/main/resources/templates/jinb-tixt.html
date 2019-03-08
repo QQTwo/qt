@@ -69,43 +69,47 @@
 			</div>
 			<!--member left end-->
 			<!--member right-->
-			<div class="member_right site_msg_w">
+			<div class="member_right site_msg_w" id="jinb">
 				<div class="member_system_r_top top_nor2 mt20">
-					<a href="/zsp/c/goldnotesQueryAll" class="fr btna_s2 f14">返回我的金币<span
-						class="sjt">>></span></a> 账户提现
+					<a href="/grzx-moneys.html" class="fr btna_s2 f14">返回我的金币<span
+						class="sjt"></span></a> 账户提现
 				</div>
-				<form id="formcfg" action="/zsp/c/addPutforWard" method="post">
+				<div id="formcfg" >
 					<ul class="member_zl_ul">
 						<li><span class="m_zl_sp">金币余额 ：</span>
 							<div class="m_zl_r">
-								<span id="usermoney" class="tsfont c_8 f18 num_1">[[${USER.usermoney}]]</span>
+								<span id="usermoney" class="tsfont c_8 f18 num_1"></span>
 							</div></li>
 						<li><span class="m_zl_sp">银行名称：</span>
 							<div class="m_zl_r">
-								<select class="sel_f sel_f2" name="bankid">
-									<option th:each="temp,iterState:${List}"
-										th:value="${temp.bankid}">[[${temp.bankname}]]
-									<option>
+								<select class="sel_f sel_f2" name="bankid" >
+									<option value="1">中国工商银行<option>
+									<option value="3">中国建设银行<option>
+									<option value="4">中国银行<option>
+									<option value="5">中国邮政储蓄银行<option>
+									<option value="6">交通银行<option>
+									<option value="2">中国农业银行<option>
+									<option value="7">中信银行<option>
 								</select>
 							</div></li>
 						<li><span class="m_zl_sp">开户行：</span>
 							<div class="m_zl_r">
-								<input type="text" placeholder="" name="openbankname"
+								<input type="text" placeholder="" v-model="putforwardInfo.openbankname" name="openbankname"
 									class="input_c w350 validate[required]" />
 							</div></li>
 						<li><span class="m_zl_sp">银行账户：</span>
 							<div class="m_zl_r">
-								<input type="text" placeholder="" name="bankaccount"
+								<input type="text" placeholder=""  v-model="putforwardInfo.bankaccount"  name="bankaccount"
 									class="input_c w350 validate[required,custom[integer]]" />
 							</div></li>
 						<li><span class="m_zl_sp">收款人：</span>
 							<div class="m_zl_r">
-								<input type="text" placeholder="" name="putname"
+								<input type="text" placeholder="" v-model="putforwardInfo.putname"  name="putname"
 									class="input_c w350 validate[required]" />
 							</div></li>
 						<li><span class="m_zl_sp">提现金币：</span>
 							<div class="m_zl_r">
-								<input type="text" placeholder="请输入金币数量" name="money" id="num"
+								<input type="text" placeholder="请输入金币数量"  v-model="putforwardInfo.money" name="money" id="num"
 									class="input_c w300 validate[required,custom[integer],min[1],max[0]]" />金币
 								<p class="c_4 f12 db_money">
 									等于<span class="f14 c_7"><span class="tsfont c_8 mr10"
@@ -114,9 +118,9 @@
 							</div></li>
 					</ul>
 					<div class="rechang_top2">
-						<input type="submit" id="submit" class="btn_jy_a h40" value="提交提现">
+						<input type="submit" id="submit" @click="tijiao" class="btn_jy_a h40" value="提交提现">
 					</div>
-				</form>
+				</div>
 			</div>
 			<!--member right end-->
 			<div class="clear"></div>
@@ -147,7 +151,54 @@
 		</dl>
 	</div>
 	<!--footer end-->
+		<script type="text/javascript" src="/Public/js/jquery-1.8.3.min.js"></script>
+	<!-- <script type="text/javascript">
+		var submit = document.getElementById("submit");
+		
+		submit.onclick = function() {
+			if (window.confirm("是否提交?")) {
+				var money = $("[name='money']").val();
+				alert(money)
+				var usermoney = $("#usermoney").html();
+				alert(usermoney)
+				var openbankname = $("[name='openbankname']").val();
+				alert(openbankname)
+				var bankaccount = $("[name='bankaccount']").val();
+				alert(bankaccount)
+				var putname = $("[name='putname']").val();
+				if (openbankname == "") {
+					alert("开户行不能为空")
+					return false;
+				}
+				if (bankaccount == "") {
+					alert("银行账户不能为空")
+					return false;
+				}
 
+				if (putname == "") {
+					alert("收款款人不能为空")
+					return false;
+				}
+				if (money == "") {
+					alert("提现金额不能为空")
+					return false;
+				}
+				if (money>usermoney) {
+					alert("提现金额不能不能大于用户余额")
+					return false;
+				}
+			}else{
+				return false;
+			}
+		}
+		$("[name='money']").on('input propertychange', function() {
+			var money = $("[name='money']").val();
+			if (isNaN(money)) {
+				alert("请填写正确的数字");
+			}
+			$("#rmb").html(10);
+		});
+	</script> -->
 	<!--right nav-->
 	<ul class="right_nav">
 		<li><a href="javascript:void(0);" class="rn_tel">客服电话</a>
@@ -237,9 +288,68 @@
 		</div>
 	</div>
 	<!--联系我们的浮层 end-->
-	<script type="text/javascript" src="/Public/js/jquery-1.8.3.min.js"></script>
-	<script type="text/javascript">
-		var submit = document.getElementById("submit");
+	
+
+
+</body>
+<script type="text/javascript" src="/Public/js/sessionHeader.js"></script>
+<script type="text/javascript" src="/Public/js/headLeftNav.js"></script>
+<script type="text/javascript" src="/Public/js/vue.js"></script>
+
+ <script>
+ 	  var bank= $("[name=bankid]").val();  
+		jinbVm = new Vue({
+			
+			el: "#jinb",
+			data: {		
+				 userInfo:[],
+				 putforwardInfo:{
+					userid:0,
+					putname:"",
+					bankid: bank,
+					bankaccount:"",
+					openbankname:"",
+					submittime:"",
+					audittime:"",
+					money:"",
+					auditStatus:1,
+				} 
+				
+			},
+			methods: {
+				goToPage: function() {	
+					var vm=this
+					$.getJSON("/ylh/queryUser/"+24,function(e) {
+						vm.userInfo = e;
+						$("#usermoney").html(vm.userInfo.usermoney)
+						vm.putforwardInfo["userid"]=vm.userInfo.userid;
+						})
+					} ,
+					  tijiao:function(){
+						  var ward=this;
+						   $.ajax({
+								type : "post",
+								url : "/ylh/addPutforward",
+								contentType : "application/json",
+								data : JSON.stringify(ward.putforwardInfo),
+								dataType : "json",
+								success : function(json) {
+									if (json.code == 200) {
+										alert("待审核");
+									} else {
+										alert("提现失败");
+									}
+								}
+							}) 
+					} 
+				}
+			,
+			created: function() {
+				this.goToPage();
+			}
+			})
+	var submit = document.getElementById("submit");
+		
 		submit.onclick = function() {
 			if (window.confirm("是否提交?")) {
 				var money = $("[name='money']").val();
@@ -280,10 +390,6 @@
 			$("#rmb").html(money);
 		});
 	</script>
-
-<script type="text/javascript" src="/Public/js/sessionHeader.js"></script>
-<script type="text/javascript" src="/Public/js/grzx-interlinkage.js"></script>
-<script type="text/javascript" src="/Public/js/headLeftNav.js"></script>
-<script type="text/javascript" src="/Public/js/grzx-href.js"></script>
-</body>
+	
+	 
 </html>

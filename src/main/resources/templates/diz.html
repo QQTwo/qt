@@ -43,7 +43,7 @@
 
 <div class="bg_c4 pt1">
 		<div class="b_box">
-			<form method="post" enctype="multipart/form-data"action="/zsp/c/updat" id="formmsg">
+			<form method="post" enctype="multipart/form-data"action="/ylh/c/updat" id="formmsg">
 				<div class="sv_path border_c sv_nbor">
 					<a href="">会员中心</a><span class="s_sp_v">-</span><a href="">我发出的物流</a><span
 						class="s_sp_v">-</span>提交发货申请
@@ -96,7 +96,7 @@
 			            		 var shareaid2= $("[name='shareaid1']").find("option:selected").html();
 			            		 $("[name='shareaid11']").val(shareaid2);
 			            		 $("[name='shareaid2']").html("");
-			            		  $.ajax("/zsp/c/getShAreaBy?id="+id,{
+			            		  $.ajax("/ylh/c/getShAreaBy?id="+id,{
 			            				type:"get",
 			            				dataType:"json",
 			            				timeout:5000,
@@ -113,7 +113,7 @@
 			            		 var id= $("[name='shareaid2']").find("option:selected").val();
 			            		 var shareaid3= $("[name='shareaid2']").find("option:selected").html();
 			            		 $("[name='shareaid22']").val(shareaid3);
-			            		   $.ajax("/zsp/c/getShAreaBy?id="+id,{
+			            		   $.ajax("/ylh/c/getShAreaBy?id="+id,{
 			            				type:"get",
 			            				dataType:"json",
 			            				timeout:5000,

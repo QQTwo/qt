@@ -75,16 +75,16 @@
 			</div>
 			<!--member left end-->
 			<!--member right-->
-			<div class="member_right site_msg_w">
+			<div class="member_right site_msg_w" id="jinb">
 				<div class="member_system_r_top top_nor2 mt20">
-					<a href="/zsp/c/goldnotesQueryAll" class="fr btna_s2 f14">返回我的金币<span
+					<a href="/grzx-moneys.html" class="fr btna_s2 f14">返回我的金币<span
 						class="sjt">>></span></a> 账户充值
 				</div>
-				<form id="formcz" action="/zfb/c/viewOrder" method="post">
+				<div id="formcz">
 					<ul class="member_zl_ul">
 						<li><span class="m_zl_sp">金币余额 ：</span>
 							<div class="m_zl_r">
-								<span id="recordInAndOut" class="num_1 c_7 f16">[[${USER.usermoney}]]</span>
+								<span id="recordInAndOut" class="num_1 c_7 f16"></span>
 							</div></li>
 						<li><span class="m_zl_sp">充值：</span>
 							<div class="m_zl_r" style="overflow: inherit;">
@@ -110,27 +110,7 @@
 					</div>
 					<input type="hidden" name="__hash__"
 						value="17f17eccd88ac0d05a620ba32e33e76f_1a32622cdc89934df6686dde40a78023" />
-				</form>
-				<script type="text/javascript">
-		            	  var submit=document.getElementById("submit");
-		            	  submit.onclick=function(){
-			            	  var num=document.getElementById("money").value;
-		            		  if(isNaN(num)){
-		            			  alert("请填写正确的数字");
-			            		  return false;
-			            	  }
-		            		  if(num<=0){
-		            			  alert("充值金额不能小于0等于0")
-		            			  return false;
-		            		  }
-			      
-		            	  }
-		            	  $("#money").on('input propertychange',function(){
-		            		   var money=$("#money").val();
-		            		   $("#moneys").html(money);
-		            	  });
-		            	
-				</script>
+				</div>
 			</div>
 			<!--member right end-->
 			<div class="clear"></div>
@@ -211,7 +191,7 @@
 				<h2 class="contact_us_title">和我们联系吧</h2>
 				<form method="post" id="formtopcontact"
 					action="" target="topost"
-					onsubmit="return chktop()">
+					onsubmit="return chktop()"> -->
 					<ul class="pcontact_ul3">
 						<li><span class="pcspr pcspr1"></span><input id="name"
 							name="name" class="pop_cus_input validate[required]"
@@ -256,16 +236,65 @@
 						<li><a class="border_tj" href="javascript:void(0);"
 							onclick="$('#formtopcontact').submit()" id="submit-btn">立即提交</a></li>
 					</ul>
-			</form>
+			 </form>
 			</div>
 			<div class="clear"></div>
 		</div>
 	</div>
 	<!--联系我们的浮层 end-->
 
-<script type="text/javascript" src="/Public/js/sessionHeader.js"></script>
-<script type="text/javascript" src="/Public/js/grzx-interlinkage.js"></script>
-<script type="text/javascript" src="/Public/js/headLeftNav.js"></script>
-<script type="text/javascript" src="/Public/js/grzx-href.js"></script>
+
 </body>
+<script type="text/javascript" src="/Public/js/vue.js"></script>
+<script type="text/javascript" src="/Public/js/sessionHeader.js"></script>
+<script type="text/javascript" src="/Public/js/headLeftNav.js"></script>
+
+<script>
+		jinbVm = new Vue({
+			el: "#jinb",
+			data: {		
+				userInfo:[],
+			},
+			methods: {
+				goToPage: function() {	
+					$.getJSON("/ylh/queryUser/"+24,function(e) {
+						jinbVm.userInfo = e;
+						$(".num_1").html(jinbVm.userInfo.usermoney)
+						
+						})
+					}
+				}
+			,
+			created: function() {
+				this.goToPage();
+			}
+			})
+		
+		
+		var submit=document.getElementById("submit");
+  	  submit.onclick=function(){
+      	  var num=document.getElementById("money").value;
+  		  if(isNaN(num)){
+  			  alert("请填写正确的数字");
+      		  return false;
+      	  }
+  		  if(num<=0){
+  			  alert("充值金额不能小于0等于0")
+  			  return false;
+  		  }
+
+  	  }
+  	  $("#money").on('input propertychange',function(){
+  		   var money=$("#money").val();
+  		   $("#moneys").html(money);
+  	  });
+  	  
+  	 /*  $("#submit").click(function(){
+  		 var a=$("#money").val();
+  		 alert(a)
+  		window.sessionStorage.setItem("money",a);
+  		location.href="jinb-tixt.html";
+  	  }) */
+  	
+	</script> 
 </html>

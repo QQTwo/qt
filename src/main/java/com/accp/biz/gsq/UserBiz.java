@@ -206,4 +206,22 @@ public class UserBiz {
 	public boolean saveXtxx(Integer userID,String content) {
 		return dao.saveXtxx(userID, content)>0;
 	}
+	
+	/**
+	 * 新增系统消息
+	 * @param userID 用户ID
+	 */
+	public void updateUserRecentEntry(Integer userID) {
+		dao.updateUserRecentEntry(userID);
+	}
+	/**
+	 * 根据编号获取用户
+	 * 
+	 * @param userid
+	 *            用户编号
+	 * @return
+	 */
+	public User queryUserById(int userid) {
+		return dao.queryUserById(userid);
+	}
 }

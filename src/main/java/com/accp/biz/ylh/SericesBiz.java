@@ -10,9 +10,15 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.accp.dao.ylh.ISericesDao;
+import com.accp.pojo.Goldnotes;
+import com.accp.pojo.Integralrecord;
 import com.accp.pojo.Majortype;
+import com.accp.pojo.Putforward;
 import com.accp.pojo.Services;
 import com.accp.pojo.Servicetype;
+import com.accp.pojo.User;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 
 @Service("SericesBiz")
 @Transactional(propagation = Propagation.SUPPORTS, isolation = Isolation.READ_COMMITTED, readOnly = true)
@@ -40,4 +46,39 @@ public class SericesBiz {
 		{
 			return dao.queryMajortype();
 		}
+		
+		public PageInfo<Goldnotes> queryGoldnotes(Integer pageNum, Integer pageSize,int userid,int acquisitionmode) {
+			PageHelper.startPage(pageNum, pageSize);
+			return new PageInfo<Goldnotes>(dao.queryGoldnotes(userid, acquisitionmode));
+		}
+		//用户表
+		public User queryUser(int userid)
+		{
+			return dao.queryUser(userid);
+		}
+		
+		//积分表	
+		public PageInfo<Integralrecord> queryIntegralrecord(Integer pageNum, Integer pageSize,int userid) {
+			PageHelper.startPage(pageNum, pageSize);
+			return new PageInfo<Integralrecord>(dao.queryIntegralrecord(userid));
+		}
+		
+		//金币提现
+		@Transactional(propagation = Propagation.REQUIRED, isolation = Isolation.READ_COMMITTED, readOnly = false)
+		public void addPutforward ( Putforward putforward)
+		{
+			dao.addPutforward(putforward);
+		}
+		@Transactional(propagation = Propagation.REQUIRED, isolation = Isolation.READ_COMMITTED, readOnly = false)
+		public void  updateUser(int userid,float usermoney)
+		{
+			 dao.updateUser(userid, usermoney);
+		}
+		
+		//我服务的类别
+		public List<Services> queryServices(int userid)
+		{
+			return dao.queryServices(userid);
+		}
+		
 }

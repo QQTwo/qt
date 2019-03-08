@@ -29,13 +29,13 @@
 		    <div class="b_box nav_header community_header">
 				<a href="/index.php/" class="logo logo_community">御品韩汀.社区</a>
 				<ul class="nav_ul">
-					<li><a href="/c/lsm/serviceUrl?htmlUrl=fw-zjyTAB&stid=1"><span class="community_sp csp1"></span><br>自驾游</a></li>
-					<li><a href="/c/lsm/serviceUrl?htmlUrl=fw-wzxTAB&stid=2"><span class="community_sp csp2"></span><br>微整形</a></li>
-					<li><a href="/c/lsm/serviceUrl?htmlUrl=fw-lxzjTAB&stid=3"><span class="community_sp csp3"></span><br>留学中介</a></li>
-					<li><a href="/c/lsm/serviceUrl?htmlUrl=fw-hyfyTAB&stid=4"><span class="community_sp csp4"></span><br>韩语翻译</a></li>
-					<li class="cur"><a href="/c/lsm/serviceUrl?htmlUrl=fw-xxzyTAB&stid=5"><span class="community_sp csp5"></span><br>学习资源</a></li>
+					<li><a href="/c/cn/serviceUrl?htmlUrl=fw-zjyTAB&stid=1"><span class="community_sp csp1"></span><br>自驾游</a></li>
+					<li><a href="/c/cn/serviceUrl?htmlUrl=fw-wzxTAB&stid=2"><span class="community_sp csp2"></span><br>微整形</a></li>
+					<li><a href="/c/cn/serviceUrl?htmlUrl=fw-lxzjTAB&stid=3"><span class="community_sp csp3"></span><br>留学中介</a></li>
+					<li><a href="/c/cn/serviceUrl?htmlUrl=fw-hyfyTAB&stid=4"><span class="community_sp csp4"></span><br>韩语翻译</a></li>
+					<li class="cur"><a href="/c/cn/serviceUrl?htmlUrl=fw-xxzyTAB&stid=5"><span class="community_sp csp5"></span><br>学习资源</a></li>
 					<li><a href="#"><span class="community_sp csp6"></span><br>韩汀物流</a></li>
-					<li><a href="/c/sxy/column?pid=1&page=1&orderId=1&essence=0"><span class="community_sp csp7"></span><br>韩汀·论坛 中文</a></li>
+					<li><a href="/c/tty/column?pid=1&page=1&orderId=1&essence=0"><span class="community_sp csp7"></span><br>韩汀·论坛 中文</a></li>
 				</ul>
 			</div>     
 		</div>
@@ -95,7 +95,7 @@
 		        <div class="rank_box">
 		        	<ul class="rank_list_ul">
 						<li v-for="(temp,index) in pageInfo.list">
-		                	<a :href="'/c/lsm/serviceDetailUrl?htmlUrl=fw-xxzyXQ&sid='+temp.serviceID+'&uid='+temp.userID" class="rank_one_a">
+		                	<a :href="'/c/cn/serviceDetailUrl?htmlUrl=fw-xxzyXQ&sid='+temp.serviceID+'&uid='+temp.userID" class="rank_one_a">
 			                    <div class="star_img">
 			                    	<img v-if="temp.recommendBool==true" style="z-index:3;position: absolute;" src="/Public/images/tj.png" width="50" height="50"> 
 			                    	<img :src="temp.serviceCoverImg" :alt="temp.serviceTitle" width="380" height="254">
@@ -237,7 +237,7 @@
 					if(obj["authentication"]=="1"||obj["authentication"]=="2"){
 						obj["transactionValueID"]=stid;
 					}
-					jQuery.getJSON("/c/lsm/api/queryServices",{"objJSON":JSON.stringify(obj),"num":num,"size":6},function(data){
+					jQuery.getJSON("/c/cn/api/queryServices",{"objJSON":JSON.stringify(obj),"num":num,"size":6},function(data){
 						vm.pageInfo = data;
 						console.info(data);
 					})
@@ -246,7 +246,7 @@
 				queryServiceTypeChild:function(stpid){
 					var vm = this;
 					if(jQuery(".sonType").attr("data-id")!=stpid){
-						jQuery.getJSON("/c/lsm/api/queryServiceTypeChild",{"stpid":stpid},function(data){
+						jQuery.getJSON("/c/cn/api/queryServiceTypeChild",{"stpid":stpid},function(data){
 							if(data.length==0){
 								jQuery(".sonType").removeAttr("data-id").hide();
 							}else{

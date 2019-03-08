@@ -9,9 +9,12 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
 
+import com.accp.pojo.Goldnotes;
+import com.accp.pojo.Integralrecord;
 import com.accp.pojo.Majortype;
-
+import com.accp.pojo.Putforward;
 import com.accp.pojo.Services;
+import com.accp.pojo.User;
 
 
 
@@ -28,9 +31,25 @@ public interface ISericesDao {
 	/*public List<Servicetype> queryServicetype(@Param("stpid") int stpid);*/
 	//新增服务
 	public void addServices (@Param("s") Services services);
+	 
+	public List<Services> queryServices(@Param("userid") int userid);
 	/*//服务费用类型
 	public List<Servicecosttype> queryServicecosttype(@Param("stid") int stid);*/
 	
 	public List<Majortype> queryMajortype();
+	
+	//查询金币表
+	public List<Goldnotes> queryGoldnotes(@Param("userid") int userid,@Param("acquisitionmode") int acquisitionmode);
+	
+	//查询用户表
+	public User queryUser(@Param("userid") int userid);
+	
+	//积分表
+	public List<Integralrecord> queryIntegralrecord(@Param("userid") int userid);
+	
+	//提现
+	public void addPutforward (@Param("s") Putforward putforward);
+	
+	public void updateUser(@Param("userid") int userid,@Param("usermoney") float usermoney);
 	
 }
