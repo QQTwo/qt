@@ -160,6 +160,7 @@ WHERE u.userid=#{userId}
 	             <if test="news.messagegroup">messageGroup=#{news.messagegroup},</if>
 	       </set>
 	</insert>
+	<!-- 添加积分流向操作记录表 -->
 	<insert id="addIntegralRecord">
 	    INSERT INTO integralRecord 
 	    <set>

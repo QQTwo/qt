@@ -1,5 +1,6 @@
 package com.accp.biz.gsq;
 
+import java.util.Date;
 import java.util.List;
 
 
@@ -10,6 +11,8 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.accp.dao.gsq.IUserDao;
+import com.accp.dao.ylh.GoldnotesDao;
+import com.accp.pojo.Integralrecord;
 import com.accp.pojo.News;
 import com.accp.pojo.Sharea;
 import com.accp.pojo.User;
@@ -23,6 +26,8 @@ import com.github.pagehelper.PageInfo;
 public class UserBiz {
 	@Autowired
 	private IUserDao dao;
+	@Autowired
+    private GoldnotesDao Gdao;
 	
 	public boolean queryEmail(String email) {
 		/**
@@ -235,6 +240,14 @@ public class UserBiz {
 	 */
 	@Transactional(propagation = Propagation.REQUIRED, isolation = Isolation.READ_COMMITTED, readOnly = false)
 	public int updateUserSign(int userid) {
+		//添加积分流记录表
+		Integralrecord Integralrecord=new Integralrecord();
+		Integralrecord.setUserid(userid);
+		Integralrecord.setIrdate(new Date());
+		Integralrecord.setIrdescribe("签到送积分");
+		Integralrecord.setAuditstatus(4);
+		Integralrecord.setRecordinandout(+20);
+	    Gdao.addIntegralRecord(Integralrecord);
 		return dao.updateUserSign(userid, 20);
 	}
 }

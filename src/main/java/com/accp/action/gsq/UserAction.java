@@ -562,7 +562,6 @@ public class UserAction {
 	@RequestMapping(value="/user/updateUsersign",method=RequestMethod.POST)
 	@ResponseBody
 	public Map<String,String> updateUsersign(HttpSession session) {
-		System.out.println("奇怪");
 		Map<String,String> map=new HashMap<>();
 		Integer userID=((User)session.getAttribute("USER")).getUserid();
 		try {

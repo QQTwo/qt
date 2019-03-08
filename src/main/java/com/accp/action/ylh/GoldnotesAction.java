@@ -87,7 +87,6 @@ public class GoldnotesAction {
 		model.addAttribute("USER",users);
 		return "grzx-points";
 	}
-
 	/**
 	 * 添加金币提现记录流向表
 	 * 
