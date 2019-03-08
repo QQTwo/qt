@@ -8,7 +8,10 @@ import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
@@ -110,7 +113,7 @@ public class MerchantAction {
 				app.setSubmittime(new Date());
 				app.setAuditstatus(1);
 				merchantBiz.addAppraisalapply(app);
-				return "redirect:/zg/c/queryAppraisalapply";
+				return "redirect:/cn/c/queryAppraisalapply";
 	}
 	
 	@PostMapping("addwzxjd")
@@ -157,7 +160,7 @@ public class MerchantAction {
 				app.setSubmittime(new Date());
 				app.setAuditstatus(1);
 				merchantBiz.addAppraisalapply(app);
-				return "redirect:/zg/c/queryAppraisalapply";
+				return "redirect:/cn/c/queryAppraisalapply";
 	}
 	
 	@PostMapping("addlxzjjd")
@@ -207,7 +210,7 @@ public class MerchantAction {
 				app.setSubmittime(new Date());
 				app.setAuditstatus(1);
 				merchantBiz.addAppraisalapply(app);
-				return "redirect:/zg/c/queryAppraisalapply";
+				return "redirect:/cn/c/queryAppraisalapply";
 	}
 	
 	@PostMapping("addhyfyjd")
@@ -263,7 +266,7 @@ public class MerchantAction {
 				app.setSubmittime(new Date());
 				app.setAuditstatus(1);
 				merchantBiz.addAppraisalapply(app);
-				return "redirect:/zg/c/queryAppraisalapply";
+				return "redirect:/cn/c/queryAppraisalapply";
 	}
 	
 	
@@ -297,17 +300,27 @@ public class MerchantAction {
 				app.setSubmittime(new Date());
 				app.setAuditstatus(1);
 				merchantBiz.addAppraisalapply(app);
-				return "redirect:/zg/c/queryAppraisalapply";
+				return "redirect:/cn/c/queryAppraisalapply";
 	}
 	
 	@GetMapping("queryEvaluation")
 	public String  queryEvaluation(HttpSession session,Model model,Integer pageNum,Integer pageSize) {
+		System.out.println("进入评论区");
 		Integer userID=((User)session.getAttribute("USER")).getUserid();
-		PageInfo<EvaluationVo> pageInfo=merchantBiz.queryEvaluation(pageNum, pageSize, userID);
+		//用户
+		PageInfo<EvaluationVo> pageInfo=merchantBiz.queryEvaluation(pageNum, pageSize, userID);	
+		/*//商家
+		PageInfo<EvaluationVo> dj=merchantBiz.queryEvaluation(pageNum, pageSize,serviceAppraisePID, userID);		
+			*/
+		//System.out.println(pageInfo.getList().get(0).getServiceAppraiseID());
+		
+		//用户
 		model.addAttribute("PAGE_INFO", pageInfo);
+		System.out.println(pageInfo.getList());
 		return "sjzx-comment";
 	}
 	
+	//商家回复查询
 	
 	
 	@GetMapping("getServices")
@@ -402,7 +415,7 @@ public class MerchantAction {
 				service.setCountry(countryid);
 				service.setUploaddataurl(uploaddataurl);
 				merchantBiz.addService(service);
-				return "redirect:/zg/c/getServices?pageNum=1&pageSize=3";
+				return "redirect:/cn/c/getServices?pageNum=1&pageSize=3";
 	}
 
 	@PostMapping("updateServiceslxzj")
@@ -459,7 +472,7 @@ public class MerchantAction {
 				service.setCountry(countryid);
 				service.setUploaddataurl(uploaddataurl);
 				merchantBiz.modifyService(service);
-				return "redirect:/zg/c/getServices?pageNum=1&pageSize=3";
+				return "redirect:/cn/c/getServices?pageNum=1&pageSize=3";
 	}
 	
 	@PostMapping("addServiceszjy")
@@ -533,7 +546,7 @@ public class MerchantAction {
 				service.setCountry(countryid);
 				service.setUploaddataurl(uploadDataUrl);
 				merchantBiz.addService(service);
-				return "redirect:/zg/c/getServices?pageNum=1&pageSize=3";
+				return "redirect:/cn/c/getServices?pageNum=1&pageSize=3";
 	}
 	@PostMapping("updateServiceszjy")
 	public String  updateServiceszjy(HttpSession session,Model model,int serviceID,int stid,String serviceTitle,String serviceFuTitle,String downloadTitle,int servicePrice, MultipartFile serviceCoverImg,MultipartFile serviceImgUrlOne,MultipartFile serviceImgUrlTwo,MultipartFile serviceImgUrlThree,MultipartFile serviceImgUrlFour,String serviceStartDate,String serviceEndDate,int serviceHour,String serviceIntro,String[] areaids,int countryid,String[] serviceCostInclude,String serviceCostTypeID,String uploadDataUrl) {
@@ -606,7 +619,7 @@ public class MerchantAction {
 				service.setCountry(countryid);
 				service.setUploaddataurl(uploadDataUrl);
 				merchantBiz.modifyService(service);
-				return "redirect:/zg/c/getServices?pageNum=1&pageSize=3";
+				return "redirect:/cn/c/getServices?pageNum=1&pageSize=3";
 	}
 	
 	
@@ -686,7 +699,7 @@ public class MerchantAction {
 				service.setCountry(countryid);
 				service.setUploaddataurl(uploadDataUrl);
 				merchantBiz.addService(service);
-				return "redirect:/zg/c/getServices?pageNum=1&pageSize=3";
+				return "redirect:/cn/c/getServices?pageNum=1&pageSize=3";
 	}
 	
 
@@ -761,7 +774,7 @@ public class MerchantAction {
 				service.setCountry(countryid);
 				service.setUploaddataurl(uploadDataUrl);
 				merchantBiz.modifyService(service);
-				return "redirect:/zg/c/getServices?pageNum=1&pageSize=3";
+				return "redirect:/cn/c/getServices?pageNum=1&pageSize=3";
 	}
 	
 	
@@ -824,7 +837,7 @@ public class MerchantAction {
 				service.setServiceintro(serviceIntro);
 			
 				merchantBiz.addService(service);
-				return "redirect:/zg/c/getServices?pageNum=1&pageSize=3";
+				return "redirect:/cn/c/getServices?pageNum=1&pageSize=3";
 	}
 	@PostMapping("updateServicesxxzy")
 	public String  updateServicesxxzy(HttpSession session,Model model,int serviceID,int stid,int resourceID,String serviceTitle,String serviceFuTitle,int servicePrice, MultipartFile serviceCoverImg,MultipartFile serviceImgUrlOne,MultipartFile serviceImgUrlTwo,MultipartFile serviceImgUrlThree,MultipartFile serviceImgUrlFour,String schoolRegion,String schoolNameByCN,String majoyNameByCN,String schoolNameByROK,String majoyNameByROK,String serviceIntro,String serviceCostTypeID,MultipartFile uploadDataUrl) {
@@ -879,7 +892,7 @@ public class MerchantAction {
 				service.setServicecosttypeid(serviceCostTypeID);
 				service.setServiceintro(serviceIntro);
 				merchantBiz.modifyService(service);
-				return "redirect:/zg/c/getServices?pageNum=1&pageSize=3";
+				return "redirect:/cn/c/getServices?pageNum=1&pageSize=3";
 	}
 	@PostMapping("addServiceshyfy")
 	public String  addServiceshyfy(HttpSession session,Model model,int stid,String serviceTitle,String[] typeid,String serviceFuTitle,int servicePrice, MultipartFile serviceCoverImg,MultipartFile serviceImgUrlOne,MultipartFile serviceImgUrlTwo,MultipartFile serviceImgUrlThree,MultipartFile serviceImgUrlFour,String serviceIntro,String[] serviceCostInclude,String serviceCostTypeID) {
@@ -936,7 +949,7 @@ public class MerchantAction {
 				service.setServiceintro(serviceIntro);
 		
 				merchantBiz.addService(service);
-				return "redirect:/zg/c/getServices?pageNum=1&pageSize=3";
+				return "redirect:/cn/c/getServices?pageNum=1&pageSize=3";
 	}
 	
 	@PostMapping("updateServiceshyfy")
@@ -989,17 +1002,29 @@ public class MerchantAction {
 				service.setServiceprice(servicePrice);
 				service.setServicecosttypeid(serviceCostTypeID);
 				service.setServiceintro(serviceIntro);
-		
+				
 				merchantBiz.modifyService(service);
-				return "redirect:/zg/c/getServices?pageNum=1&pageSize=3";
+				
+				return "redirect:/cn/c/getServices?pageNum=1&pageSize=3";
 	}
 	
 	@GetMapping("removeServices")
 	public String  removeService(int serviceID) {
 		merchantBiz.removeService(serviceID);
-		return "redirect:/zg/c/getServices?pageNum=1&pageSize=3";
+		return "redirect:/cn/c/getServices?pageNum=1&pageSize=3";
 	}
 	
-	
+	//商家回复评论
+			@PostMapping("replyComment")
+			@ResponseBody
+			public Map<String, String> replyComment(String content,int serviceAppraisePID,Model mo) {
+				System.out.println("进入回复");
+				merchantBiz.replyComment(content, serviceAppraisePID);	
+				Map<String, String> map=new HashMap<String,String>();
+				map.put("code","200");
+				map.put("msg","回复成功");
+				return map;
+			//	return "redirect:/cn/c/queryEvaluation?pageNum=1&pageSize=3";
+			}
 	
 }

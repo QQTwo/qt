@@ -30,7 +30,6 @@ public class Admin {
     public void setAdminid(Integer adminid) {
         this.adminid = adminid;
     }
-
     public Integer getAdmintype() {
         return admintype;
     }

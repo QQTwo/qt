@@ -1,11 +1,11 @@
 package com.accp.pojo;
 
 public class Servicecosttype {
-    private Integer servicecosttypeid;
+    private Integer servicecosttypeid;//	服务费用类型编号
 
-    private String servicecosttypename;
+    private String servicecosttypename;//服务费用类型名称
 
-    private Integer stid;
+    private Integer stid;//服务类别编号
 
     public Integer getServicecosttypeid() {
         return servicecosttypeid;

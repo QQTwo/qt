@@ -8,7 +8,9 @@
 	
 	<select id="login" resultType="com.accp.pojo.User">
 		SELECT * FROM `user`
-		WHERE `userID` = (SELECT `userID` FROM `login` WHERE `userEmail`=#{email} AND `userPwd`=#{password})
+
+		WHERE `userID` = (SELECT `userID` FROM `login` WHERE `userEmail`=#{email}
+		AND `userPwd`=#{password})
 	</select>
 	<select id="queryEmail" resultType="java.lang.Integer">
 		SELECT COUNT(*) FROM `login`

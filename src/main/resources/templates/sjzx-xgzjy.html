@@ -40,9 +40,9 @@ _weburl = 'http://yphting.zglxkj.com';
 <link rel="stylesheet" href="/Public/js/valid/css/validationEngine.jquery.css" type="text/css"/>
 <script src="/Public/js/valid/languages/jquery.validationEngine-zh_CN.js" type="text/javascript" charset="utf-8"></script>
 <script src="/Public/js/valid/jquery.validationEngine.js" type="text/javascript" charset="utf-8"></script>
-<link rel="stylesheet" href="/Public/js/Jcrop/css/jquery.Jcrop.css" type="text/css"/>
+<!-- <link rel="stylesheet" href="/Public/js/Jcrop/css/jquery.Jcrop.css" type="text/css"/>
 <script src="/Public/js/Jcrop/js/jquery.Jcrop.min.js" type="text/javascript" charset="utf-8"></script>
-
+ -->
 <script>
 function chkform()
 {
@@ -476,7 +476,7 @@ function showcitys(countryid){
 				<dt>金币价格</dt>
 				<dd class="mt10">				
 					<input type="text" th:value="${Services.serviceprice}" class="input_c inf_inc9 mt5 validate[required,custom[integer]]" name="servicePrice" />
-					<input type="text" value="${Services.servicehour}" style="width:150px;" class="input_c sel_b4 mt5 validate[required]" placeholder="小时/每天" name="serviceHour" />					<p class="c_4 zc_info">我们会对您的交易收取10%的服务费</p>
+					<input type="text" th:value="${Services.servicehour}" style="width:150px;" class="input_c sel_b4 mt5 validate[required]" placeholder="小时/每天" name="serviceHour" />					<p class="c_4 zc_info">我们会对您的交易收取10%的服务费</p>
 				</dd>
 			</dl>
 						<dl class="info_form_dl">

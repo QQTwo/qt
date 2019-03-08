@@ -2,7 +2,7 @@ package com.accp.biz.cn;
 
 import java.util.List;
 
-
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Isolation;
@@ -86,6 +86,10 @@ public class MerchantBiz {
 		return new PageInfo<EvaluationVo>(merchantDao.queryEvaluation(userid));
 	}
 	
-	
-	
+	//商家回复评价
+	@Transactional(propagation = Propagation.REQUIRED, isolation = Isolation.READ_COMMITTED, readOnly = false)
+	public void replyComment(String content,int serviceAppraisePID) {
+		merchantDao.replyComment(content, serviceAppraisePID);
+	}
+
 }

@@ -1,4 +1,4 @@
-package com.accp.biz.gsq;
+package com.accp.biz.cn;
 
 
 import java.util.List;
@@ -9,10 +9,10 @@ import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.accp.dao.gsq.IOrdersDao;
+import com.accp.dao.cn.IOrdersDao;
 import com.accp.pojo.Orders;
 import com.accp.pojo.Servicetype;
-import com.accp.vo.gsq.OrderInfoVo;
+import com.accp.vo.cn.OrderInfoVo;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 
@@ -27,6 +27,7 @@ public class OrdersBiz {
 	 */
 	public  PageInfo<OrderInfoVo>  queryUserOrder(Integer userID,Integer orderStatus,Integer refundstatus,String orderID,Integer pageNum,Integer pageSize){
 		PageHelper.startPage(pageNum, pageSize);
+		System.out.println("订单状态："+orderStatus);
 		return new PageInfo<>(dao.queryUserOrder(userID, orderStatus, refundstatus,orderID));
 	}
 	/**

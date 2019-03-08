@@ -3,75 +3,77 @@ package com.accp.pojo;
 import java.util.Date;
 
 public class Services {
-    private Integer serviceid;
+    private Integer serviceid;  //服务(商品)id
+    
+    private String stname;
 
-    private Integer stid;
+    private Integer stid;//服务类别编号，外键
 
-    private Integer userid;
+    private Integer userid;//外键，用户编号
 
-    private Integer resourceid;
+    private Integer resourceid;//资源类别编号
 
-    private String servicetitle;
+    private String servicetitle;//服务标题
 
-    private String servicefutitle;
+    private String servicefutitle;//服务副标题
 
-    private String downloadtitle;
+    private String downloadtitle;//下载标题
 
-    private Integer serviceprice;
+    private Integer serviceprice;//金币价格
 
-    private String servicecoverimg;
+    private String servicecoverimg; //封面图
 
-    private String serviceimgurlone;
+    private String serviceimgurlone;//细节图1
 
-    private String serviceimgurltwo;
+    private String serviceimgurltwo;//细节图2
 
-    private String serviceimgurlthree;
+    private String serviceimgurlthree;//细节图3
 
-    private String serviceimgurlfour;
+    private String serviceimgurlfour;//细节图4
 
-    private String servicecosttypeid;
+    private String servicecosttypeid;//费用说明
 
-    private String serviceintro;
+    private String serviceintro;//服务介绍
 
-    private String servicecity;
+    private String servicecity;//服务城市(可填多个)
 
-    private Integer country;
+    private Integer country;//外键，国家编号
 
-    private String servicecostinclude;
+    private String servicecostinclude;//服务费用包含
 
-    private Date servicestartdate;
+    private Date servicestartdate;//可预定日期-起始
 
-    private Date serviceenddate;
+    private Date serviceenddate;//可预定日期-结束
 
-    private String schoolregion;
+    private String schoolregion;//学校地区
 
-    private String schoolnamebycn;
+    private String schoolnamebycn;//学科-中文-学校
 
-    private String majoynamebycn;
+    private String majoynamebycn;//学科-中文-专业
 
-    private String schoolnamebyrok;
+    private String schoolnamebyrok;//学科-韩文-学校
 
-    private String majoynamebyrok;
+    private String majoynamebyrok;//学科-韩文-专业
 
-    private String goodatmajoy;
+    private String goodatmajoy;//擅长专业
 
-    private String hospitalname;
+    private String hospitalname;//医院名称
 
-    private Integer servicehour;
+    private Integer servicehour;//小时/天
 
-    private String uploaddataurl;
+    private String uploaddataurl;//上传资料
 
-    private Date releasetime;
+    private Date releasetime;//发布时间
 
-    private Integer browsenumber;
+    private Integer browsenumber;//浏览数
 
-    private Float weight;
+    private Float weight;//重量
 
-    private Boolean recommendbool;
+    private Integer recommendbool;//服务推荐
 
-    private Integer shelfstate;
+    private Integer shelfstate;//上架状态(1上架2下架)
 
-    private Integer auditstatus;
+    private Integer auditstatus;//审核状态(1待审核2审核成功3未通过)
 
     private String adminopinion;
 
@@ -89,8 +91,22 @@ public class Services {
 	public Integer getServiceid() {
         return serviceid;
     }
+    
+    
 
-    public void setServiceid(Integer serviceid) {
+    public String getStname() {
+		return stname;
+	}
+
+
+
+	public void setStname(String stname) {
+		this.stname = stname;
+	}
+
+
+
+	public void setServiceid(Integer serviceid) {
         this.serviceid = serviceid;
     }
 
@@ -342,15 +358,21 @@ public class Services {
         this.weight = weight;
     }
 
-    public Boolean getRecommendbool() {
-        return recommendbool;
-    }
+   
 
-    public void setRecommendbool(Boolean recommendbool) {
-        this.recommendbool = recommendbool;
-    }
+    public Integer getRecommendbool() {
+		return recommendbool;
+	}
 
-    public Integer getShelfstate() {
+
+
+	public void setRecommendbool(Integer recommendbool) {
+		this.recommendbool = recommendbool;
+	}
+
+
+
+	public Integer getShelfstate() {
         return shelfstate;
     }
 

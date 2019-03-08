@@ -36,7 +36,9 @@ public interface IMerchantDao {
 	  public List<UserAppVo>  queryAppraisalapply(@Param("userid") int userid ,@Param("oneid") int oneid,@Param("twoid") int twoid);
 	  
 	  public int addAppraisalapply(@Param("pojo") Appraisalapply pojo);
-	  
+	  //查询评价内容
 	  public List<EvaluationVo>  queryEvaluation(@Param("userid") int userid);
-	  
+	  //商家回复评论
+	  public int replyComment(@Param("content") String content,@Param("serviceAppraisePID")int serviceAppraisePID);
+	
 }

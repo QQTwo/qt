@@ -15,11 +15,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.accp.action.config.AlipayConfig;
 import com.accp.biz.ylh.GoldnotesBiz;
 import com.accp.pojo.Goldnotes;
 import com.accp.pojo.User;
+import com.accp.vo.gsq.OrderInfo;
 import com.alipay.api.AlipayApiException;
 import com.alipay.api.AlipayClient;
 import com.alipay.api.DefaultAlipayClient;

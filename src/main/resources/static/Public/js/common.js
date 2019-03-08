@@ -163,6 +163,7 @@ $(function(){
 		$(this).parent().siblings('.my_hy_box').show();
 	});
 	
+	
 	//取消评价
 	$('.btn_jy_a4').click(function(){
 		$(this).parent().parent('.my_hy_box').hide();
@@ -194,6 +195,7 @@ $(function(){
 	});
 	
 	//取消回应
+	
 	$('.btn_jy_a4_2').click(function(){
 		$(this).parent().parent('.my_hy_box').hide();
 		$(this).parent().parent().siblings('.my_evaluation_text').children('.mt0').show();
@@ -324,30 +326,70 @@ $(function(){
 		});
 	});
 	
+	//回应评价
+	$(".btna_hy_a").click(function(){
+		serviceAppraisePID =$(this).parents('li').find("input").val();
+		var pid=$(this).attr("pid");
+		
+		if(serviceAppraisePID==pid){
+			$(this).parent('.date_p').show();
+			$(this).parents("li").find(".my_hy_box").hide();
+			showtip('不能重复评价');
+		}else{
+			$(this).parent('.date_p').hide();
+			$(this).parents("li").find(".my_hy_box").show();
+		}
+	})
+	
+	
+	
 	//商家回复评论
-	$('.btn_reply').click(function(){
-		_id = $('#replymsg').attr('rel');
-		_msg = $('#replymsg').val();
-		showloading();
-		if(_id && _msg){
+	$('.btn_reply').click(function(){			
+		serviceAppraisePID =$(this).parents('li').find("input").val();
+		_msg =$(this).parents("li").find("textarea").val();
+		
+				if(serviceAppraisePID && _msg){
 			$.ajax({
-				url: "/index.php?m=Home&c=Seller&a=reply",
-				data:{ id:_id, msg:_msg},
+				url: "/cn/c/replyComment",
+				data:{
+					"serviceAppraisePID":serviceAppraisePID, 
+					"content":_msg
+					},
 				type:"post",
 				dataType: 'json',
 				success: function(res){
-					showtip(res.msg);
-					if(res.state == 1){
-						setTimeout("location.reload();",1000);
+					if(res.code=="200"){
+						showtip(res.msg);
+						setTimeout(function(){
+							location.href="/cn/c/queryEvaluation?pageNum=1&pageSize=3";	
+						},1500);
+						
 					}
+					
+					
 				}
 			})
+								
+			
 		}else{
 			showtip('请填写回复内容');
 		}
+		
 	});
 	
 });
+
+/*
+function hy(t,pid,id){
+	if(pid==id){
+		showtip("你已回复过了，不能再回复了");
+		qx();
+	}else{
+		huying();
+	}
+}*/
+
+
 
 function footerPos(){
 	var winH = $(window).height();
@@ -516,6 +558,14 @@ function toshipsuccess(_lid){
 			$('#pop_bg').hide();
 		});
 	});
+<<<<<<< HEAD
+});9
+
+function changechk(){
+	$('#chkimg').attr('src','/index.php?m=Home&c=Index&a=verify&t='+(new Date().getTime()));
+}
+
+=======
 	
 	function changechk(){
 		$('#chkimg').attr('src','/index.php?m=Home&c=Index&a=verify&t='+(new Date().getTime()));
@@ -533,3 +583,4 @@ function toshipsuccess(_lid){
 			}
 		}); 
 	}
+>>>>>>> branch 'master' of https://github.com/QQTwo/KoreaTing.git
