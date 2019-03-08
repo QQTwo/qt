@@ -310,7 +310,7 @@ public class MerchantEnterAction {
 		obj.setOrderID(orderID);
 		obj.setUserID(loginUserID);
 		biz.submitReserve(obj);
-		return "redirect:/c/lhy/order/query/list";
+		return "redirect:/c/gsq/order/query/list";
 	}
 	/**
 	 * 收藏服务
@@ -330,6 +330,29 @@ public class MerchantEnterAction {
 			message.put("msg", "已收藏");
 		}else {
 			biz.deleteSerCollection(uid, sid);
+			message.put("code", "200");
+			message.put("msg", "取消收藏");
+		}
+		return message;
+	}
+	/**
+	 * 收藏店铺
+	 * @param session
+	 * @param sid
+	 * @return
+	 */
+	@GetMapping("api/postCollection")
+	@ResponseBody
+	public Map<String,String> postCollection(HttpSession session,Integer pid){
+		Map<String,String> message = new HashMap<String,String>();
+		User loginUser = (User)session.getAttribute("USER");
+		Integer uid = loginUser.getUserid();
+		if(biz.queryUserPostCollectionCheck(uid, pid)==null) {
+			biz.savePostCollection(uid, pid);
+			message.put("code", "200");
+			message.put("msg", "已收藏");
+		}else {
+			biz.deletePostCollection(uid, pid);
 			message.put("code", "200");
 			message.put("msg", "取消收藏");
 		}

@@ -17,6 +17,19 @@ function showtip(msg){
 	//layer.alert(msg, {closeBtn:1});
 }
 
+//删除收藏服务
+function delservers(id){
+	jQuery.getJSON("/c/cn/api/serviceCollection",{"sid":id},function(result){
+		location.reload();
+	});
+}
+//删除收藏店铺
+function delshops(id){
+	jQuery.getJSON("/c/cn/api/postCollection",{"pid":id},function(result){
+		location.reload();
+	});
+}
+
 function showConfirm(_msg, _func){
 
 	layer.confirm(_msg, {
@@ -25,7 +38,7 @@ function showConfirm(_msg, _func){
 
 		closetip();
 		eval(_func);
-	
+	WW
 	}, function(){
 		closetip();
 	});
@@ -150,6 +163,7 @@ $(function(){
 		$(this).parent().siblings('.my_hy_box').show();
 	});
 	
+	
 	//取消评价
 	$('.btn_jy_a4').click(function(){
 		$(this).parent().parent('.my_hy_box').hide();
@@ -181,6 +195,7 @@ $(function(){
 	});
 	
 	//取消回应
+	
 	$('.btn_jy_a4_2').click(function(){
 		$(this).parent().parent('.my_hy_box').hide();
 		$(this).parent().parent().siblings('.my_evaluation_text').children('.mt0').show();
@@ -272,13 +287,14 @@ $(function(){
  		_id = $(this).attr('rel');
        showConfirm('是否要删除此收藏？', "delservers("+_id+")");		
 	});
-
+	
 	
 	//删除收藏商家 
 	$('.collection_btndel').click(function(){
 		_id = $(this).attr('rel');
 		showConfirm('是否要删除此收藏？', "delshops("+_id+")");        
 	});
+	
 	
 	//删除站内信
 	$('.smsdel').click(function(){
@@ -310,30 +326,70 @@ $(function(){
 		});
 	});
 	
+	//回应评价
+	$(".btna_hy_a").click(function(){
+		serviceAppraisePID =$(this).parents('li').find("input").val();
+		var pid=$(this).attr("pid");
+		
+		if(serviceAppraisePID==pid){
+			$(this).parent('.date_p').show();
+			$(this).parents("li").find(".my_hy_box").hide();
+			showtip('不能重复评价');
+		}else{
+			$(this).parent('.date_p').hide();
+			$(this).parents("li").find(".my_hy_box").show();
+		}
+	})
+	
+	
+	
 	//商家回复评论
-	$('.btn_reply').click(function(){
-		_id = $('#replymsg').attr('rel');
-		_msg = $('#replymsg').val();
-		showloading();
-		if(_id && _msg){
+	$('.btn_reply').click(function(){			
+		serviceAppraisePID =$(this).parents('li').find("input").val();
+		_msg =$(this).parents("li").find("textarea").val();
+		
+				if(serviceAppraisePID && _msg){
 			$.ajax({
-				url: "/index.php?m=Home&c=Seller&a=reply",
-				data:{ id:_id, msg:_msg},
+				url: "/cn/c/replyComment",
+				data:{
+					"serviceAppraisePID":serviceAppraisePID, 
+					"content":_msg
+					},
 				type:"post",
 				dataType: 'json',
 				success: function(res){
-					showtip(res.msg);
-					if(res.state == 1){
-						setTimeout("location.reload();",1000);
+					if(res.code=="200"){
+						showtip(res.msg);
+						setTimeout(function(){
+							location.href="/cn/c/queryEvaluation?pageNum=1&pageSize=3";	
+						},1500);
+						
 					}
+					
+					
 				}
 			})
+								
+			
 		}else{
 			showtip('请填写回复内容');
 		}
+		
 	});
 	
 });
+
+/*
+function hy(t,pid,id){
+	if(pid==id){
+		showtip("你已回复过了，不能再回复了");
+		qx();
+	}else{
+		huying();
+	}
+}*/
+
+
 
 function footerPos(){
 	var winH = $(window).height();
@@ -496,14 +552,35 @@ function toshipsuccess(_lid){
 	})
 }
 
-$(function(){
-	$('.c_pop_close').click(function(){
-		$('.com_pop_box').hide();
-		$('#pop_bg').hide();
+	$(function(){
+		$('.c_pop_close').click(function(){
+			$('.com_pop_box').hide();
+			$('#pop_bg').hide();
+		});
 	});
-});
+<<<<<<< HEAD
+});9
 
 function changechk(){
 	$('#chkimg').attr('src','/index.php?m=Home&c=Index&a=verify&t='+(new Date().getTime()));
 }
 
+=======
+	
+	function changechk(){
+		$('#chkimg').attr('src','/index.php?m=Home&c=Index&a=verify&t='+(new Date().getTime()));
+	}
+	
+	//签到
+	function sign(){
+		$.post("/c/gsq/user/updateUsersign",function(ret){
+			if(ret.code == 200){
+				layer.msg("签到成功！");
+				jQuery(".qdao").hide();
+				jQuery(".qdao2").show();
+			} else if(ret.code == 500){
+				layer.msg("系统正忙，请稍后再试");
+			}
+		}); 
+	}
+>>>>>>> branch 'master' of https://github.com/QQTwo/KoreaTing.git

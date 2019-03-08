@@ -35,7 +35,7 @@ public interface RefundDao {
 	boolean updateRefund(@Param("refund") Refund refund);
 
 	/**
-	 * 查询收到的退款列表
+	 * 查询收到的退款列表 
 	 * 
 	 * @param userid
 	 *            用户编号

@@ -77,7 +77,18 @@ public class Services {
 
     private String adminopinion;
 
-    public Integer getServiceid() {
+    private Integer creditScore;
+    
+    
+    public Integer getCreditScore() {
+		return creditScore;
+	}
+
+	public void setCreditScore(Integer creditScore) {
+		this.creditScore = creditScore;
+	}
+
+	public Integer getServiceid() {
         return serviceid;
     }
     

@@ -212,6 +212,36 @@
 				LEFT JOIN appraisalapply ON userID=#{userid} AND serviceType.`stid`=appraisalapply.`stid`
 				WHERE serviceType.stid IN(#{oneid},#{twoid})
 		</select>
+	<!-- 查询用户评价 -->
+	<select id="queryEvaluation" resultMap="EvaluationMap">
+		SELECT  es.serviceAppraiseID, s.servicetitle,u.`userID`,u.`userImgPath`,u.`userName`,es.`serviceAppraiseLevel`,es.`serviceAppraiseContent`,es.`serviceAppraiseDate`
+		FROM `evaluationservice` AS es
+		INNER JOIN services s
+		ON es.serviceId=s.serviceid	
+		INNER JOIN `user` AS u
+		ON u.`userID` = es.`userID`
+		WHERE `serviceAppraisePID` = 0 AND u.`userid` = #{userid}		
+	</select>
 		
-		
+	<!-- 商家回复评价 -->
+	<insert id="replyComment">			
+INSERT INTO evaluationservice (serviceAppraiseContent,serviceAppraisePID)VALUE(#{content},#{serviceAppraisePID});	
+	</insert>
+	
+	<resultMap type="com.accp.vo.cn2.EvaluationVo" id="EvaluationMap">
+		<result column="serviceAppraiseID" property="serviceAppraiseID"/>
+		<result column="userid" property="userid"/>
+		<result column="userimgpath" property="userimgpath"/>
+		<result column="username" property="username"/>
+		<result column="servicetitle" property="servicetitle"/>
+		<result column="serviceappraisecontent" property="serviceappraisecontent"/>
+		<result column="serviceappraisedate" property="serviceappraisedate"/>
+		<result column="serviceappraiselevel" property="serviceappraiselevel"/>
+		<association property="evaluation" select="queryShopReply" column="serviceAppraiseID"></association>
+	</resultMap>
+	
+	<!-- 查询店家回复 -->
+	<select id="queryShopReply" resultType="com.accp.pojo.Evaluationservice">
+			SELECT * FROM evaluationservice WHERE serviceAppraisePID=#{0}
+	</select> 
 </mapper>    

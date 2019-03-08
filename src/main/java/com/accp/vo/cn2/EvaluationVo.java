@@ -2,14 +2,36 @@ package com.accp.vo.cn2;
 
 import java.util.Date;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
+import com.accp.pojo.Evaluationservice;
+
 public class EvaluationVo {
+			private int serviceAppraiseID;
+			public int getServiceAppraiseID() {
+				return serviceAppraiseID;
+			}
+			public void setServiceAppraiseID(int serviceAppraiseID) {
+				this.serviceAppraiseID = serviceAppraiseID;
+			}
 			private int userid;
 			private String userimgpath;
 			private String username;
 			private String servicetitle;
 			private String   serviceappraisecontent;
+			@DateTimeFormat(pattern="yyyy-MM-dd")
 			private Date   serviceappraisedate;
 			private int serviceappraiselevel;
+			
+			private Evaluationservice evaluation;
+			
+			
+			public Evaluationservice getEvaluation() {
+				return evaluation;
+			}
+			public void setEvaluation(Evaluationservice evaluation) {
+				this.evaluation = evaluation;
+			}
 			public String getUserimgpath() {
 				return userimgpath;
 			}
