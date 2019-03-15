@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.accp.dao.ylh.ISericesDao">
+	<!-- <select id="queryServicetype " resultMap="servicetype">
+		SELECT * FROM Servicetype
+		WHERE stpid=#{stpid}
+	</select> -->
+	
+	<insert id="addServices" >
+		insert into Services(stid,userid,resourceid,servicetitle,servicefutitle,downloadtitle,serviceprice,servicecoverimg,serviceimgurlone,serviceimgurltwo,serviceimgurlthree,serviceimgurlfour,servicecosttypeid,serviceintro,servicecity,country,servicecostinclude,servicestartdate,serviceenddate,schoolregion,schoolnamebycn,majoynamebycn,schoolnamebyrok,majoynamebyrok,goodatmajoy,hospitalname,servicehour,uploaddataurl,releasetime,browsenumber,weight,recommendbool,shelfstate,auditstatus)
+		values(#{s.stid},#{s.userid},#{s.resourceid},#{s.servicetitle},#{s.servicefutitle},#{s.downloadtitle},#{s.serviceprice},#{s.servicecoverimg},#{s.serviceimgurlone},#{s.serviceimgurltwo},#{s.serviceimgurlthree},#{s.serviceimgurlfour},#{s.servicecosttypeid},#{s.serviceintro},#{s.servicecity},#{s.country},#{s.servicecostinclude},#{s.servicestartdate},#{s.serviceenddate},#{s.schoolregion},#{s.schoolnamebycn},#{s.majoynamebycn},#{s.schoolnamebyrok},#{s.majoynamebyrok},#{s.goodatmajoy},#{s.hospitalname},#{s.servicehour},#{s.uploaddataurl},#{s.releasetime},#{s.browsenumber},#{s.weight},#{s.recommendbool},#{s.shelfstate},#{s.auditstatus})
+	</insert>
+	
+	<!-- <select id="queryServicecosttype " resultMap="servicecosttype">
+		SELECT * FROM servicecosttype
+		WHERE stid=#{stid}
+	</select> -->
+	
+	 <select id="queryMajortype" resultType="majortype">
+		SELECT * FROM Majortype
+	</select> 
+	
+	<select id="queryGoldnotes" resultType="goldnotes">
+		SELECT * FROM goldnotes
+		<where>
+		<if test="userid!=0"> and userid=#{userid}</if>
+		<if test="acquisitionmode!=0">and acquisitionmode=#{acquisitionmode} </if>		 
+		</where>
+	</select> 
+	<!-- 用户表 -->
+	<select id="queryUser" resultType="user">
+		SELECT * FROM user where userid=#{userid}
+	</select> 
+	<!-- 金币表 -->
+	<select id="queryIntegralrecord" resultType="integralrecord">
+		SELECT * FROM integralrecord where userid=#{userid}
+	</select>
+	<!-- 提现金币 -->
+	<insert id="addPutforward">
+		insert into Putforward(userid,putname,bankid,bankaccount,openbankname,submittime,audittime,money,auditstatus)
+		values(#{s.userid},#{s.putname},#{s.bankid},#{s.bankaccount},#{s.openbankname},#{s.submittime},#{s.audittime},#{s.money},#{s.auditstatus})
+	</insert>
+	<!-- 扣除金币 -->
+	<update id="updateUser">
+		update `User` set usermoney = usermoney- #{usermoney} where userid=#{userid}
+		
+	</update>
+	
+	<select id="queryServices" resultType="services">
+		SELECT a.userid,b.stname,a.servicecoverimg,a.recommendbool FROM services AS a JOIN Servicetype AS b   ON a.stid=b.stid  WHERE userid=#{userid}
+	</select>
+</mapper>

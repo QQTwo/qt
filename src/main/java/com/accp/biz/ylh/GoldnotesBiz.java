@@ -68,12 +68,12 @@ public class GoldnotesBiz {
 		dao.addPutforWard(putforward);
 		
 		Date currentTime = new Date();
-		SimpleDateFormat formatter = new SimpleDateFormat("yyyyMMddHHmmss");
+		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		String dateString = formatter.format(currentTime);
 		
 		News news=new News();
     	news.setAddressee(putforward.getUserid());
-    	news.setContent("您于"+dateString+"进行金币提现");
+    	news.setContent("您于 "+dateString+" 进行金币提现，剩余金额为："+money);
     	news.setMessagegroup(2);
     	news.setNewstype(1);
     	news.setReadstate(false);
@@ -88,11 +88,11 @@ public class GoldnotesBiz {
     @Transactional(propagation = Propagation.REQUIRED, isolation = Isolation.READ_COMMITTED, readOnly = false)
 	public void addGoldnotes(Goldnotes  goldnotes) {
     	Date currentTime = new Date();
-		SimpleDateFormat formatter = new SimpleDateFormat("yyyyMMddHHmmss");
+		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		String dateString = formatter.format(currentTime);
     	News news=new News();
     	news.setAddressee(goldnotes.getUserid());
-    	news.setContent("您于"+dateString+"进行了充值");
+    	news.setContent("您于 "+dateString+" 充值了 "+goldnotes.getRecordinandout()+" 金币");
     	news.setMessagegroup(1);
     	news.setNewstype(1);
     	news.setReadstate(false);

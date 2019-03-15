@@ -124,7 +124,7 @@
 						th:remove="${PAGE_INFO.list.size()==0?'none':'all-but-first'}">
 						<tr th:each="temp,iterState:${PAGE_INFO.list}">
 							<td th:text="${#dates.format(temp.irdate,'yyyy-MM-dd HH:mm:ss')}">2000-12-13</td>
-							<td th:text="${temp.recordinandout}">+</td>
+							<td th:text="${temp.recordinandout}>0?'+'+${temp.recordinandout}:${temp.recordinandout}">+</td>
 							<td th:text="${temp.irdescribe}">记录描述</td>
 						</tr>
 					</tbody>

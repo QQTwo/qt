@@ -172,7 +172,7 @@ public class UserAction {
 	        	System.out.println(password);
 	            String decryptByPrivateKey = RSAUtils.decryptByPrivateKey(password, (RSAPrivateKey) object);
 	            System.out.println(decryptByPrivateKey);
-	            User u=biz.login(email, decryptByPrivateKey);
+	            User u = biz.login(email, decryptByPrivateKey);
 	    		if(u!=null) {
 	    			session.setAttribute("USER", u);
 	    			session.setAttribute("Email", email);
@@ -230,7 +230,8 @@ public class UserAction {
 	 * @return
 	 */
 	@RequestMapping(value="/user/queryGrzxInfo",method=RequestMethod.GET)
-	public String queryGrzxInfo(){
+	public String queryGrzxInfo(Integer jiumima,Model model){
+		model.addAttribute("jiumima", jiumima);
 		return "zhsz-grzl.html";
 	}
 	/**
@@ -293,12 +294,16 @@ public class UserAction {
 	 * @return
 	 */
 	@RequestMapping(value="/user/updateEmailPwd",method=RequestMethod.POST)
-	public String updateEmailPwd(HttpSession session,String password) {
+	public String updateEmailPwd(HttpSession session,String pastpassword,String password) {
 		String email=session.getAttribute("Email").toString();
-		biz.updatePwd(email, password);
-		session.removeAttribute("USER");
-		session.removeAttribute("Email");
-		return "szy-login.html";
+		if(biz.login(email, pastpassword)!=null) {
+			biz.updatePwd(email, password);
+			session.removeAttribute("USER");
+			session.removeAttribute("Email");
+			return "szy-login.html";
+		} else {
+			return "redirect:c/gsq/user/queryGrzxInfo?jiumima="+pastpassword+"";
+		}
 	}
 	/**
 	 * 店铺设置
@@ -563,7 +568,7 @@ public class UserAction {
 	@RequestMapping(value="/user/updateUsersign",method=RequestMethod.POST)
 	@ResponseBody
 	public Map<String,String> updateUsersign(HttpSession session) {
-		
+
 		Map<String,String> map=new HashMap<>();
 		Integer userID=((User)session.getAttribute("USER")).getUserid();
 		try {

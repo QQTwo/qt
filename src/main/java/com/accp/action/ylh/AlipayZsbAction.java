@@ -15,11 +15,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.accp.action.config.AlipayConfig;
 import com.accp.biz.ylh.GoldnotesBiz;
 import com.accp.pojo.Goldnotes;
 import com.accp.pojo.User;
+import com.accp.vo.gsq.OrderInfo;
 import com.alipay.api.AlipayApiException;
 import com.alipay.api.AlipayClient;
 import com.alipay.api.DefaultAlipayClient;
@@ -169,7 +171,8 @@ public class AlipayZsbAction {// response
 	@RequestMapping("viewOrder")
 	public void viewOrder(HttpSession session,HttpServletRequest req, Model mod, HttpServletResponse rep,Goldnotes goldnotes) throws AlipayApiException, IOException {
 		Integer userId=((User)session.getAttribute("USER")).getUserid();
-	
+		String userName = ((User)session.getAttribute("USER")).getUsername();
+		
 		//获得初始化的AlipayClient
 		goldnotes.setUserid(userId);
 		goldnotes.setRecorddate(new Date());
@@ -188,7 +191,7 @@ public class AlipayZsbAction {// response
 		//付款金额，必填
 		String total_amount =goldnotes.getRecordinandout().toString();//recordInAndOut
 		//订单名称，必填
-	    String subject =goldnotes.getUserid().toString()+"账号充值";
+	    String subject ="【韩汀·社区】 "+userName+" 账号充值";
 		//商品描述，可空
 		String body ="";
 		
@@ -221,7 +224,7 @@ public class AlipayZsbAction {// response
 						: valueStr + values[i] + ",";
 			}
 			//乱码解决，这段代码在出现乱码时使用
-			valueStr = new String(valueStr.getBytes("ISO-8859-1"), "utf-8");
+//			valueStr = new String(valueStr.getBytes("ISO-8859-1"), "utf-8");
 			params.put(name, valueStr);
 		}
 		
@@ -246,7 +249,7 @@ public class AlipayZsbAction {// response
 			request.setAttribute("reason", "验签失败");
 		}
 		request.setAttribute("signVerified", signVerified);
-		return "redirect:/zsp/c/goldnotesQueryAll";
+		return "redirect:/ylh/c/goldnotesQueryAll";
 	}
 	@RequestMapping("notify_url")
 	public String notifyUrl(HttpSession session, HttpServletRequest request, HttpServletResponse response)
@@ -278,8 +281,6 @@ public class AlipayZsbAction {// response
 		
 			//交易状态
 			String trade_status = new String(request.getParameter("trade_status").getBytes("ISO-8859-1"),"UTF-8");
-			
-			
 			
 			String total_amount = new String(request.getParameter("total_amount").getBytes("ISO-8859-1"),"UTF-8");
 			request.setAttribute("out_trade_no", out_trade_no);

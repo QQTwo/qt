@@ -17,7 +17,7 @@ public class Goldnotes {
 
     private Integer auditstatus;
 
-    public Integer getRecordid() {
+	public Integer getRecordid() {
         return recordid;
     }
 

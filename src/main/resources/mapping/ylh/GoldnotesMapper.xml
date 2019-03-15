@@ -116,7 +116,7 @@ SELECT * FROM `goldnoTes` WHERE recordId=#{recordId};
 WHERE u.userid=#{userId}
 </select>
 <select id="getServicesByUserId" resultType="services">
-    SELECT s.*,u.`creditScore` FROM `services` AS s 
+    SELECT s.*,u.`merchantLevel` FROM `services` AS s 
   	LEFT JOIN `user` AS u ON s.`userID` = u.`userID`
     WHERE s.serviceId IN
     (SELECT serviceId FROM  ServiceCollection WHERE userId=#{userId})
@@ -160,6 +160,7 @@ WHERE u.userid=#{userId}
 	             <if test="news.messagegroup">messageGroup=#{news.messagegroup},</if>
 	       </set>
 	</insert>
+	<!-- 添加积分流向操作记录表 -->
 	<insert id="addIntegralRecord">
 	    INSERT INTO integralRecord 
 	    <set>

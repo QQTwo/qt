@@ -87,7 +87,6 @@ public class GoldnotesAction {
 		model.addAttribute("USER",users);
 		return "grzx-points";
 	}
-
 	/**
 	 * 添加金币提现记录流向表
 	 * 
@@ -101,9 +100,8 @@ public class GoldnotesAction {
 		Integer userId=((User)session.getAttribute("USER")).getUserid();
 		putforward.setSubmittime(new Date());
 		putforward.setUserid(userId);
-		
 		biz.addPutforWard(putforward);
-		return "redirect:/zsp/c/goldnotesQueryAll";
+		return "redirect:/ylh/c/goldnotesQueryAll";
 	}
 /**
  * 添加金币充值记录流向表
@@ -119,7 +117,7 @@ public class GoldnotesAction {
 		goldnotes.setRecorddate(new Date());
 		goldnotes.setAcquisitionmode(5);
 		biz.addGoldnotes(goldnotes);
-		return "redirect:/zsp/c/goldnotesQueryAll";
+		return "redirect:/ylh/c/goldnotesQueryAll";
 	}
 
 /**
@@ -235,7 +233,7 @@ public class GoldnotesAction {
 		String orderid=WlliusUtil.Getnum();
 		logistics.setOrderid(orderid);
 		biz.addLogistics(logistics);
-		return "redirect:/zsp/c/getListLogistics";
+		return "redirect:/ylh/c/getListLogistics";
 	}
 	/**
 	 * 查询物流记录详情
@@ -400,7 +398,7 @@ public class GoldnotesAction {
 		logistics.setNumbertime1(new Date());
 		logistics.setAuditstatus(4);
 		biz.updatedLogistics(logistics);
-		return "redirect:/zsp/c/getListLogistics";
+		return "redirect:/ylh/c/getListLogistics";
 	}
 	@GetMapping("xiugai")
 	public String xiugai(Model model, HttpSession session,Integer id) {
@@ -420,6 +418,6 @@ public class GoldnotesAction {
         System.out.println("    rere         "+shareaid33);
         logistics.setUserid(userId);
 		biz.updatedLogistics(logistics);
-		return "redirect:/zsp/c/getListLogistics";
+		return "redirect:/ylh/c/getListLogistics";
 	}
 }

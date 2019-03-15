@@ -133,7 +133,7 @@
 							<tr th:each="temp,iterState:${PAGE_INFO.list}">
  								<td th:text="${#dates.format(temp.recorddate,'yyyy-MM-dd HH:mm:ss')}">2000-12-13</td><!--  hh:mm:ss -->
  								<td th:text="${temp.recorddescribe}"></td>
-								<td th:text="${temp.recordinandout}">记录描述</td>
+								<td th:text="${temp.recordinandout}>0?'+'+${temp.recordinandout}:${temp.recordinandout}">记录描述</td>
 								<td th:if="${temp.auditstatus==1}">待审核</td>
 								<td th:if="${temp.auditstatus==2}">审核成功</td>
 								<td th:if="${temp.auditstatus==3}">审核失败</td>
