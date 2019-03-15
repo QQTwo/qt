@@ -77,16 +77,20 @@ public class Services {
 
     private String adminopinion;
 
-    private Integer creditScore;
+    private Integer merchantLevel;
     
     
-    public Integer getCreditScore() {
-		return creditScore;
+	public Integer getMerchantLevel() {
+		return merchantLevel;
 	}
 
-	public void setCreditScore(Integer creditScore) {
-		this.creditScore = creditScore;
+
+
+	public void setMerchantLevel(Integer merchantLevel) {
+		this.merchantLevel = merchantLevel;
 	}
+
+
 
 	public Integer getServiceid() {
         return serviceid;

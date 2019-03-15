@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 
 	<head>
 		<meta charset="utf-8" />
@@ -103,6 +103,10 @@
 						<div class="member_system_r_top mt25">修改密码</div>
 						<ul class="member_zl_ul change_ps">
 							<li>
+								<span class="m_zl_sp">旧密码</span>
+								<div class="m_zl_r"><input type="password" id="pas" name="pastpassword" placeholder="当前密码" class="input_c w350 validate[required]" th:value="${jiumima}"></div>
+							</li>
+							<li>
 								<span class="m_zl_sp">新密码</span>
 								<div class="m_zl_r"><input type="password" name="password" id="pass" placeholder="新密码" class="input_c w350 validate[required]"></div>
 							</li>
@@ -173,10 +177,19 @@
 	<script type="text/javascript" src="/Public/js/zhsz-href.js"></script>
 	<script type="text/javascript" src="/Public/js/sessionHeader.js"></script>
 <script type="text/javascript" src="/Public/js/headLeftNav.js"></script>
-<script type="text/javascript">
+<script type="text/javascript" src="/Public/js/layer/layer.js"></script>
+<script type="text/javascript"  th:inline="javascript">
+	if($("#pas").val() != ''){
+		layer.msg("旧密码错误!");
+	}
 	function submit1(){
+		var jiu = $("#pas").val();
 		var pwd=$("[name=password]").val();
 		var pwd2=$("[name=pass2]").val();
+		if(jiu==""){
+			layer.msg("请填写完整密码信息！");
+			return false;
+		}
 		if(pwd==""||pwd2==""){
 			layer.msg("请填写完整密码信息！");
 			return false;

@@ -1,13 +1,13 @@
  ydfwHref="/c/gsq/order/query/list";
  xzHref="javascript:void(0)";
- tzHref="javascript:void(0)";
+ tzHref="/c/tty/myPost?type=1&page=1&title=";
  scHref="/ylh/c/getServicesByUserId";
  jbHref="/ylh/c/goldnotesQueryAll";
  jfHref="/ylh/c/QueryAll";
  pjHref="/ylh/c/EvaluationService";
  tkHref="/c/gsq/refund/mjlist";
  wlHref="/ylh/c/getListLogistics";
- bzHref="javascript:void(0)";
+ bzHref="/fw-bzzx.html";
  $(".member_system_ul li:eq(0) a").attr("href",ydfwHref);
  $(".member_system_ul li:eq(1) a").attr("href",xzHref);
  $(".member_system_ul li:eq(2) a").attr("href",tzHref);

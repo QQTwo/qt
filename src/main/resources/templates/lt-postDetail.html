@@ -155,14 +155,15 @@
 							class="sc_ic"></span>收藏&nbsp;<font
 							th:text="${POSTVO.collectionnumber}">3</font></a>
 						<div class="shear_show_d">
-							<div class="bdsharebuttonbox bdshare-button-style0-24"
-								data-bd-bind="1539914596776">
-								<a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a><a
-									href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a><a
-									href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a><a
-									href="#" class="bds_fbook" data-cmd="fbook" title="分享到Facebook"></a><a
-									href="#" class="bds_more" data-cmd="more"></a>
+							<div class="bdsharebuttonbox" data-tag="share_1">
+								<a class="bds_weixin" data-cmd="weixin" href="#"></a>
+								<a class="bds_qzone" data-cmd="qzone" href="#"></a>
+								<a class="bds_tsina" data-cmd="tsina"></a>
+								<a class="bds_renren" data-cmd="renren"></a>
+								<a class="bds_tqq" data-cmd="tqq"></a>
+								<a class="bds_more" data-cmd="more">更多</a>
 							</div>
+
 						</div>
 					</div>
 
@@ -481,9 +482,11 @@
 			<div class="t_c">
 				<a href="javascript:void(0);" class="btn_jba">举报</a>
 			</div>
+			
 			<input type="hidden" name="__hash__"
 				value="7f7418b74e88ee86446521ffaa06f686_98345e7d9252a993b1514a431135b51a">
 		</form>
+		
 	</div>
 
 	<div class="pop_con2">
@@ -502,7 +505,7 @@
 	<!--pop bg end-->
 </body>
 <script type="text/javascript" src="/Public/js/sessionHeader.js"></script>
-<script type="text/javascript">
+<script type="text/javascript" >
 	$("[data-page=[[${PAGE_INFO.pageNum}]]]").addClass("cur");
 
 	//收藏
@@ -678,5 +681,29 @@
 		$("[name=mid]").val(0);
 		$("[name=msg]").attr("placeholder", "回应");
 	})
+	window._bd_share_config = {
+		common : {
+			bdText : '【[[${POSTVO.title}]]__韩汀·社区】',	
+			bdDesc : '[[${POSTVO.content}]]'+''
+		},
+		share : [{
+			"bdSize" : 16
+		}],
+		slide : [{	   
+			bdImg : 0,
+			bdPos : "right",
+			bdTop : 100
+		}],
+		image : [{
+			viewType : 'list',
+			viewPos : 'top',
+			viewColor : 'black',
+			viewSize : '24',
+			viewList : ['qzone','tsina','huaban','tqq','renren']
+		}],
+		selectShare : [{
+			"bdselectMiniList" : ['qzone','tqq','kaixin001','bdxc','tqf']
+		}]
+	}
 </script>
 </html>

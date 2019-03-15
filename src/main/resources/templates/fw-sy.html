@@ -46,7 +46,7 @@
 						<a href=""><span class="community_sp csp6"></span><br>韩汀物流</a>
 					</li>
 					<li>
-						<a href="/c/sxy/column?pid=1&page=1&orderId=1&essence=0"><span class="community_sp csp7"></span><br>韩汀·论坛 中文</a>
+						<a href="/c/tty/column?pid=1&page=1&orderId=1&essence=0"><span class="community_sp csp7"></span><br>韩汀·论坛 中文</a>
 					</li>
 				</ul>
 			</div>
@@ -57,7 +57,7 @@
 		<div id="index_banner" class="owl-carousel owl-theme" style="opacity: 1; display: block;">
 			<div class="owl-wrapper-outer">
 				<div class="owl-wrapper" style=" left: 0px; display: block; transition: all 0ms ease 0s; transform: translate3d(0px, 0px, 0px);">
-					<div class="owl-item" th:each="temp,iter : ${homeSlideshowList}" th:style="|width:${temp.whObj.width}px; height:${temp.whObj.height}px;|" >
+					<div class="owl-item" th:each="temp,iter : ${homeSlideshowList}" style="width:1519px;" >
 						<div class="item">
 							<a th:href="${temp.apcurl}"><img th:src="${temp.aimgpath}" th:alt="${temp.atitle}" class="w100"></a>
 						</div>
@@ -318,10 +318,10 @@
 														<dd>
 															<p class="study_p1">
 																<a href="javascript:void(0);" th:text="${temp.userName}">say goodbye</a> •
-																<a href="/index.php/Home/Bbs/lists/cid/109.html" th:text="${temp.fmName}">财经类</a>
+																<a th:text="${temp.fmName}">财经类</a>
 																 • [[${temp.replyUserTime!=null&&temp.replyUserTime!=''?temp.replyUserTime+'前':''}]]<span class="bbs_dot" th:if="${temp.replyUserTime!=null&&temp.replyUserTime!=''}">·</span>
 																 <span th:if="${temp.replyUserTime!=null&&temp.replyUserTime!=''}">最后回复</span>
-																<a href="/index.php/Home/Homepage/index/sid/270.html" class="lst_nem" th:text="${temp.replyUserName}" th:if="${temp.replyUserTime!=null&&temp.replyUserTime!=''}">make Bug</a>
+																<a class="lst_nem" th:text="${temp.replyUserName}" th:if="${temp.replyUserTime!=null&&temp.replyUserTime!=''}">make Bug</a>
 															</p>
 															<p class="date_sp" th:text="${temp.releaseTime+'前'}">18天前 </p>
 														</dd>
@@ -337,10 +337,10 @@
 														<dd>
 															<p class="study_p1">
 																<a href="javascript:void(0);" th:text="${temp.userName}">say goodbye</a> •
-																<a href="/index.php/Home/Bbs/lists/cid/109.html" th:text="${temp.fmName}">财经类</a>
+																<a th:text="${temp.fmName}">财经类</a>
 																 • [[${temp.replyUserTime!=null&&temp.replyUserTime!=''?temp.replyUserTime+'前':''}]]<span class="bbs_dot" th:if="${temp.replyUserTime!=null&&temp.replyUserTime!=''}">·</span>
 																 <span th:if="${temp.replyUserTime!=null&&temp.replyUserTime!=''}">最后回复</span>
-																<a href="/index.php/Home/Homepage/index/sid/270.html" class="lst_nem" th:text="${temp.replyUserName}" th:if="${temp.replyUserTime!=null&&temp.replyUserTime!=''}">make Bug</a>
+																<a class="lst_nem" th:text="${temp.replyUserName}" th:if="${temp.replyUserTime!=null&&temp.replyUserTime!=''}">make Bug</a>
 															</p>
 															<p class="date_sp" th:text="${temp.releaseTime+'前'}">18天前 </p>
 														</dd>
@@ -349,7 +349,7 @@
 											</ul>
 
 											<div class="study_right">
-												<a href="/index.php/Home/Bbs/lists/cid/9.html" class="study_style">美妆天地</a>
+												<a class="study_style">美妆天地</a>
 												<ul class="study_video_ul">
 													<li class="last" th:each="temp,iter : ${homePostMakeUpList}" th:if="${iter.count<=3}">
 														<div class="study_video_img">
@@ -376,10 +376,10 @@
 														<dd>
 															<p class="study_p1">
 																<a href="javascript:void(0);" th:text="${temp.userName}">say goodbye</a> •
-																<a href="/index.php/Home/Bbs/lists/cid/109.html" th:text="${temp.fmName}">财经类</a>
+																<a th:text="${temp.fmName}">财经类</a>
 																 • [[${temp.replyUserTime!=null&&temp.replyUserTime!=''?temp.replyUserTime+'前':''}]]<span class="bbs_dot" th:if="${temp.replyUserTime!=null&&temp.replyUserTime!=''}">·</span>
 																 <span th:if="${temp.replyUserTime!=null&&temp.replyUserTime!=''}">最后回复</span>
-																<a href="/index.php/Home/Homepage/index/sid/270.html" class="lst_nem" th:text="${temp.replyUserName}" th:if="${temp.replyUserTime!=null&&temp.replyUserTime!=''}">make Bug</a>
+																<a class="lst_nem" th:text="${temp.replyUserName}" th:if="${temp.replyUserTime!=null&&temp.replyUserTime!=''}">make Bug</a>
 															</p>
 															<p class="date_sp" th:text="${temp.releaseTime+'前'}">18天前 </p>
 														</dd>
@@ -395,10 +395,10 @@
 														<dd>
 															<p class="study_p1">
 																<a href="javascript:void(0);" th:text="${temp.userName}">say goodbye</a> •
-																<a href="/index.php/Home/Bbs/lists/cid/109.html" th:text="${temp.fmName}">财经类</a>
+																<a  th:text="${temp.fmName}">财经类</a>
 																 • [[${temp.replyUserTime!=null&&temp.replyUserTime!=''?temp.replyUserTime+'前':''}]]<span class="bbs_dot" th:if="${temp.replyUserTime!=null&&temp.replyUserTime!=''}">·</span>
 																 <span th:if="${temp.replyUserTime!=null&&temp.replyUserTime!=''}">最后回复</span>
-																<a href="/index.php/Home/Homepage/index/sid/270.html" class="lst_nem" th:text="${temp.replyUserName}" th:if="${temp.replyUserTime!=null&&temp.replyUserTime!=''}">make Bug</a>
+																<a class="lst_nem" th:text="${temp.replyUserName}" th:if="${temp.replyUserTime!=null&&temp.replyUserTime!=''}">make Bug</a>
 															</p>
 															<p class="date_sp" th:text="${temp.releaseTime+'前'}">18天前 </p>
 														</dd>
@@ -407,7 +407,7 @@
 											</ul>
 
 											<div class="study_right">
-												<a href="/index.php/Home/Bbs/lists/cid/9.html" class="study_style">美妆天地</a>
+												<a  class="study_style">美妆天地</a>
 												<ul class="study_video_ul">
 													<li class="last" th:each="temp,iter : ${homePostMakeUpList}" th:if="${iter.count>=4&&iter.count<=6}">
 														<div class="study_video_img">
@@ -434,10 +434,10 @@
 														<dd>
 															<p class="study_p1">
 																<a href="javascript:void(0);" th:text="${temp.userName}">say goodbye</a> •
-																<a href="/index.php/Home/Bbs/lists/cid/109.html" th:text="${temp.fmName}">财经类</a>
+																<a  th:text="${temp.fmName}">财经类</a>
 																 • [[${temp.replyUserTime!=null&&temp.replyUserTime!=''?temp.replyUserTime+'前':''}]]<span class="bbs_dot" th:if="${temp.replyUserTime!=null&&temp.replyUserTime!=''}">·</span>
 																 <span th:if="${temp.replyUserTime!=null&&temp.replyUserTime!=''}">最后回复</span>
-																<a href="/index.php/Home/Homepage/index/sid/270.html" class="lst_nem" th:text="${temp.replyUserName}" th:if="${temp.replyUserTime!=null&&temp.replyUserTime!=''}">make Bug</a>
+																<a class="lst_nem" th:text="${temp.replyUserName}" th:if="${temp.replyUserTime!=null&&temp.replyUserTime!=''}">make Bug</a>
 															</p>
 															<p class="date_sp" th:text="${temp.releaseTime+'前'}">18天前 </p>
 														</dd>
@@ -453,10 +453,10 @@
 														<dd>
 															<p class="study_p1">
 																<a href="javascript:void(0);" th:text="${temp.userName}">say goodbye</a> •
-																<a href="/index.php/Home/Bbs/lists/cid/109.html" th:text="${temp.fmName}">财经类</a>
+																<a  th:text="${temp.fmName}">财经类</a>
 																 • [[${temp.replyUserTime!=null&&temp.replyUserTime!=''?temp.replyUserTime+'前':''}]]<span class="bbs_dot" th:if="${temp.replyUserTime!=null&&temp.replyUserTime!=''}">·</span>
 																 <span th:if="${temp.replyUserTime!=null&&temp.replyUserTime!=''}">最后回复</span>
-																<a href="/index.php/Home/Homepage/index/sid/270.html" class="lst_nem" th:text="${temp.replyUserName}" th:if="${temp.replyUserTime!=null&&temp.replyUserTime!=''}">make Bug</a>
+																<a  class="lst_nem" th:text="${temp.replyUserName}" th:if="${temp.replyUserTime!=null&&temp.replyUserTime!=''}">make Bug</a>
 															</p>
 															<p class="date_sp" th:text="${temp.releaseTime+'前'}">18天前 </p>
 														</dd>
@@ -465,7 +465,7 @@
 											</ul>
 
 											<div class="study_right">
-												<a href="/index.php/Home/Bbs/lists/cid/9.html" class="study_style">美妆天地</a>
+												<a  class="study_style">美妆天地</a>
 												<ul class="study_video_ul">
 													<li class="last" th:each="temp,iter : ${homePostMakeUpList}" th:if="${iter.count>=7&&iter.count<=9}">
 														<div class="study_video_img">
@@ -493,7 +493,7 @@
 					</div>
 				</div>
 				<div class="bt_btn_d">
-					<a href="/index.php/Home/Bbs/index.html" class="btn_a_more btn_s2">查看更多<span class="sp_i_1"></span></a>
+					<a href="/c/tty/column?pid=1&page=1&orderId=1&essence=0" class="btn_a_more btn_s2">查看更多<span class="sp_i_1"></span></a>
 				</div>
 			</div>
 		</div>
@@ -504,7 +504,7 @@
 				<a href=""><img th:src="${homeBottomAdvertingList[0].aimgpath}" th:alt="${homeBottomAdvertingList[0].atitle}"  th:style="|width:${homeBottomAdvertingList[0].whObj.width}px; height:${homeBottomAdvertingList[0].whObj.height}px;|"></a>
 			</div>
 			<!--ad end-->
-			<a href="/index.php/Home/Member/seller.html" class="footer_text">
+			<a href="/c/cn/merchantEnterUrlCheck" class="footer_text">
 				<h2 class="index_h2_title c_0">加入我们<span class="c_1">•</span>招募韩国商家、华人</h2>
 				<div class="bg_ic_1">招募韩国商家、海外留学生、华人兼司机、导游</div>
 				<div class="bt_btn_d"><span class="btn_a_more bs_bt_a">商家入驻</span></div>
@@ -520,12 +520,12 @@
 		</dt>
 				<dd>
 					<p class="flink">
-						<a href="/index.php/Home/Member/seller.html">商家入驻</a>|
-						<a href="/index.php/Home/About/help.html">帮助中心</a>|
-						<a href="/index.php/Home/About/index/key/jobs.html">人才招聘</a>|
-						<a href="/index.php/Home/About/contact.html">联系我们</a>|
-						<a href="/index.php/Home/About/sitemap.html">网站地图</a>|
-						<a href="/index.php/Home/About/terms.html">使用条款</a>
+						<a href="/c/cn/merchantEnterUrlCheck">商家入驻</a>|
+						<a href="/fw-bzzx.html">帮助中心</a>|
+						<a href="#">人才招聘</a>|
+						<a href="#">联系我们</a>|
+						<a href="#">网站地图</a>|
+						<a href="#">使用条款</a>
 					</p>
 					<p>湘ICP备16017200号-2 | 地址：湖南省株洲市天元区丽景滨江二栋2502号 |网站负责人：夏先生 | 邮编：412000</p>
 

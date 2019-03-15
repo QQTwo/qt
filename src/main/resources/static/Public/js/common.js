@@ -558,15 +558,6 @@ function toshipsuccess(_lid){
 			$('#pop_bg').hide();
 		});
 	});
-<<<<<<< HEAD
-});9
-
-function changechk(){
-	$('#chkimg').attr('src','/index.php?m=Home&c=Index&a=verify&t='+(new Date().getTime()));
-}
-
-=======
-	
 	function changechk(){
 		$('#chkimg').attr('src','/index.php?m=Home&c=Index&a=verify&t='+(new Date().getTime()));
 	}
@@ -583,4 +574,3 @@ function changechk(){
 			}
 		}); 
 	}
->>>>>>> branch 'master' of https://github.com/QQTwo/KoreaTing.git
