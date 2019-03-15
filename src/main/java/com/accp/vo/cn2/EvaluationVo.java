@@ -32,7 +32,7 @@ public class EvaluationVo {
 			public void setEvaluation(Evaluationservice evaluation) {
 				this.evaluation = evaluation;
 			}
-			public String getUserimgpath() {
+		public String getUserimgpath() {
 				return userimgpath;
 			}
 			public void setUserimgpath(String userimgpath) {

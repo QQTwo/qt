@@ -6,6 +6,7 @@ import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -28,8 +29,7 @@ public class OrdersAction {
 	private OrdersBiz biz;
 	@Autowired
 	private UserBiz userBiz;
-	@Autowired
-	private  MerchantBiz  merchantBiz;
+	
 	/**
 	 * 查询当前用户所有订单信息
 	 * @param session
@@ -105,5 +105,14 @@ public class OrdersAction {
 		return "/sjrz-order-deatil.html";
 	}
 	
-	
+	/**
+	 * 删除我发布的服务之前的查询
+	 * 
+	 */
+	@RequestMapping(value="/order/querydelCount",method=RequestMethod.GET)
+	@ResponseBody
+	public int querydelCount(int serviceid) {
+		
+		return biz.querydelCount(serviceid);
+	}
 }

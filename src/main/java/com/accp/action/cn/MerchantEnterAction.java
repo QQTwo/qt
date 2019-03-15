@@ -247,6 +247,8 @@ public class MerchantEnterAction {
 		//评价查询
 		return biz.queryEvaluationserviceVO(num,size,sid);
 	}
+	
+	
 	/**
 	 * 举报商家
 	 * @param obj

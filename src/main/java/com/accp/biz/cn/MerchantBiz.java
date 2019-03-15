@@ -11,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.accp.dao.cn.IMerchantDao;
 import com.accp.pojo.Appraisalapply;
+import com.accp.pojo.Evaluationservice;
 import com.accp.pojo.Services;
 
 import com.accp.pojo.User;
@@ -88,8 +89,16 @@ public class MerchantBiz {
 	
 	//商家回复评价
 	@Transactional(propagation = Propagation.REQUIRED, isolation = Isolation.READ_COMMITTED, readOnly = false)
-	public void replyComment(String content,int serviceAppraisePID) {
+	public void replyComment(String content, int serviceAppraisePID) {
+	
 		merchantDao.replyComment(content, serviceAppraisePID);
 	}
+	//查看店家回复
+	  public Evaluationservice queryShopReply(int serviceAppraisePID) {
+		 
+		return  merchantDao.queryShopReply(serviceAppraisePID);
+	  }
+
+
 
 }

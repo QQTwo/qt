@@ -328,14 +328,17 @@ $(function(){
 	
 	//回应评价
 	$(".btna_hy_a").click(function(){
-		serviceAppraisePID =$(this).parents('li').find("input").val();
-		var pid=$(this).attr("pid");
+		serviceAppraisePID =$(this).parents('li').find("input:eq(0)").val();
+		var pid=$(this).parents('li').find("input:eq(1)").val();
 		
 		if(serviceAppraisePID==pid){
+			
+			showtip('不能重复评价');
 			$(this).parent('.date_p').show();
 			$(this).parents("li").find(".my_hy_box").hide();
-			showtip('不能重复评价');
+			
 		}else{
+			
 			$(this).parent('.date_p').hide();
 			$(this).parents("li").find(".my_hy_box").show();
 		}
@@ -467,23 +470,22 @@ function setarea(_pid,oname){
 
 //发送站内信
 function sendsms(){
-	_uid = $('#smsuid').val();
-	_msg = $('#smsmsg').val();
-	_rid = $("#reid").val();
-	if(_uid && _msg){
-		showloading();
+	
+	_uid = $('#addressee').val();	
+	_content = $("#smsmsg").val();
+	
+	if(_uid && _content){
+		
 		$.ajax({
-			data: {msg:_msg, uid:_uid, rid:_rid},
+			data: {thesender:_uid,content:_content,newstype:2,messagegroup:2},
 			type: "post",
-			url: '/index.php?m=Home&c=Member&a=sendsms',
+			url: '/c/gsq//user/saveZnx',
 			dataType: 'json',
 			success: function(res){
-				closetip();
-				showtip(res.msg);
-				if(res.state == 1){
-					$('.btna_acancel').click();
+			
+				showtip("发送成功");									
 					setTimeout('location.reload()',1000);
-				}
+				
 			}
 		})
 	}else{
@@ -558,14 +560,9 @@ function toshipsuccess(_lid){
 			$('#pop_bg').hide();
 		});
 	});
-<<<<<<< HEAD
-});9
 
-function changechk(){
-	$('#chkimg').attr('src','/index.php?m=Home&c=Index&a=verify&t='+(new Date().getTime()));
-}
 
-=======
+
 	
 	function changechk(){
 		$('#chkimg').attr('src','/index.php?m=Home&c=Index&a=verify&t='+(new Date().getTime()));
@@ -583,4 +580,4 @@ function changechk(){
 			}
 		}); 
 	}
->>>>>>> branch 'master' of https://github.com/QQTwo/KoreaTing.git
+

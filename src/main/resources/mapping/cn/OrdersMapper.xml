@@ -83,4 +83,11 @@
 		SELECT * FROM orders
 		WHERE `orderID`=#{orderID}
 	</select>
+	<select id="querydelCount" resultType="Integer">
+	SELECT COUNT(*) FROM orders o INNER JOIN services s
+		ON o.serviceid=s.serviceid
+		WHERE o.serviceid=#{serviceid}
+		
+	</select>
+	
 </mapper>

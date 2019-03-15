@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en"  xmlns:th="http://www.thymeleaf.org">
 <head>
@@ -7,7 +8,6 @@
 
 <link href="/Public/css/owl.carousel.css" rel="stylesheet" />
 <link href="/Public/css/common.css" rel="stylesheet" />
-	<link rel="stylesheet" href="layui/css/layui.css" />
 <script src="/Public/js/jquery-1.8.3.min.js"></script>
 <script src="/Public/js/common.js"></script>
 <script src="/Public/js/layer/layer.js"></script>
@@ -25,7 +25,6 @@
 
 <script>
 function chkform()
-
 {
 	showloading();
 }
@@ -110,6 +109,7 @@ $(function(){
 				
 				<input type="hidden" name="stid" value="1" />
 
+			<form method="post"  id="formmsg" onSubmit="return chkform();" action="/index.php/Home/Seller/authsave.html">		
 				<input type="hidden" name="catid" value="3" />
 				<input type="hidden" name="aid" value="0" />
 
@@ -120,11 +120,11 @@ $(function(){
 				<dl class="info_form_dl info_form_dl2">
 					<dt><span class="c_x">*</span>姓名：</dt>
 					<dd>
-						<input id="name" type="text" class="input_c inf_inc validate[required]" name="name" value=""/>
+						<input type="text" class="input_c inf_inc validate[required]" name="name" value=""/>
 					</dd>
 				</dl>
 				<dl class="info_form_dl info_form_dl2">
-					<dt id="sex"><span class="c_x">*</span>性别：</dt>
+					<dt><span class="c_x">*</span>性别：</dt>
 					<dd class="mtb">
 						<label><input type="radio"  value="1" name="sex" class="radio_input validate[required]" />男</label>&nbsp;&nbsp;&nbsp;&nbsp;
 						<label><input type="radio"  value="2" name="sex" class="radio_input" />女</label>
@@ -133,13 +133,13 @@ $(function(){
 				<dl class="info_form_dl info_form_dl2">
 					<dt>身高：</dt>
 					<dd>
-						<input id="height" type="text" class="input_c inf_inc3 validate[custom[integer]]" value="" name="height" /><span class="dw_sp c_4">CM</span>
+						<input type="text" class="input_c inf_inc3 validate[custom[integer]]" value="" name="height" /><span class="dw_sp c_4">CM</span>
 					</dd>
 				</dl>
 				<dl class="info_form_dl info_form_dl2">
 					<dt>星座：</dt>
 					<dd>
-						<select  id="constellation" class="sel_f sel_f2 sel_b3 validate[required]" name="constellation">
+						<select class="sel_f sel_f2 sel_b3 validate[required]" name="constellation">
 							<option value="">请选择</option>
 							<option value="白羊座" >白羊座</option><option value="金牛座" >金牛座</option><option value="双子座" >双子座</option><option value="巨蟹座" >巨蟹座</option><option value="狮子座" >狮子座</option><option value="处女座" >处女座</option><option value="天秤座" >天秤座</option><option value="天蝎座" >天蝎座</option><option value="射手座" >射手座</option><option value="摩羯座" >摩羯座</option><option value="水瓶座" >水瓶座</option><option value="双鱼座" >双鱼座</option>						</select>
 					</dd>
@@ -147,12 +147,12 @@ $(function(){
 				<dl class="info_form_dl info_form_dl2">
 					<dt><span class="c_x">*</span>年龄：</dt>
 					<dd>
-						<input id="age" type="text" class="input_c inf_inc3 validate[required,custom[integer]]" name="age" value="" />
+						<input type="text" class="input_c inf_inc3 validate[required,custom[integer]]" name="age" value="" />
 					</dd>
 				</dl>				<dl class="info_form_dl info_form_dl2">
 					<dt><span class="c_x">*</span>签证类型：</dt>
 					<dd>
-						<select  id="visatype" class="sel_f sel_f2 sel_b3 validate[required]" name="visatype">
+						<select class="sel_f sel_f2 sel_b3 validate[required]" name="visatype">
 							<option value="">请选择</option>
 							<option value="D-1文化艺术" >D-1文化艺术</option><option value="D-2留学签证" >D-2留学签证</option><option value="D-3产业研修" >D-3产业研修</option><option value="D-4语言研修" >D-4语言研修</option><option value="D-8投资" >D-8投资</option><option value="D-7驻在" >D-7驻在</option><option value="D-10求职签" >D-10求职签</option><option value="F-2 居住" >F-2 居住</option><option value="F-5永驻" >F-5永驻</option><option value="E-1教授" >E-1教授</option><option value="E-3研究" >E-3研究</option><option value="E-4技术指导" >E-4技术指导</option><option value="E-5专门职业" >E-5专门职业</option><option value="E-8研修就业" >E-8研修就业</option><option value="B-1签证豁免" >B-1签证豁免</option><option value="B-2旅游过境" >B-2旅游过境</option><option value="F-6结婚移民" >F-6结婚移民</option><option value="其它" >其它</option>						</select>
 					</dd>
@@ -160,28 +160,28 @@ $(function(){
 				<dl class="info_form_dl info_form_dl2">
 					<dt class="two_h_dt"><span class="c_x">*</span>身份证／<br />登入证号码：</dt>
 					<dd>
-						<select id="documentType" class="sel_f sel_f2 sel_b3 mrr1" name="documentType">
+						<select class="sel_f sel_f2 sel_b3 mrr1" name="documentType">
 							<option value="1" >身份证号码</option>
 							<option value="2" >登入证号码</option>
 						</select>
-						<input id="certificates" type="text" class="input_c inf_inc2 validate[required]" value="" name="certificates" />
+						<input type="text" class="input_c inf_inc2 validate[required]" value="" name="certificates" />
 					</dd>
 				</dl>
 			<dl class="info_form_dl info_form_dl2">
 					<dt>导游经验：</dt>
 					<dd>
-						<select id="experience" class="sel_f sel_f2 sel_b3" name="experience">
+						<select class="sel_f sel_f2 sel_b3" name="experience">
 							<option value="">请选择</option>
 							<option value="1～2年" >1～2年</option><option value="3～4年" >3～4年</option><option value="5～6年" >5～6年</option><option value="6年以上" >6年以上</option>						</select>
 					</dd>
 				</dl>																				<dl class="info_form_dl info_form_dl2">
-					<dt id="vehicle"><span class="c_x">*</span >是否有车：</dt>
+					<dt><span class="c_x">*</span>是否有车：</dt>
 					<dd class="mtb">
 						<label><input type="radio" name="vehicle" value="true"  class="radio_input validate[required]" />有</label>&nbsp;&nbsp;&nbsp;&nbsp;
 						<label><input type="radio" name="vehicle" value="false"  class="radio_input" />无</label>
 					</dd>
 				</dl>				<dl class="info_form_dl info_form_dl2">
-					<dt id="guideCard"><span class="c_x">*</span>导游证：</dt>
+					<dt><span class="c_x">*</span>导游证：</dt>
 					<dd class="mtb">
 						<label><input type="radio" name="guideCard" value="true"  class="radio_input validate[required]" />有</label>&nbsp;&nbsp;&nbsp;&nbsp;
 						<label><input type="radio" name="guideCard" value="false"  class="radio_input" />无</label>
@@ -190,7 +190,7 @@ $(function(){
 													<dl class="info_form_dl info_form_dl2">
 					<dt class="two_h_dt">在韩工作／学习时间：</dt>
 										<dd>
-						<select id="inKorea" class="sel_f sel_f2 sel_b3 " name="inKorea">
+						<select class="sel_f sel_f2 sel_b3 " name="inKorea">
 							<option value="">请选择</option>
 							<option value="1～2年" >1～2年</option><option value="3～4年" >3～4年</option><option value="5～6年" >5～6年</option><option value="6年以上" >6年以上</option>						</select>
 					</dd>
@@ -198,22 +198,22 @@ $(function(){
 				<dl class="info_form_dl info_form_dl2">
 					<dt><span class="c_x">*</span>联系电话：</dt>
 					<dd>
-						<input id="phone" type="text" class="input_c inf_inc validate[required]" name="phone" value="" />
+						<input type="text" class="input_c inf_inc validate[required]" name="phone" value="" />
 					</dd>
 				</dl>
 				<dl class="info_form_dl info_form_dl2">
 					<dt><span class="c_x">*</span>邮箱地址：</dt>
 					<dd>
-						<input id="email" type="text" name="email" class="input_c inf_inc validate[required,custom[email]]" value="" />
+						<input type="text" name="email" class="input_c inf_inc validate[required,custom[email]]" value="" />
 					</dd>
 				</dl>
 				<dl class="info_form_dl info_form_dl2">
 					<dt><span class="c_x">*</span>在韩住址：</dt>
 					<dd>
-						<input  class="input_c inf_inc validate[required]"  type="text" name="country" id="country">国家<br><br>
-						<input  class="input_c inf_inc validate[required]"  type="text" name="provincialID" id="provincialID">省<br><br>
-						<input  class="input_c inf_inc validate[required]"  type="text" name="cityID" id="cityID">市<br><br>
-						<input type="text" name="detailed" class="input_c inf_inc validate[required]" value="" id="detailed" />详细地址<br><br>
+						<input  class="input_c inf_inc validate[required]"  type="text" name="country" >国家<br><br>
+						<input  class="input_c inf_inc validate[required]"  type="text" name="provincialID">省<br><br>
+						<input  class="input_c inf_inc validate[required]"  type="text" name="cityID">市<br><br>
+						<input type="text" name="detailed" class="input_c inf_inc validate[required]" value="" />详细地址<br><br>
 					</dd>
 				</dl>
 			
@@ -276,7 +276,6 @@ $(function(){
 <script type="text/javascript" th:src="@{/Public/js/jquery-1.8.3.min.js}"></script>
 <script src="/Public/js/ajaxupload.js" type="text/javascript"></script>
 <script type="text/javascript" src="/Public/js/kindeditor/kindeditor-min.js"></script>
-<script type="text/javascript " src="layui/layui.js "></script>
 <script type="text/javascript">
 $(function(){
 	//选择预览图片
@@ -304,150 +303,6 @@ $(function(){
 		}
 	);
 });
-
-<!--判断是否为空-->
-function chkform(){
-	
-	//身份证验证
-	var idCardFlag = /^[1-9]\d{5}(18|19|([23]\d))\d{2}((0[1-9])|(10|11|12))(([0-2][1-9])|10|20|30|31)\d{3}[0-9Xx]$/;
-	//手机验证
-	var phoneFlag = /^1[3,4,5,7,8]\d{9}$/;
-	//邮箱验证
-	var emailFlag = /^[A-Za-z\d]+([-_.][A-Za-z\d]+)*@([A-Za-z\d]+[-.])+[A-Za-z\d]{2,4}$/;
-
-	if(jQuery("[name=name]").val()==""){
-		
-		//小tips
-		layer.tips('姓名不能为空*', '#name', {
-		    tips: [2,  '#78BA32'],
-		    time: 4000
-		});
-		jQuery("[name=name]").focus();
-		return false;
-	}else if(jQuery("[name=sex]:checked").val()==null){
-		
-		//小tips
-		layer.tips('请选择你的性别哦*', '#sex', {
-		    tips: [3,  '#78BA32'],
-		    time: 4000
-		});
-		jQuery("[name=name]").focus();
-		return false;
-	}else if(jQuery("[name=age]").val()==""){
-		//小tips
-		layer.tips('年龄不能为空*', '#age', {
-		    tips: [2,  '#78BA32'],
-		    time: 4000
-		});
-		jQuery("[name=age]").focus();
-		return false;
-	}/* else if(isNaN($("[name=age]")).val()){
-		//小tips
-		layer.tips('不能乱填写年龄哦*', '#age', {
-		    tips: [2,  '#78BA32'],
-		    time: 4000
-		});
-		jQuery("[name=age]").focus();
-		return false;
-	} */else if(jQuery("[name=visatype]").val()==""){
-		//小tips
-		layer.tips('请选择签证类型*', '#visatype', {
-		    tips: [1, '#78BA32'],
-		    time: 4000
-		});
-		jQuery("[name=visatype]").focus();
-		return false;
-	}else if(jQuery("[name=documentType]").val()==1&&jQuery("[name=documentType]").val()==1&&jQuery("[name=certificates]").val()==""){
-		
-		//小tips
-		layer.tips('请填写身份证号*', '#certificates', {
-		    tips: [2,  '#78BA32'],
-		    time: 4000
-		});
-		jQuery("[name=certificates]").focus();
-		return false;
-	}else if(jQuery("[name=documentType]").val()==1&&jQuery("[name=documentType]").val()==1&&!idCardFlag.test(jQuery("[name=certificates]").val())){
-		//小tips
-		layer.tips('请填写正确有效的18位身份证号*', '#certificates', {
-		    tips: [2,  '#78BA32'],
-		    time: 4000
-		});
-		jQuery("[name=certificates]").focus();
-		return false;
-	}else if(jQuery("[name=vehicle]:checked").val()==null){
-		//小tips
-		layer.tips('请选择是否有车哦*', '#vehicle', {
-		    tips: [3,  '#78BA32'],
-		    time: 4000
-		});
-		jQuery("[name=certificates]").focus();
-		return false;
-	}else if(jQuery("[name=guideCard]:checked").val()==null){
-		//小tips
-		layer.tips('请选择是否有导游证*', '#guideCard', {
-		    tips: [3, '#78BA32'],
-		    time: 4000
-		});
-		jQuery("[name=certificates]").focus();
-		return false;
-	}else if(jQuery("[name=phone]").val()==""){
-		//小tips
-		layer.tips('请填写电话号码*', '#phone', {
-		    tips: [2,  '#78BA32'],
-		    time: 4000
-		});
-		jQuery("[name=phone]").focus();
-		return false;
-	}else if(!phoneFlag.test(jQuery("[name=phone]").val())){
-		//小tips
-		layer.tips('请填写正确的中国电信、联通、移动的手机号码！*', '#phone', {
-		    tips: [2,  '#78BA32'],
-		    time: 4000
-		});
-		jQuery("[name=phone]").focus();
-		return false;
-	}/* else if(jQuery("[name=email]").val()!=''&&!emailFlag.test(jQuery("[name=merchantemail]").val())){
-		//小tips
-		layer.tips('请填写正确的邮箱*', '#email', {
-		    tips: [2,  '#78BA32'],
-		    time: 4000
-		});
-		jQuery("[name=email]").focus();
-		return false;
-	} */else if(jQuery("[name=country]").val()==""){
-		//小tips
-		layer.tips('住址国家不能为空*', '#country', {
-		    tips: [2,  '#78BA32'],
-		    time: 4000
-		});
-		jQuery("[name=country]").focus();
-		return false;
-	}else if(jQuery("[name=provincialID]").val()==""){
-		//小tips
-		layer.tips('住址省不能为空*', '#provincialID', {
-		    tips: [2, '#78BA32'],
-		    time: 4000
-		});
-		jQuery("[name=provincialID]").focus();
-		return false;
-	}else if(jQuery("[name=cityID]").val()==""){
-		//小tips
-		layer.tips('住址市不能为空*', '#cityID', {
-		    tips: [2,  '#78BA32'],
-		    time: 4000
-		});
-		jQuery("[name=cityID]").focus();
-		return false;
-	}else if(jQuery("[name=detailed]").val()==""){
-		//小tips
-		layer.tips('住址详细地址不能为空*', '#detailed', {
-		    tips: [2, '#78BA32'],
-		    time: 4000
-		});
-		jQuery("[name=detailed]").focus();
-		return false;
-	}
-}
 
 </script>
 </body>

@@ -1,3 +1,4 @@
+
 $(".top_right").html("");
 $.getJSON("/c/gsq/user/queryAUser",function(data){
 	if(data==null){

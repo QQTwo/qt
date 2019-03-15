@@ -25,6 +25,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.accp.biz.cn.MerchantBiz;
 import com.accp.pojo.Appraisalapply;
+import com.accp.pojo.Evaluationservice;
 import com.accp.pojo.Services;
 import com.accp.pojo.User;
 import com.accp.util.file.Upload;
@@ -305,22 +306,22 @@ public class MerchantAction {
 	
 	@GetMapping("queryEvaluation")
 	public String  queryEvaluation(HttpSession session,Model model,Integer pageNum,Integer pageSize) {
-		System.out.println("进入评论区");
+		
 		Integer userID=((User)session.getAttribute("USER")).getUserid();
 		//用户
 		PageInfo<EvaluationVo> pageInfo=merchantBiz.queryEvaluation(pageNum, pageSize, userID);	
-		/*//商家
-		PageInfo<EvaluationVo> dj=merchantBiz.queryEvaluation(pageNum, pageSize,serviceAppraisePID, userID);		
-			*/
+	/*	Evaluationservice ev=merchantBiz.queryShopReply2();*/
+	
 		//System.out.println(pageInfo.getList().get(0).getServiceAppraiseID());
 		
 		//用户
 		model.addAttribute("PAGE_INFO", pageInfo);
+		/*//商家
+		model.addAttribute("ev",ev);*/
 		System.out.println(pageInfo.getList());
 		return "sjzx-comment";
 	}
 	
-	//商家回复查询
 	
 	
 	@GetMapping("getServices")
@@ -550,7 +551,8 @@ public class MerchantAction {
 	}
 	@PostMapping("updateServiceszjy")
 	public String  updateServiceszjy(HttpSession session,Model model,int serviceID,int stid,String serviceTitle,String serviceFuTitle,String downloadTitle,int servicePrice, MultipartFile serviceCoverImg,MultipartFile serviceImgUrlOne,MultipartFile serviceImgUrlTwo,MultipartFile serviceImgUrlThree,MultipartFile serviceImgUrlFour,String serviceStartDate,String serviceEndDate,int serviceHour,String serviceIntro,String[] areaids,int countryid,String[] serviceCostInclude,String serviceCostTypeID,String uploadDataUrl) {
-				Services service=new Services();
+		System.out.println("修改");	
+		Services service=new Services();
 				try {
 					if(!serviceCoverImg.isEmpty()) {
 						String	fmturl=Upload.uploadFile(serviceCoverImg);
@@ -583,6 +585,7 @@ public class MerchantAction {
 				}
 				String cs="";
 				for(String i:areaids) {
+					
 					cs+=i+",".substring(0,areaids.length-1);
 				}
 				String baohao="";
@@ -1009,16 +1012,17 @@ public class MerchantAction {
 	}
 	
 	@GetMapping("removeServices")
+	@ResponseBody
 	public String  removeService(int serviceID) {
 		merchantBiz.removeService(serviceID);
-		return "redirect:/cn/c/getServices?pageNum=1&pageSize=3";
+		return "yes";
 	}
 	
 	//商家回复评论
 			@PostMapping("replyComment")
 			@ResponseBody
 			public Map<String, String> replyComment(String content,int serviceAppraisePID,Model mo) {
-				System.out.println("进入回复");
+				
 				merchantBiz.replyComment(content, serviceAppraisePID);	
 				Map<String, String> map=new HashMap<String,String>();
 				map.put("code","200");
@@ -1026,5 +1030,13 @@ public class MerchantAction {
 				return map;
 			//	return "redirect:/cn/c/queryEvaluation?pageNum=1&pageSize=3";
 			}
-	
-}
+			
+			/*//查询商家评价
+			@RequestMapping("queryShopReply")
+			@ResponseBody
+			public Evaluationservice queryShopReply(int serviceAppraisePID) {
+			Evaluationservice ev=merchantBiz.queryShopReply(serviceAppraisePID);
+			return ev;
+			}	
+*/
+			}

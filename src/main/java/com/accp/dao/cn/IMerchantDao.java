@@ -8,6 +8,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
 import com.accp.pojo.Appraisalapply;
+import com.accp.pojo.Evaluationservice;
 import com.accp.pojo.Services;
 import com.accp.pojo.User;
 import com.accp.vo.cn2.EvaluationVo;
@@ -40,5 +41,6 @@ public interface IMerchantDao {
 	  public List<EvaluationVo>  queryEvaluation(@Param("userid") int userid);
 	  //商家回复评论
 	  public int replyComment(@Param("content") String content,@Param("serviceAppraisePID")int serviceAppraisePID);
-	
+	//查看店家回复
+	  public Evaluationservice queryShopReply(@Param("serviceAppraisePID")int serviceAppraisePID);
 }

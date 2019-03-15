@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <title>我收到的预定_韩汀社区</title>
 <link rel="shortcut icon" href="/Public/images/favicon.ico"  type="image/x-icon" />
-	<script type="text/javascript" src="/Public/js/jquery-1.8.3.min.js"></script>
+<script type="text/javascript" src="/Public/js/jquery-1.8.3.min.js"></script>
 		
 <link href="/Public/css/owl.carousel.css" rel="stylesheet" />
 <link href="/Public/css/common.css" rel="stylesheet" />
@@ -14,7 +14,8 @@
 </head>
 <iframe name="topost" id="topost" style="display: none;"></iframe>
 <link rel="stylesheet" href="/Public/js/valid/css/validationEngine.jquery.css" type="text/css" />
-
+<script src="/Public/js/common.js"></script>
+<script src="/Public/js/layer/layer.js"></script>
 <style type="text/css">
 li  .time1 {
 	color: red;
@@ -64,7 +65,7 @@ span  .time2 {
 		
 				<li id="li2"><a href="#">个人中心</a><span class="my_nav_i"></span></li>
 				<li id="li3"><a href="#">账户设置</a><span class="my_nav_i"></span></li>
-				<li id="li4"><a href="#">消息</a><span class="my_nav_i"></span></li>
+				<li id="li4"><a href="#">消息<span class="msg_num">5</span></a><span class="my_nav_i"></span></li>
 
 			</ul>
 		</div>
@@ -157,8 +158,8 @@ span  .time2 {
 							</li>
 							<li class="cel_l4 shopname">[[${temp.u.username}]]
 								<br />
-							<a href="javascript:;" onclick="showmsg(this)" rel="345"
-								class="btna_s2" th:if="${temp.orderstatus!=1}">站内信用户</a>
+							<a href="javascript:void(0);"  rel="345"
+								class="btna_s2 znx" th:if="${temp.orderstatus!=1}" th:attr="name=${temp.u.username},id=${temp.u.userid}">站内信用户</a>
 							</li>
 							<li class="cel_l5"><span class="num_1 num_1_s">[[${temp.smallplan}]]</span></li>
 							<li class="cel_l6">
@@ -255,6 +256,7 @@ span  .time2 {
 			<dd>
 				<input type="hidden" id="smsuid" value="" /> <input type="hidden"
 					id="orderid" value="" />
+					<input type="hidden"	id="addressee" value="" />
 				<textarea class="input_c in_site_text" id="smsmsg"></textarea>
 				<div class="member_bt_btm2">
 					<a href="javascript:void(0);" class="btna_acancel">取消</a><a
@@ -306,7 +308,21 @@ span  .time2 {
 	</ul>
 	<!--right nav end-->
 </body>
+<script>
+
+$(".znx").click(function(){
+	var name=$(this).attr("name");
+	var userid=$(this).attr("id");
+	$("#addressee").val(userid);
+	$(".mlr10").html(name);
+	$("#pop_bg").show();
+	$(".site_email_pop").show();
+})
+
+</script>
+
 <script type="text/javascript" th:inline="javascript">
+
 $.each($("[name=stid]"),function(i,obj){
 	var stid=$(this).html();
 	var p=$(this);
@@ -373,9 +389,11 @@ $("[name=tijiao]").click(function(){
 	location.href="/c/cn/order/queryAllOrder?orderStatus=0&refundstatus=-1&pageNum=1&pageSize=5&orderID="+orderID;
 })
 
+
 </script>
 <script type="text/javascript" src="/Public/js/sessionHeader.js"></script>
 <script type="text/javascript" src="/Public/js/headLeftNav.js"></script>
 <script type="text/javascript" src="/Public/js/sjzx-href.js"></script>
 <script type="text/javascript" src="/Public/js/grzx-interlinkage.js"></script>
+
 </html>

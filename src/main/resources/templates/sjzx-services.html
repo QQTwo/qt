@@ -10,7 +10,8 @@
 <link href="/Public/css/owl.carousel.css" rel="stylesheet" />
 <link href="/Public/css/common.css" rel="stylesheet" />
 <link rel="stylesheet" type="text/css" href="/Public/css/swiper-3.4.2.min.css">
-
+<link rel="stylesheet" href="/Public/css/sweetalert.css">
+ <script src="/Public/js/sweetalert/sweetalert.min.js"></script>
 <script type="text/javascript" src="/Public/js/jquery-1.8.3.min.js"></script>	
 
 <meta property="wb:webmaster" content="1a0bb5a2cb580b9f" />
@@ -121,9 +122,11 @@
 				<!-- 动态事件绑定 -->
 				<td>
 					<a  th:href="@{queryServices(serviceid=${temp.serviceid},stid=${temp.stid})}" >编辑</a>
-					<a  href="javascript:void(0)">关闭</a>
-					<a  th:href="@{removeServices(serviceID=${temp.serviceid})}">删除</a>
-				
+					
+					<div >
+					<!-- th:href="@{removeServices(serviceID=${temp.serviceid})}"-->
+					<a  class="del" th:attr="serviceID=${temp.serviceid}" href="javascript:void(0)">删除</a>
+					</div>
 				</td>
 			
 				
@@ -256,4 +259,49 @@
 <script type="text/javascript" src="/Public/js/headLeftNav.js"></script>
 <script type="text/javascript" src="/Public/js/sjzx-href.js"></script>
 <script type="text/javascript" src="/Public/js/grzx-interlinkage.js"></script>
+<script src="/Public/js/layer/layer.js"></script>
+<script type="text/javascript">
+$(".del").click(function(){
+	var serviceID=$(this).attr("serviceID");
+	
+	jQuery.ajax({
+		url:"/c/cn/order/querydelCount",
+		type:'get',
+		data:{	serviceid:serviceID	},
+		success:function(res){
+			if(res>0){
+				layer.alert("此服务下还有预定，暂时不能删除", {closeBtn:0});
+			}else{
+				/* layer.confirm("确认要删除吗，删除后不能恢复了,{
+					btn:["确认","取消"]
+				},function(){
+					$.getJSON("/cn/c/removeServices",{serviceid:serviceID},function(data){
+						swal("删除成功！", "您已经永久删除了这条信息。", "success");
+						location.reload();
+					})
+				}
+				}) */			
+				    swal({
+				        title: "您确定要删除这条信息吗",
+				        text: "删除后将无法恢复，请谨慎操作！",
+				        type: "warning",
+				        showCancelButton: true,
+				        confirmButtonColor: "#DD6B55",
+				        confirmButtonText: "删除",
+				        closeOnConfirm: false
+				    }, function () {
+				    	
+				    	$.getJSON("/cn/c/removeServices",{serviceID:serviceID},function(data){				    		
+							swal("删除成功！", "您已经永久删除了这条信息。", "success");
+							
+						})
+				    });
+				
+			}
+		}
+		
+	})
+})
+
+</script>
 </html>

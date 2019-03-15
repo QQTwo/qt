@@ -40,4 +40,10 @@ public interface IOrdersDao {
 	 * @return
 	 */
 	public OrderInfoVo queryAOrder(@Param("orderID")String orderID);
+	
+	/**
+	 * 删除我发布的服务之前的查询
+	 * 
+	 */
+	public int querydelCount(@Param("serviceid") int serviceid);
 }

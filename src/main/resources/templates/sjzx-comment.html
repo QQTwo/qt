@@ -10,6 +10,7 @@
 <meta content="telephone=no" name="format-detection" />-->	    
 <title>我收到的评价_韩汀社区</title>
 <link rel="shortcut icon" href="/Public/images/favicon.ico" type="image/x-icon" />
+<link rel="stylesheet" href="/Public/css/layui/css/layui.css" />
 <meta name="keywords" content="御品韩汀，韩汀社区，韩汀，湖南韩汀电子商务有限公司" />
 <meta name="description" content="湖南韩汀电子商务有限公司主要服务范围有海外自驾游，微整形，留学中介，翻译，学习资源，国际物流等项目，主要以大陆国人和海外同胞为服务对象。商家可入驻社区开店，用户可在平台内快速的找到自己需要的服务项目。海外商家对国内用户以及海外同胞开放服务，双方各持所需，互利互惠，是一款海外华人生活，兼职向导平台。 
 
@@ -23,12 +24,14 @@
 <link href="/Public/css/owl.carousel.css" rel="stylesheet" />
 <link href="/Public/css/common.css" rel="stylesheet" />
 <script src="/Public/js/jquery-1.8.3.min.js"></script>
-<script src="/Public/js/common.js" th:inline="javascript"></script>
+<script src="/Public/js/common.js"></script>
 <script src="/Public/js/layer/layer.js"></script>
 <script type="text/javascript" src="/Public/js/jcarousellite.min.js"></script>
 
 <script type="text/javascript" src="/Public/js/swiper-3.4.2.min.js"></script>
 <link rel="stylesheet" type="text/css" href="/Public/css/swiper-3.4.2.min.css">
+
+
 
 <script>
 _weburl = 'http://yphting.zglxkj.com';
@@ -36,32 +39,42 @@ _weburl = 'http://yphting.zglxkj.com';
 <meta property="wb:webmaster" content="1a0bb5a2cb580b9f" />
 <meta name="__hash__" content="1534c48deb32415b23c7702161d843f7_8f92fb1bde8f3a9f8e799c0a08696a25" /></head>
 <iframe name="topost" id="topost" style="display:none;"></iframe>
+<script type="text/javascript">
+
+	$(".top_right").html("");
+	$.getJSON("/c/gsq/user/queryAUser",function(data){
+		if(data==null){
+			$(".top_right").append($('<a href="/szy-login.html">登录</a><span class="ht_line"></span><a href="/szy-zuce.html">注册</a>'));
+		}else{
+			$(".top_right").append($('<a href="/c/gsq/center/home">'+data.username+'</a> <span class="ht_line"></span><a href="/c/gsq/user/close">退出</a><span class="ht_line"></span><a href="/xx-xtxx.html"><img src="/Public/images/e_i.png" alt=""></a>'));
+		}
+	})                  
+
+
+</script>
 
 <body>
 <!--header-->
 <div class="header" id="botop">
 		<div class="h_top">
 		<div class="b_box">
-			<div class="top_nav"><a href="/index.php/">首页</a><span class="ht_line"></span><a href="/index.php/Home/Member/seller.html">商家入驻</a><span class="ht_line"></span><a href="/index.php/Home/About/help.html">帮助中心</a><span class="ht_line"></span><a href="/index.php/Home/About/index.html">关于韩汀</a><span class="ht_line"></span><a href="/index.php/Home/About/contact.html">联系我们</a></div>
+			<div class="top_nav"><a href="#">首页</a>
+			<span class="ht_line"></span>
+			<a href="#">商家入驻</a>
+			<span class="ht_line"></span>
+			<a href="#">帮助中心</a>
+			<span class="ht_line"></span>
+			<a href="#">关于韩汀</a>
+			<span class="ht_line"></span>
+			<a href="#">联系我们</a></div>
 			
 			<div class="top_right">
-									<a href="/index.php/Home/Seller/index.html">.2304</a>			<span class="ht_line"></span><a href="/index.php/Home/Member/logout.html">退出</a>
-            <span class="ht_line"></span><a href="/index.php/Home/Member/sms.html"><img src="/Public/images/e_i.png" alt="" /><span class="e_if"></span></a>
-            <script>$('.top_right').addClass('login_right');</script>
-					<!-- 	<span style="font-size:14px;"> &nbsp;&nbsp;| 切换到：<select  id="lang" onchange="changelang();"><option value="" >请选择</option><option value="zh-cn" >简体中文</option> <option value="en-us" >English</option> </select> -->
-			<script language="javascript">
-				function changelang(){
-					var lang=$("#lang").val();
-					if(lang=="zh-cn"){
-						window.location.href='?l=zh-cn';
-					}
-					if(lang=="en-us"){
-						window.location.href='?l=en-us';
-					}
-				}
-				$("#lang").val('');
-
-			</script>
+				<a href="#"></a>			
+				<!-- <span class="ht_line"></span><a href="#"></a>
+            <span class="ht_line"></span><a href="#"> -->
+            <!-- <img src="/Public/images/e_i.png" alt="" /><span class="e_if"></span></a> -->
+        					<!-- 	<span style="font-size:14px;"> &nbsp;&nbsp;| 切换到：<select  id="lang" onchange="changelang();"><option value="" >请选择</option><option value="zh-cn" >简体中文</option> <option value="en-us" >English</option> </select> -->
+			
 			<!--
 			<a href="javascript:void(0);" class="i_rover"></a>
 			-->
@@ -70,20 +83,21 @@ _weburl = 'http://yphting.zglxkj.com';
 	</div>
 
     <div class="b_box nav_header community_header">
-		<a class="logo my_logo" href="/index.php/Home/Index/index.html">御品韩汀</a>
+		<a class="logo my_logo" href="#">御品韩汀</a>
 		<ul class="member_nav_ul">
-        	<li class="cur" id="li1"><a href="/index.php/Home/Seller/index.html">商家中心</a><span class="my_nav_i"></span></li>
+        	<li class="cur" id="li1"><a href="#">商家中心</a><span class="my_nav_i"></span></li>
 <style type="text/css">
 .layui-layer-btn .layui-layer-btn0{ background:#4c1b98; }
 .layui-layer-btn .layui-layer-btn0:hover{ background:#340d6f;}
-</style>        	<li  id="li2"><a href="/index.php/Home/Member/index.html">个人中心</a><span class="my_nav_i"></span></li>
-            <li  id="li3"><a href="/index.php/Home/Member/config.html">账户设置</a><span class="my_nav_i"></span></li>
-            <li  id="li4"><a href="/index.php/Home/Member/sms.html">消息<span class="msg_num">5</span></a><span class="my_nav_i"></span></li>
+</style>        	<li  id="li2"><a href="#">个人中心</a><span class="my_nav_i"></span></li>
+            <li  id="li3"><a href="#">账户设置</a><span class="my_nav_i"></span></li>
+            <li  id="li4"><a href="#">消息<span class="msg_num">5</span></a><span class="my_nav_i"></span></li>
             
         </ul>
 	</div>
 </div>
 <!--header end-->
+
 
 <script language="javascript">
 function ordercancel(_oid){
@@ -106,31 +120,33 @@ function orderShou(_oid){
 }
 </script>
 
-<a href="/index.php/Home/About/help.html" class="zy_box">预定流程指引</a>
+<a href="#" class="zy_box">预定流程指引</a>
 
 <div class="bg_c4 pt1">
 	<div class="b_box">
     	
 		<!--member left-->
-        <div class="member_left">
+               <div class="member_left">
         	<h1 class="member_left_title seller_title">商家中心</h1>
             <ul class="member_system_ul sj_left_ul">
-            	<li ><a href="/index.php/Home/Seller/order.html"><span class="msp2 pre_c1"></span>我收到的预定</a></li>
-            	<li ><a href="/index.php/Home/Seller/services.html"><span class="msp2 pre_c2"></span>我发布的服务</a></li>
-                <li ><a href="/index.php/Home/Seller/auth.html"><span class="msp2 pre_c3"></span>我提交的鉴定</a></li>
-                <li class="cur"><a href=""><span class="msp2 pre_c4"></span>我收到的评价</a></li>
-                <li ><a href="/index.php/Home/Seller/logistics.html"><span class="msp2 pre_c5"></span>我发出的物流</a></li>
-                <li ><a href="/index.php/Home/Seller/refund.html"><span class="msp2 pre_c6"></span>我收到的退款<span class="sp_acon_1"></span></a></li>
-                <li ><a href="/index.php/Home/Seller/servicecats.html"><span class="msp2 pre_c3"></span>我的服务类别</a></li>
-                <li ><a href="/index.php/Home/Seller/trustservice.html"><span class="msp2 pre_c3"></span>我提交的托管</a></li>
+
+            	<li ><a href="/c/cn/order/queryAllOrder?orderStatus=0&refundstatus=-1&pageNum=1&pageSize=5&orderID="><span class="msp2 pre_c1"></span>我收到的预定</a></li>
+            	<li ><a href="/cn/c/getServices?pageNum=1&pageSize=3"><span class="msp2 pre_c2"></span>我发布的服务</a></li>                  
+                <li ><a href="/cn/c/queryAppraisalapply"><span class="msp2 pre_c3"></span>我提交的鉴定</a></li>
+                <li ><a href="/cn/c/queryEvaluation?pageNum=1&pageSize=2"><span class="msp2 pre_c4"></span>我收到的评价</a></li>
+                <li ><a href="/grzx-logistics.html"><span class="msp2 pre_c5"></span>我发出的物流</a></li>
+                <li ><a href="/c/gsq/refund/list"><span class="msp2 pre_c6"></span>我收到的退款<span class="sp_acon_1"></span></a></li>
+                <li ><a href="#"><span class="msp2 pre_c3"></span>我的服务类别</a></li>
+                <li ><a href="#"><span class="msp2 pre_c3"></span>我提交的托管</a></li>
             </ul>
-		<div class="ad_left_1"><a href="" alt="商家图片-0224" /></a></div>        </div> 
+			<div class="ad_left_1"></div>        
+		</div>
         <!--member left end-->
 		
 <script language="javascript">
 $(function(){
 	$('.zy_box').hide();
-    $('.h_top').addClass('seller_h_top');
+   /* $('.h_top').addClass('seller_h_top'); */
 });
 </script>
 		
@@ -148,11 +164,13 @@ $(function(){
 		
 			<ul class="my_evaluation_list business_comment_list">
                 <li  th:each="temp,iterState:${PAGE_INFO.list}">
-                <input type="hidden"  th:value="${temp.serviceAppraiseID}">
-               
+                <input type="hidden" th:value="${temp.serviceAppraiseID}">
+                <div th:if="${temp.evaluation!=null}">
+               <input type="hidden" th:value="${temp.evaluation.serviceappraisepid}">
+               </div>
                     <p class="my_evaluation_img"><img th:src="${temp.userimgpath}" th:alt="${temp.username}" /></p><br/>
 					<p class="date_p fr" >
-					<a href="javascript:void(0);"  class="btna_s2 btna_hy_a f14" th:attr="pid=${temp.evaluation.serviceappraisepid==null?'-1':'temp.evaluation.serviceappraisepid'}">回应评价</a>
+					<a href="javascript:void(0);"  class="btna_s2 btna_hy_a f14">回应评价</a>
 					</p>
 					 <div class="my_evaluation_text">
                         <h3 class="bbs_text_title c_4"><a href="#" class="name_a_2">[[${temp.username}]]</a>评论了<a href="#">[[${temp.servicetitle}]]</a></h3>
@@ -180,11 +198,12 @@ $(function(){
 					
 					
 						 <!-- 商家信息 --> 
-				 	<p  class="sj"  th:style="'display:' + @{(${temp.evaluation.serviceappraisecontent} ? 'block' : 'none')} + ''">
+					 <div th:if="${temp.evaluation!=null}">
+				 	<p  class="sj" style="color:orange;">
 				 	 <label>店家回复：</label> 
 				 		<span th:text="${temp.evaluation.serviceappraisecontent}"></span>
 				 	</p>
-				 
+				 </div>
                 </li>
         			
                 </ul>
@@ -220,7 +239,7 @@ $(function(){
         <div class="ad_box2"><a href=""><img src="/Uploads/adv/2017-01/20170120051911-54044.jpg" alt="" /></a></div>		<!--ad end-->
 	</div>
 </div>
-
+</div>
 <!--footer-->
 <div class="footer community_footer_dl">
 	<dl class="footer_dl">
@@ -229,7 +248,7 @@ $(function(){
 			<span class="ft_ewm_name">御品韩汀</span>
 		</dt>
 		<dd>
-			<p class="flink"><a href="/index.php/Home/Member/seller.html">商家入驻</a>|<a href="/index.php/Home/About/help.html">帮助中心</a>|<a href="/index.php/Home/About/index/key/jobs.html">人才招聘</a>|<a href="/index.php/Home/About/contact.html">联系我们</a>|<a href="/index.php/Home/About/sitemap.html">网站地图</a>|<a href="/index.php/Home/About/terms.html">使用条款</a></p>
+			<p class="flink"><a href="#">商家入驻</a>|<a href="#">帮助中心</a>|<a href="#">人才招聘</a>|<a href="#">联系我们</a>|<a href="#">网站地图</a>|<a href="#">使用条款</a></p>
 			<p>湘ICP备16017200号-2 | 地址：湖南省株洲市天元区丽景滨江二栋2502号 |网站负责人：夏先生 |   邮编：412000</p>
 
 			<p>官方QQ：3119683838 | 微信公众号：御品韩汀 | 官网邮箱：3119683838@qq.com | 官方热线电话：0731-2286-7673</p>
@@ -248,45 +267,15 @@ $(function(){
 </ul>
 <!--right nav end-->
 
+
 <link rel="stylesheet" href="/Public/js/valid/css/validationEngine.jquery.css" type="text/css"/>
-<script src="/Public/js/valid/languages/jquery.validationEngine-zh_CN.js" type="text/javascript" charset="utf-8">
-</script>
-<script src="/Public/js/valid/jquery.validationEngine.js" type="text/javascript" charset="utf-8">
-</script>
-<script>
-function beforeCall2(form, status){
-	showloading();
-}
-function ajaxValidationCallback2(d, form, json, options){
-	console.log(json);
-	showtip(json.msg);
-	if(json.state === 1){
-		setTimeout("location.reload()",2000);
-	}
-};
-
-jQuery(document).ready(function(){
-	// binds form submission and fields to the validation engine
-	jQuery("#formtopcontact").validationEngine({autoHidePrompt:true,autoHideDelay:1000,binded:false,promptPosition:'topLeft'
-		,ajaxFormValidation: false,ajaxFormValidationMethod: 'post',onBeforeAjaxFormValidation: beforeCall2,onAjaxFormComplete: ajaxValidationCallback2
-	});
-});
-
-function chktop(){
-	_len = $('.chk_1:checked').length;
-	if(!_len){
-		showtip('请选择加盟方式');
-		return false;
-	}
-}
-</script>
 
 <!--联系我们的浮层-->
 <div class="pop_contact">
 	<a href="javascript:void(0);" class="close_pop_contact"></a>
 	<div class="w1000">
 		<div class="pcontact_left">
-			<a href="/index.php/" class="logo">御品韩汀</a>
+			<a href="#" class="logo">御品韩汀</a>
 			<ul class="pcontact_ul">
 				<li><div class="wr_linka"><a href="http://yphting.zglxkj.com"></a></div>公司官网：http://yphting.zglxkj.com</li>
 				<li><div class="wr_linka"><a href="http://weidian.com/?userid=765635894&wfr=c"></a></div>公司微店：http://weidian.com/?userid=765635894&wfr=c</li>
@@ -300,7 +289,7 @@ function chktop(){
 		</div>
 		<div class="pcontact_right">
 			<h2 class="contact_us_title">和我们联系吧</h2>
-			<form method="post" id="formtopcontact" action="" target="topost" onsubmit="return chktop()">
+			<form method="post" id="formtopcontact" action="#" target="topost" onsubmit="return chktop()">
 			<ul class="pcontact_ul3">
 				<li><span class="pcspr pcspr1"></span><input id="name" name="name" class="pop_cus_input validate[required]" placeholder="姓名" type="text"></li>
 				<li><span class="pcspr pcspr2"></span><input name="tel" id="tel" class="pop_cus_input validate[required,custom[phone]]" placeholder="电话" type="text"></li>
@@ -338,16 +327,19 @@ function chktop(){
 				<input type="hidden" name="act" value="contact" />
 				<li><a class="border_tj" href="javascript:void(0);" onclick="$('#formtopcontact').submit()" id="submit-btn">立即提交</a></li>
 			</ul>
-			<input type="hidden" name="__hash__" value="1534c48deb32415b23c7702161d843f7_8f92fb1bde8f3a9f8e799c0a08696a25" /></form>
+			<input type="hidden" name="__hash__" value="3a1d3932c55ab06fc30b89e76e999a98_afd972668be246a9631e835aa0012a03" /></form>
 		</div>
 		<div class="clear"></div>
 	</div>
 </div>
+
 <!--联系我们的浮层 end-->
-
-<script src="/Public/js/jquery.scrollto.js"></script>
-<script type="text/javascript" src="/Public/js/sjzx-href.js"></script>
-
-
 </body>
+<script src="/Public/js/jquery.scrollto.js"></script>
+
+<script type="text/javascript" src="/Public/js/sessionHeader.js"></script>
+<script type="text/javascript" src="/Public/js/headLeftNav.js"></script>
+<script type="text/javascript" src="/Public/js/sjzx-href.js"></script>
+<script type="text/javascript" src="/Public/js/grzx-interlinkage.js"></script>
+
 </html>

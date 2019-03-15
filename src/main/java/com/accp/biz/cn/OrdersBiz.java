@@ -3,6 +3,7 @@ package com.accp.biz.cn;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Isolation;
@@ -63,5 +64,12 @@ public class OrdersBiz {
 	 */
 	public OrderInfoVo queryAOrder(String orderID) {
 		return dao.queryAOrder(orderID);
+	}
+	/**
+	 * 删除我发布的服务之前的查询
+	 * 
+	 */
+	public int querydelCount(int serviceid) {
+		return dao.querydelCount(serviceid);
 	}
 }

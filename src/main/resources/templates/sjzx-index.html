@@ -65,7 +65,7 @@
         	<li class="cur" id="li1"><a href="#">商家中心</a><span class="my_nav_i"></span></li>
       	<li  id="li2"><a href="#">个人中心</a><span class="my_nav_i"></span></li>
             <li  id="li3"><a href="#">账户设置</a><span class="my_nav_i"></span></li>
-            <li  id="li4"><a href="#">消息</a><span class="my_nav_i"></span></li>
+            <li  id="li4"><a href="#">消息<span class="msg_num">5</span></a><span class="my_nav_i"></span></li>
             
         </ul>
 	</div>
@@ -124,13 +124,13 @@
 					<span class="bbs_line"></span> 
 					<a href="javascript:void(0);">保证金[[${user.guaranteemoney}]]金币<span class="bzj_i"></span></a>
 					<span class="bbs_line"></span>
-					<a href="javascript:void(0);" th:if="${user.trusteeship==fasle}">已托管<span></span></a> 
-					<a href="javascript:void(0);" th:if="${user.trusteeship==true}">未托管<span></span></a>
+					<a href="javascript:void(0);" th:if="${user.trusteeship==1}">已托管<span></span></a> 
+					<a href="javascript:void(0);" th:if="${user.trusteeship==0}">未托管<span></span></a>
 					<span class="bbs_line"></span>服务类别
 					<span class="business_c_a"> 
 						<a href="javascript:void(0)" name="stid" th:if="${user.firstserviceid}!=null">[[${user.firstserviceid}]]</a> 
 						<a href="javascript:void(0)" name="stid" th:if="${user.secondserviceid}!=null">[[${user.secondserviceid}]]</a> 
-						<a href="#" class="btna_s2">申请鉴定</a>
+						<a href="/cn/c/queryAppraisalapply" class="btna_s2">申请鉴定</a>
 					</span>
 					
 				</div>
@@ -268,6 +268,7 @@
 <script type="text/javascript" src="/Public/js/headLeftNav.js"></script>
 <script type="text/javascript" src="/Public/js/sjzx-href.js"></script>
 <script type="text/javascript" src="/Public/js/grzx-interlinkage.js"></script>
+<script type="text/javascript" src="/Public/js/common.js"></script>
 <script type="text/javascript">
 	var merchantlevel=[[${user.merchantlevel}]];
 	$(".star_pl_sp").css("width",merchantlevel/5*100);

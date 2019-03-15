@@ -335,7 +335,7 @@ public class UserAction {
 	 */
 	@RequestMapping(value="/user/updateUserDpxx",method=RequestMethod.POST)
 	public String updateUserDpxx(HttpSession session,User u,@RequestParam("thumb") MultipartFile file1,@RequestParam("idcardpic1") MultipartFile file2,@RequestParam("idcardpic2") MultipartFile file3,@RequestParam("vippic") MultipartFile file4) throws IllegalStateException, IOException {
-		System.out.println("1");
+	
 		if(file1.getSize()!= 0) {
 			u.setShopimg(Upload.uploadFile(file1,((User)session.getAttribute("USER")).getUserimgpath()));
 		}
@@ -514,7 +514,8 @@ public class UserAction {
 	 * @param messagegroup
 	 * @return
 	 */
-	@RequestMapping(value="/user/saveZnx",method=RequestMethod.GET)
+	@RequestMapping(value="/user/saveZnx",method=RequestMethod.POST)
+	@ResponseBody
 	public String saveZnx(HttpSession session,Integer thesender,String content,Integer newstype,Integer messagegroup) {
 		Integer userID=((User)session.getAttribute("USER")).getUserid();
 		News n=new News();
@@ -524,7 +525,7 @@ public class UserAction {
 		n.setMessagegroup(messagegroup);
 		n.setAddressee(thesender);
 		biz.saveZnx(n);
-		return "redirect:/c/gsq/user/queryZnxXq?groupID="+messagegroup+"&thesender="+thesender;
+		return "yes";
 	}
 	
 	/**
@@ -562,7 +563,7 @@ public class UserAction {
 	@RequestMapping(value="/user/updateUsersign",method=RequestMethod.POST)
 	@ResponseBody
 	public Map<String,String> updateUsersign(HttpSession session) {
-		System.out.println("奇怪");
+		
 		Map<String,String> map=new HashMap<>();
 		Integer userID=((User)session.getAttribute("USER")).getUserid();
 		try {

@@ -98,7 +98,7 @@ function orderShou(_oid){
 		<h2 class="sev_h2_title">选择发布服务类别</h2>
 		<ul class="sss_ul" >
 			<li th:switch="${ZUSER.firstserviceid}" class="cur">
-				<a href="/sjzx-zjyfbfw.html" th:case="1" rel="4"><span class="sel_style_sev sss4"><img src=""></span>自驾游</a>
+				<a href="/sjzx-zjyfbfw.html" th:case="1" rel="4"><span class="sel_style_sev sss4"></span>自驾游</a>
 				<a href="/sjzx-wzxfb.html" th:case="2" rel="4"><span class="sel_style_sev sss4"></span>微整形</a>
 				<a href="/sjzx-fbfw.html" th:case="3" rel="4"><span class="sel_style_sev sss4"></span>留学中介</a>
 				<a href="/sjzx-hwfyfb.html" th:case="4" rel="4"><span class="sel_style_sev sss4"></span>韩语翻译</a>
@@ -114,9 +114,9 @@ function orderShou(_oid){
 		</ul>
 		
 		<input type="hidden" id="catid" value="3" />
-        <div class="business_btn_d business_btn_d2">
+       <!--  <div class="business_btn_d business_btn_d2">
 			<a href="javascript:void(0);" class="btn_jy_a btn_jy_a2" onclick="toadd()">选好了，去填写服务内容</a>
-		</div>
+		</div> -->
 	</div>
 </div>
 <script>

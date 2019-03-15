@@ -220,7 +220,7 @@
 		ON es.serviceId=s.serviceid	
 		INNER JOIN `user` AS u
 		ON u.`userID` = es.`userID`
-		WHERE `serviceAppraisePID` = 0 AND u.`userid` = #{userid}		
+		WHERE `serviceAppraisePID` = 0 AND s.`userid` = #{userid}		
 	</select>
 		
 	<!-- 商家回复评价 -->
@@ -242,6 +242,9 @@ INSERT INTO evaluationservice (serviceAppraiseContent,serviceAppraisePID)VALUE(#
 	
 	<!-- 查询店家回复 -->
 	<select id="queryShopReply" resultType="com.accp.pojo.Evaluationservice">
-			SELECT * FROM evaluationservice WHERE serviceAppraisePID=#{0}
+			SELECT * FROM evaluationservice WHERE 		
+				serviceAppraisePID=#{0}
+		
+			
 	</select> 
 </mapper>    
