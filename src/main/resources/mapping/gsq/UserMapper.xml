@@ -172,7 +172,7 @@
 		SELECT * FROM `news`
 		WHERE
 		`addRessee`=#{userid} and `newsType`=2
-		GROUP BY `messageGroup`
+		
 		ORDER BY
 		`sendingTime` DESC
 	</select>

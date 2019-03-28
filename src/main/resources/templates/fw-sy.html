@@ -6,12 +6,48 @@
 		<title>首页_韩汀社区</title>
 		<link rel="stylesheet" th:href="@{/Public/css/common.css}" />
 		<link rel="stylesheet" th:href="@{/Public/css/owl.carousel.css}" />
+		<link rel="stylesheet" href="/Public/css/Websocket/bootstrap.min.css"/>
+		<link rel="stylesheet" href="/Public/css/Websocket/animate.css"/>
+		<link rel="stylesheet" href="/Public/css/Websocket/style.css"/> 
 	</head>
+<style>
+.navbar{width:100%;height:30px;position:fixed;top:0;left:0;}
+a{color:black;}
 
+
+</style>
 	<body>
+	<!-- 导航栏 -->
+	<nav class="navbar navbar-static-top" role="navigation" style="margin-bottom: 0">
+				<div class="h_top">
+                     	<div class="b_box">
+                     	<!-- 左 -->
+							<div class="top_nav">
+								<a href="">首页</a><span class="ht_line"></span>
+								<a href="">商家入驻</a><span class="ht_line"></span>
+								<a href="">帮助中心</a><span class="ht_line"></span>
+								<a href="">关于韩汀</a><span class="ht_line"></span>
+								<a href="">联系我们</a>		
+							</div> 
+							<!-- 中 -->
+							<div class="search_sec" style="float:left;margin-left:300px;margin-top:10px;">
+							<form method="post" action="/cn/c/tz">
+							<input type="text" name="findkey" placeholder="搜索你想要的...." class="s_sec_input text" id="text">
+							<input type="submit" class="s_sec_btn" value="">
+							<input type="hidden" name="__hash__" value="">
+							</form>
+							
+						</div>
+						<div id="word1"></div>
+							<!-- 右 -->
+					<div class="top_right">
+					</div>
+				</div>
+              </div>      
+     </nav>
 		<!--header-->
-		<div class="header" id="botop">
-			<div class="h_top">
+		<div class="header" id="botop"style="margin-top:50px">
+			<!-- <div class="h_top">
 				<div class="b_box">
 					<div class="top_nav">
 						<a href="">首页</a><span class="ht_line"></span>
@@ -23,7 +59,7 @@
 					<div class="top_right">
 					</div>
 				</div>
-			</div>
+			</div> -->
 			<div class="b_box nav_header community_header">
 				<a href="" class="logo logo_community">御品韩汀.社区</a>
 				<ul class="nav_ul">
@@ -634,6 +670,9 @@
 	<script type="text/javascript" th:src="@{/Public/js/sessionHeader.js}"></script>
 	<script type="text/javascript" th:src="@{/Public/js/headLeftNav.js}"></script>
 	<script type="text/javascript" src="/Public/js/Websocket/ajaxlunxun.js"></script>
+	<script type="text/javascript" src="/Public/js/headLeftNav.js"></script>
+
+	
 	<script type="text/javascript" th:inline="javascript">
 		jQuery(function(){
 			var slideshowSize = [[${homeSlideshowList.size()}]];	//轮播图图片集合长度
@@ -717,5 +756,7 @@
 			});
 		})
 
+		
+		
 	</script>
 </html>

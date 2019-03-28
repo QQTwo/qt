@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.support.DaoSupport;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Propagation;
@@ -15,6 +16,7 @@ import com.accp.pojo.Evaluationservice;
 import com.accp.pojo.Services;
 
 import com.accp.pojo.User;
+import com.accp.vo.cn.TotalRetrieveVo;
 import com.accp.vo.cn2.EvaluationVo;
 import com.accp.vo.cn2.ServicesVo;
 import com.accp.vo.cn2.UserAppVo;
@@ -99,6 +101,9 @@ public class MerchantBiz {
 		return  merchantDao.queryShopReply(serviceAppraisePID);
 	  }
 
-
+//全栈搜索
+	  public List<TotalRetrieveVo> findPagerServices(){
+		  return merchantDao.selectTotalRetrieveVo();
+	  }
 
 }

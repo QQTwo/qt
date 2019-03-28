@@ -127,13 +127,15 @@
 					 <div class="pnl-list" id="msgs">
                             <div class="msg robot">
                                 <div class="msg-left">
-                                    <div class="msg-host photo" ><img  th:src="${temp.Sender.userimgpath}" alt="ai-na"></div>
+                                  <!--   <div class="msg-host photo" ><img  th:src="${temp.Sender.userimgpath}" alt="ai-na"></div>
+                                  -->
                                     <div class="msg-ball"  title="" th:if="${temp.thesender==addressee && temp.addressee==thesender}">[[${temp.content}]]</div>
                                 </div><!-- th:if="${temp.thesender==addressee && temp.addressee==thesender}" -->
                             </div>
                             <div class="msg guest" >
                                 <div class="msg-right"><!--th:if="${temp.thesender==addressee && temp.addressee==thesender}" Ressee  -->
-                                    <div class="msg-host headDefault"><img  th:src="${temp.Ressee.userimgpath}"></div>
+                                   <!--  <div class="msg-host headDefault"><img  th:src="${temp.Ressee.userimgpath}"></div>
+                                    -->
                                     <div class="msg-ball" title="" th:if="${temp.thesender==thesender && temp.addressee==addressee}">[[${temp.content}]]</div>
                                 </div>
                             </div>

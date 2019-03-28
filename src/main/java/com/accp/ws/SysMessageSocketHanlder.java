@@ -29,27 +29,25 @@ public class SysMessageSocketHanlder {
 	public static ApplicationContext ac;// 非常重要
 
 	private String userName;
-
+	
 	@OnOpen
-	public void onopen(Session session,@PathParam("newstype")Integer newstype,@PathParam("userid")Integer userid) {
-		System.out.println("newstype"+newstype);
+	public void onopen(Session session,@PathParam("newstype")Integer newstype,@PathParam("userid")Integer userid) {		
 		//EmailBiz emailbiz=(EmailBiz)ac.getBean("EmailBiz");		
 		UserBiz userBiz=(UserBiz) ac.getBean("UserBiz");
 		// 最新消息推送功能
 		new Thread() {
-			public void run() {				
-				while (true) {
-					try {
-						int countInit=userBiz.selectNoReader(newstype,userid);
-						
-						session.getBasicRemote().sendText(String.valueOf(countInit));	
-					
+			public void run() {	
+				int countInit=userBiz.selectNoReader(newstype,userid);		
+				while (true) {					
+					try {							
+						//session.getBasicRemote().sendText("pong");	
+						session.getBasicRemote().sendText(String.valueOf(countInit));							
 						Thread.sleep(3000);
-						int count = userBiz.selectNoReader(newstype,userid);	
-						
-						if (count > countInit) {							
-							session.getBasicRemote().sendText(String.valueOf(count));
+						int count = userBiz.selectNoReader(newstype,userid);
+						if (count > countInit) {	
 							countInit = count;
+							session.getBasicRemote().sendText(String.valueOf(countInit));
+							
 						}
 					} catch (Exception e) {
 							e.printStackTrace();

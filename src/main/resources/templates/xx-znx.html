@@ -191,8 +191,7 @@ weiduInfo();
 				}else{
 					li=$('<li><p class="bbs_user_photo"> <img src="'+obj.sender.userimgpath+'" alt=""></p><div class="m_sys_r"><p class="date_p">'+obj.sendingtime+'</p><p class="del_btn_p"><a href="" rel="2805">删除</a><input type="checkbox" class="checkbox_sel" thesender="'+obj.addressee+'" addressee='+obj.thesender+'  name="znx"></p></div><div class="bbs_user_text"><h3 class="member_s_name"><a href="/c/gsq/user/queryZnxXq?groupID='+obj.messagegroup+'&thesender='+obj.thesender+'&addressee='+obj.addressee+'&name='+obj.sender.username+'" onclick="updatestate(this,'+obj.thesender+','+obj.addressee+')">'+obj.sender.username+'</a></h3><p class="email_con ec2"><a href="/c/gsq/user/queryZnxXq?groupID='+obj.messagegroup+'&thesender='+obj.thesender+'&addressee='+obj.addressee+'&name='+obj.sender.username+'" onclick="updatestate(this,'+obj.thesender+','+obj.addressee+')">'+obj.content+'</a></p></div></li>');
 					
-				}
-				
+				}		
 				$(".member_s_list_ul").append(li);
 			})
 	

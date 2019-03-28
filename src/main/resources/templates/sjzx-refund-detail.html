@@ -42,7 +42,7 @@
 				<li class="cur" id="li2"><a href="">个人中心</a><span
 					class="my_nav_i"></span></li>
 				<li id="li3"><a href="">账户设置</a><span class="my_nav_i"></span></li>
-				<li id="li4"><a href="">消息<span class="msg_num">5</span></a><span class="my_nav_i"></span></li>
+				<li id="li4"><a href="">消息</a><span class="my_nav_i"></span></li>
 
 			</ul>
 		</div>
@@ -90,7 +90,7 @@
 							<span th:if="${order.refundstatus==1}">|</span>
 							<a th:if="${order.refundstatus==1}"th:href="@{/c/gsq/refund/why(orderid=${order.orderid})}" class="btna_s2 send_site_email_btna">不同意</a>
 							<span th:if="${order.refundstatus==1}">|</span>
-							<a href="" class="btna_s2 send_site_email_btna">站内信买家</a>
+							<a href="javascript:void(0);" class="btna_s2 send_site_email_btna znx">站内信买家</a>
 						</div>
 						协商记录
 					</div>
@@ -224,6 +224,7 @@
 		<li><a href="" class="rn_top">Back top</a></li>
 	</ul>
 
+
 	<script type="text/javascript">
 		function refundOk(orderid) {
 			$.ajax({
@@ -245,6 +246,7 @@
 		}
 	</script>
 </body>
+<script type="text/javascript" src="/Public/js/common.js"></script>
 <script type="text/javascript" src="/Public/js/sessionHeader.js"></script>
 <script type="text/javascript" src="/Public/js/headLeftNav.js"></script>
 <script type="text/javascript" src="/Public/js/sjzx-href.js"></script>
@@ -254,5 +256,17 @@
 var userid=[[${session.USER.userid}]];
 
 initWebSocket(-1,userid);	
+</script>
+<script>
+
+$(".znx").click(function(){
+	var name=$(this).attr("name");
+	var userid=$(this).attr("id");
+	$("#addressee").val(userid);
+	$(".mlr10").html(name);
+	$("#pop_bg").show();
+	$(".site_email_pop").show();
+})
+
 </script>
 </html>

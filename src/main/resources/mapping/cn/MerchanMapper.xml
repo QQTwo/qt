@@ -243,8 +243,18 @@ INSERT INTO evaluationservice (serviceAppraiseContent,serviceAppraisePID)VALUE(#
 	<!-- 查询店家回复 -->
 	<select id="queryShopReply" resultType="com.accp.pojo.Evaluationservice">
 			SELECT * FROM evaluationservice WHERE 		
-				serviceAppraisePID=#{0}
-		
-			
+				serviceAppraisePID=#{0}		
 	</select> 
+	
+	<!-- 全栈搜索 -->
+	<select id="selectTotalRetrieveVo" resultType="com.accp.vo.cn.TotalRetrieveVo">
+		SELECT u.*,type.stname,
+		s.*
+		FROM services s 
+		INNER JOIN USER u
+		INNER JOIN servicetype TYPE
+		
+		ON u.userid=s.userid
+		AND s.stid=type.stid
+	</select>
 </mapper>    

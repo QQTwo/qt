@@ -6,8 +6,6 @@ var msgtype = 0;
 
 		//初始化ws
 		function initWebSocket(newstype,userid) {
-			
-			
 				//var userid=[[${USER.userid}]];
 				
 			//1.创建引擎 (必须是ws协议)
@@ -24,13 +22,11 @@ var msgtype = 0;
 					
 				}
 				ws.onmessage = function(e) {
-					var msg = e.data; //服务器文本消息	
-					
-					
-					if(newstype==-1){
-					$(".msg_num").html(msg);
-					
-					if(msg>0){
+					var msg = e.data; //服务器文本消息
+					if(msg!=0){
+						if(newstype==-1){							
+							$("#li4 a").append("<span class='msg_num'>"+msg+"</span>");								
+							}
 						if(msgtype == 0){
 							bf();
 							msgtype = 1;
@@ -46,23 +42,11 @@ var msgtype = 0;
 								move:false
 							});
 						}
-							
-						
-					}
-					}
-					if(newstype==1){
-						$("[name=xtxx]").html(msg);
-						
-					}
-					if(newstype==2){
-						$("[name==znx]").html(msg);
-					}
+					}	
+					
 					if(msg==0){
 						$(".msg_num").remove();
-					}
-					
-					
-					
+					}										
 				}
 			} else {
 				alert("不支持WebSocket技术");

@@ -1,12 +1,14 @@
 package com.accp.action.cn;
 
+import org.springframework.data.redis.core.Cursor;
 import org.springframework.beans.factory.annotation.Autowired;
-
-
+import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.data.redis.core.ScanOptions;
 
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -24,15 +26,19 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.accp.biz.cn.MerchantBiz;
+import com.accp.biz.cn.RedisBiz;
 import com.accp.pojo.Appraisalapply;
-import com.accp.pojo.Evaluationservice;
+
 import com.accp.pojo.Services;
 import com.accp.pojo.User;
+import com.accp.util.Pager;
 import com.accp.util.file.Upload;
+import com.accp.vo.cn.TotalRetrieveVo;
 import com.accp.vo.cn2.EvaluationVo;
 import com.accp.vo.cn2.ServicesVo;
 import com.accp.vo.cn2.UserAppVo;
 import com.alibaba.fastjson.JSON;
+import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 
 @Controller
@@ -41,6 +47,12 @@ public class MerchantAction {
 	
 	@Autowired
 	private  MerchantBiz  merchantBiz;
+	
+	@Autowired
+	private RedisBiz rbiz;
+	
+	@Autowired
+	private RedisTemplate<String, Object> rt;
 	
 	@GetMapping("getUserinfo")
 	public String queryUserinfo(HttpSession session,String username) {
@@ -1040,4 +1052,39 @@ public class MerchantAction {
 			return ev;
 			}	
 */
+		//Redis全栈搜索跳转
+			@RequestMapping("tz")
+			public String tz(String findkey,Model mo) {
+				
+				mo.addAttribute("name",findkey);
+				return "/Redis.html";
 			}
+			
+	/**
+	 * 查询全栈搜索
+	 */
+		@RequestMapping("querySeach")
+		@ResponseBody
+			public Pager<TotalRetrieveVo> querysearch(String service,Integer pageIndex, Integer index,Integer pageSize,int Pop_Pice){
+				if(pageSize==null) {
+					pageSize=6;
+				}				
+				Pager<TotalRetrieveVo> info=rbiz.querysearch(service, pageIndex, pageSize,Pop_Pice);			
+				return info;
+			}
+		
+	/**
+	 * 查询全栈搜索的关键字
+	 */
+		@GetMapping("selectAllServices")
+		@ResponseBody
+		public List<TotalRetrieveVo> selectAllKey(String service){	
+		Cursor<Object> iter=rt.opsForSet().scan("set:TotalRetrieveVo", ScanOptions.scanOptions().match("*"+service+"*").build());			
+		List<TotalRetrieveVo> list2=new ArrayList<TotalRetrieveVo>();
+		while(iter.hasNext()) {
+			String data=iter.next().toString();
+			list2.add(JSON.parseObject(data,TotalRetrieveVo.class));			
+		}
+		return list2;
+		}
+} 

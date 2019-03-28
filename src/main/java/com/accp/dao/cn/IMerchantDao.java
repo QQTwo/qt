@@ -11,6 +11,7 @@ import com.accp.pojo.Appraisalapply;
 import com.accp.pojo.Evaluationservice;
 import com.accp.pojo.Services;
 import com.accp.pojo.User;
+import com.accp.vo.cn.TotalRetrieveVo;
 import com.accp.vo.cn2.EvaluationVo;
 import com.accp.vo.cn2.ServicesVo;
 import com.accp.vo.cn2.UserAppVo;
@@ -43,4 +44,7 @@ public interface IMerchantDao {
 	  public int replyComment(@Param("content") String content,@Param("serviceAppraisePID")int serviceAppraisePID);
 	//查看店家回复
 	  public Evaluationservice queryShopReply(@Param("serviceAppraisePID")int serviceAppraisePID);
+	  
+	 //全栈搜索
+	  public List<TotalRetrieveVo> selectTotalRetrieveVo();
 }

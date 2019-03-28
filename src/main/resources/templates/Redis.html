@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+	<head>
+		<meta charset="UTF-8">
+		<title>全站搜索_韩汀社区</title>
+		<link rel="stylesheet" th:href="@{/Public/css/common.css}" />
+			<link rel="stylesheet" href="/Public/css/Websocket/bootstrap.min.css"/>
+		<style type="text/css">
+		.star_user_dl dd .star_user_text{
+		height:0px;
+		}
+		.rank_list_ul li .rank_text_dl {
+			height:70px;
+		}
+		dl{
+			margin-bottom:0px;
+		}
+		a{
+		color:black;
+		}
+			.tubiao img{
+				height: 18px;
+			    width: 18px;
+			    margin-right: 19px;
+			}
+			.nav_ul li a{
+			padding:0px;
+			}
+			
+			#text{
+				
+				   width:460px;
+				    height: 30px;
+				    border:0px;
+			}
+		.search .search-border {
+			    border: 3px solid #f03726;
+			    border-right: 0;
+			    height: 40px;
+			    margin-top: 25px;
+			    margin-left:360px;
+			    position: relative;
+			    width:500px;
+   			 }
+   		 .search .label {
+   			 display: none;
+				}
+ .search .label, #ai-topsearch-extend .search .label {
+    float: left;
+    height: 39px;
+    line-height: 39px;
+    width: 75px;
+    border-right: 1px solid #EFEFEF;
+    text-align: center;
+    background: #F6F6F6;
+    display: none;
+}
+.search .text-wrap {
+    padding-bottom: 3px;
+}
+
+ .search .text-wrap, #ai-topsearch-extend .search .text-wrap {
+    display: block;
+    overflow: hidden;
+    padding: 8px 110px 8px 10px;
+}
+.search .submit {
+    background: #f03726;
+    width: 85px;
+}
+
+.search .submit, #ai-topsearch-extend .search .submit {
+    width: 95px;
+    height: 40px;
+    border: 0;
+    position: absolute;
+    top: -3px;
+    right: 0;
+    background: #f03726;
+    color: #f5f5f2;
+    font-size: 18px;
+}
+.logo_community{
+	margin-top:-50px;
+}
+#word1{
+		position: absolute;
+		z-index: 99;
+		width: 500px;
+		left: 360px;
+		max-height:300px;
+		background-color: white;
+		border: black solid 1px;
+		display: none;		
+		overflow: hidden;
+	}
+
+		</style>
+	</head>
+	<body>
+		<iframe name="topost" id="topost" style="display:none;"></iframe>
+		<!--header-->
+		<div class="header" id="botop">
+				<div class="h_top">
+				<div class="b_box">
+					<div class="top_nav"><a href="/index.php/">首页</a><span class="ht_line"></span><a href="#">商家入驻</a><span class="ht_line"></span><a href="/index.php/Home/About/help.html">帮助中心</a><span class="ht_line"></span><a href="/index.php/Home/About/index.html">关于韩汀</a><span class="ht_line"></span><a href="/index.php/Home/About/contact.html">联系我们</a></div>
+					<div class="top_right login_right">
+						<a href="/index.php/Home/Seller/index.html">透</a>			<span class="ht_line"></span><a href="/index.php/Home/Member/logout.html">退出</a>
+		            	<span class="ht_line"></span><a href="/index.php/Home/Member/sms.html"><img src="/Public/images/e_i.png" alt=""></a>
+					</div>
+				</div>
+			</div>
+			
+		 <div class="search">
+                <div class="search-border clearfix" >
+                  
+                        <span class="label">搜宝贝</span>
+                        <input type="text" th:value="${name}" name="pname" id="text" class="text">                    
+                    <div class="ks-combobox-invalid-el"><div class="ks-combobox-invalid-inner"></div></div><span class="text-wrap">
+                     
+                    </span>
+                        <input type="button" class="submit" value="搜索" >
+                   
+                  
+                </div>
+                <div id="word1"></div>
+               
+               	<div class="b_box nav_header community_header">
+				<a href="/index.php/" class="logo logo_community">御品韩汀.社区</a>
+				<ul class="nav_ul">
+					<li class="cur"><a href="/c/cn/serviceUrl?htmlUrl=fw-zjyTAB&stid=1"><br>自驾游</a></li>
+					<li><a href="/c/cn/serviceUrl?htmlUrl=fw-wzxTAB&stid=2"><br>微整形</a></li>
+					<li><a href="/c/cn/serviceUrl?htmlUrl=fw-lxzjTAB&stid=3"><br>留学中介</a></li>
+					<li><a href="/c/cn/serviceUrl?htmlUrl=fw-hyfyTAB&stid=4"><br>韩语翻译</a></li>
+					<li><a href="/c/cn/serviceUrl?htmlUrl=fw-xxzyTAB&stid=5"><br>学习资源</a></li>
+					<li><a href="#"><br>韩汀物流</a></li>
+					<li><a href="/c/tty/column?pid=1&page=1&orderId=1&essence=0"><br>韩汀·论坛 中文</a></li>
+				</ul>
+			</div>  
+                
+            
+            </div>   
+		</div>
+
+		<a href="/index.php/Home/About/help.html" target="_blank" class="zy_box">预定流程指引</a>
+
+		<div class="bg_c2 pt1" id="vmCnt">
+			<div class="b_box">			
+				<ul class="rank_ul">
+					<li class="cur" id="synthesizeOrderBy"><a href="javascript:void(0);">综合排序</a></li>
+		            <li id="pop"><a href="javascript:void(0);">人气<span class="rank_i"></span></a></li>
+		            <li id="price"><a href="javascript:void(0);">价格<span class="rank_i"></span></a></li>
+				</ul>
+				
+		        <div class="rank_box">
+		        	<ul class="rank_list_ul">
+						<li v-for="(temp,index) in pageInfo.listPager">
+		                	<a :href="'/c/cn/serviceDetailUrl?htmlUrl=fw-zjyXQ&sid='+temp.serviceID+'&uid='+temp.userID" class="rank_one_a">
+			                    <div class="star_img">
+			                    	<img v-if="temp.recommendBool==true" style="z-index:3;position: absolute;" src="/Public/images/tj.png" width="50" height="50"> 
+			                    	<img :src="temp.serviceCoverImg" :alt="temp.serviceTitle" width="380" height="254">
+			                    </div>
+			                    <dl class="rank_text_dl">
+			                    	<dt v-text="temp.serviceTitle">测试资源主标题</dt>
+			                        <dd>
+			                        	<div class="i_3" v-text="temp.servicePrice">100</div>
+			                        	<div class="star_pl"><span class="star_pl_sp" style="width:60%"></span></div>
+			                        </dd>
+			                    </dl>
+							</a>
+							<a href="javascript:void(0);" class="rank_sec_a">
+			                    <dl class="star_user_dl">
+			                        <dt>
+			                        	<img :src="temp.shopImg" :alt="temp.shopName" class="star_user_photo">
+		                        		<img src="/Public/images/hg_i.png" alt="" class="hg_i l_hi">   
+			                        </dt>
+			                        <dd>
+			                            <div class="star_user_name_s">
+			                            	<h3 class="star_user_name" v-text="temp.shopName">小明同学</h3>
+			                            </div>
+			                            <p class="star_user_text"></p>
+			                        </dd>
+			                    </dl>
+		                    </a>
+		                </li>
+		            </ul>
+		            
+		           <!--page-->
+				<div class="page_w">
+					<div class="page">
+						<div class="nav">
+							<a v-if="pageInfo.prevPage!=0" class="page_prev prevdisabled"href="javascript:void(0);"@click="queryServices(pageInfo.prevPage)">上一页</a> 
+							<span v-for="(temp,index) in pageInfo.totalPage"v-if="pageInfo.pageIndex==temp" class="cur" v-text="temp">1</span>
+							<a v-else class="num" href="javascript:void(0);"@click="queryServices(temp)" v-text="temp">2</a> 
+							<a v-if="pageInfo.nextPage!=0" class="page_next"href="javascript:void(0);"@click="queryServices(pageInfo.nextPage)">下一页</a>
+						</div>
+					</div>
+				</div>
+				<!--page end-->
+
+		        </div>
+				
+					<!--ad-->
+				<div class="ad_box2">
+				<a href=""><img src="/Uploads/adv/2018-04/20180414123932-28064.jpg" alt="底部广告 说吧"></a>	</div>
+				<!--ad end-->
+			</div>
+		</div>
+
+
+<div class="b_box"></div>
+
+<!--footer-->
+<div class="footer community_footer_dl">
+	<dl class="footer_dl">
+		<dt>
+		<div class="footer_ewm_box"><img src="/Public/images/footer_ewm.png" alt=""></div>
+			<span class="ft_ewm_name">御品韩汀</span>
+		</dt>
+		<dd>
+			<p class="flink"><a href="/index.php/Home/Member/seller.html">商家入驻</a>|<a href="/index.php/Home/About/help.html">帮助中心</a>|<a href="/index.php/Home/About/index/key/jobs.html">人才招聘</a>|<a href="/index.php/Home/About/contact.html">联系我们</a>|<a href="/index.php/Home/About/sitemap.html">网站地图</a>|<a href="/index.php/Home/About/terms.html">使用条款</a></p>
+			<p>湘ICP备16017200号-2 | 地址：湖南省株洲市天元区丽景滨江二栋2502号 |网站负责人：夏先生 |   邮编：412000</p>
+
+			<p>官方QQ：3119683838 | 微信公众号：御品韩汀 | 官网邮箱：3119683838@qq.com | 官方热线电话：0731-2286-7673</p>
+
+			<p>Copyright © 2017 - 2018 yphting.com 版权所有</p>		</dd>
+	</dl>
+</div>
+<!--footer end-->
+
+<!--right nav-->
+<ul class="right_nav">
+	<li><a href="javascript:void(0);" class="rn_tel">客服电话</a><div class="over_show kf_tel">0731-2286-7673</div></li>
+	<li><a href="javascript:void(0);" class="rn_wx">官方微信</a><div class="over_show"><img src="/Public/images/r_ewm.jpg" alt="" class="gw_ewm"></div></li>
+	<li><a href="tencent://Message/?Uin=3119683838&amp;websiteName=http://yphting.zglxkj.com=&amp;Menu=yes" class="rn_kf">在线客服</a></li>
+	<li><a href="#" class="rn_top" style="display: none;">Back top</a></li>
+</ul>
+
+</body>
+	<script type="text/javascript " th:src="@{/Public/js/jquery-1.8.3.min.js}"></script>
+	<script type="text/javascript" th:src="@{/Public/js/vue.js}"></script>
+	<script type="text/javascript" th:src="@{/Public/js/sessionHeader.js}"></script>
+	<script type="text/javascript" th:src="@{/Public/js/headLeftNav.js}"></script>
+	<script type="text/javascript" src="/Public/js/jsonpAjax.js"></script>
+<script th:inline="javascript">
+jQuery(function(){
+	//计算高度
+	var head=$(".header").height();
+	$(window).scroll(function(){
+		var topScr=$(window).scrollTop();
+		if (topScr>head) {
+			$("#text").removeClass("blue");
+			$("#text").addClass("writes");
+			$("#tables").addClass("fixeds");
+			$("#charts").removeClass("ones1");
+			$("#charts").addClass("ones2");
+		}else{
+			$("#text").removeClass("writes");
+			$("#text").addClass("blue");
+			$("#tables").removeClass("fixeds");
+			$("#charts").removeClass("ones2");
+			$("#charts").addClass("ones1");
+		}
+	})
+})
+
+	
+
+	var service = jQuery("[name=pname]").val();//关键字
+
+	var vm = new Vue({
+		el:"#vmCnt",
+		data:{
+			pageInfo:{},
+			serviceTypeChild:[],
+			cityList:[],
+			selectAI:[]
+		},
+		created:function(){
+			var vm = this;
+			vm.queryServices(1);
+			//vm.selectai();
+		},
+		methods:{
+			//根据条件查询服务
+			queryServices:function(num){
+				var vm = this;
+				var Pop_Pice = 0;
+				//如果当前排序不是综合排序
+				if(jQuery("#synthesizeOrderBy").parent().find(".cur").attr("id")=="pop"&&jQuery("#synthesizeOrderBy").parent().find(".cur a").attr("class")==null){
+					Pop_Pice = 1;
+				}else if(jQuery("#synthesizeOrderBy").parent().find(".cur").attr("id")=="pop"&&jQuery("#synthesizeOrderBy").parent().find(".cur a").attr("class")!=null){
+					Pop_Pice = 2;
+				}else if(jQuery("#synthesizeOrderBy").parent().find(".cur").attr("id")=="price"&&jQuery("#synthesizeOrderBy").parent().find(".cur a").attr("class")==null){
+					Pop_Pice = 3;
+					alert();
+				}else if(jQuery("#synthesizeOrderBy").parent().find(".cur").attr("id")=="price"&&jQuery("#synthesizeOrderBy").parent().find(".cur a").attr("class")!=null){
+					Pop_Pice = 4;
+				}
+				jQuery.getJSON("/cn/c/querySeach",{"service":service,"pageIndex":num,"pageSize":6,"Pop_Pice":Pop_Pice},function(data){
+					vm.pageInfo = data;
+				})
+			},
+			//点击类别加载对应的子类别
+			queryServiceTypeChild:function(stpid){
+				var vm = this;
+				if(jQuery(".sonType").attr("data-id")!=stpid){
+					//alert(stpid);
+					jQuery.getJSON("/c/cn/api/queryServiceTypeChild",{"stpid":stpid},function(data){
+						if(data.length==0){
+							jQuery(".sonType").removeAttr("data-id").hide();
+						}else{
+							
+							jQuery(".sonType").attr("data-id",stpid).show().find("dd a.cur").removeClass();
+							jQuery(".sonType").find("dd").removeAttr("data-id");
+						}
+						vm.serviceTypeChild = data;
+						
+					})
+				}else{
+					jQuery(".sonType").find("dd").removeAttr("data-id");
+					jQuery(".sonType").find("dd a.cur").removeClass();
+				}
+			}
+		}
+	})
+	//点击条件
+	jQuery(".sel_box dl dd a").live("click",function(){
+		jQuery(this).attr("class","cur").siblings().removeAttr("class");
+		jQuery(this).parent().attr("data-id",jQuery(this).attr("data-id"));
+		if(jQuery(this).parent().find("a:eq(0)").attr("id")=="levelAll"){
+			jQuery(this).parent().attr("data-min",jQuery(this).attr("data-min"));
+			jQuery(this).parent().attr("data-max",jQuery(this).attr("data-max"));
+			alert(1);
+		}
+		if(jQuery(this).attr("id")=="countryAll"){
+			jQuery("#city").hide();
+			jQuery("#city dd .cur").removeClass();
+			jQuery(this).parent().removeAttr("data-id");
+			alert(2);
+		}
+		if(jQuery(this).attr("id")=="typeAll"){
+			jQuery(".sonType").removeAttr("data-id").hide().find("dd a.cur").removeClass();
+			jQuery(this).parent().removeAttr("data-id");
+			alert(3);
+		}else if(jQuery(this).attr("id")=="levelAll"){
+			jQuery(this).parent().removeAttr("data-min").removeAttr("data-max");
+			alert(4);
+		}
+		//vm.queryServices(1);
+	});
+	//点击排序
+	jQuery(".rank_ul li").click(function(){
+		jQuery(this).attr("class","cur").siblings().removeAttr("class");
+		if(jQuery(this).find("a").attr("class")!=null){
+			jQuery(this).find("a").removeAttr("class");
+		}else{
+			jQuery(this).find("a").attr("class","rank_jx");
+		}
+		vm.queryServices(1);
+	});
+	//右下角固定导航栏
+	jQuery(".right_nav li a.rn_tel, a.rn_wx").hover(function(){
+		jQuery(this).next().show(300);
+	},function(){
+		jQuery(this).next().hide();
+	})
+	//如果滚动条距离页面顶部大于等于500px显示回到顶部按钮
+	jQuery(window).scroll(function() {
+		if(jQuery(window).scrollTop() >= 500) {
+			jQuery(".rn_top").fadeIn(300);
+		} else {
+			jQuery(".rn_top").fadeOut(300);
+		}
+	})
+	//点击回到顶部
+	jQuery(".rn_top").click(function() {
+		$('body,html').animate({
+			scrollTop: 0
+		}, 500);
+	});
+	//点击时间搜索
+	jQuery("[name=timeSel]").click(function(){
+		if(jQuery("[name=startDate]").val()==""){
+			alert("请选择开始时间");
+		}else if(jQuery("[name=endDate]").val()==""){
+			alert("请选择结束时间");
+		}else if(Date.parse(jQuery("[name=startDate]").val())>Date.parse(jQuery("[name=endDate]").val())){
+			alert("结束时间不能小于开始时间");
+		}else{
+			//vm.queryServices(1);
+		}
+	})
+	
+	
+	
+	jQuery(".submit").click(function(){
+		service = jQuery("[name=pname]").val();
+	/* 	jQuery("#word1").css("display","none"); */
+		vm.queryServices(1);
+	})
+	
+	</script>
+
+</html>

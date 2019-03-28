@@ -439,7 +439,7 @@ public class UserAction {
 		}
 	}
 	/**
-	 * 查询用户站内信
+	 * 查询用户
 	 * @param session
 	 * @param pageNum
 	 * @param pageSize
@@ -449,9 +449,7 @@ public class UserAction {
 	@ResponseBody
 	public PageInfo<NewsVo>  queryZnxNewsPageInfo(HttpSession session,Integer pageNum,Integer pageSize){
 		Integer userID=((User)session.getAttribute("USER")).getUserid();
-		
 		PageInfo<NewsVo> pageinfo= biz.queryZnxNewsPageInfo(userID, pageNum, pageSize);
-	
 		return pageinfo;
 	}
 	/**
@@ -490,9 +488,7 @@ public class UserAction {
 	@RequestMapping(value="/user/updateOneState",method=RequestMethod.POST)
 	@ResponseBody
 	public Map<String, String> updateOneState(String theSender,String addressee){
-		Map<String,String> m=new HashMap<>();
-		System.out.println(theSender);
-		System.out.println(addressee);
+		Map<String,String> m=new HashMap<>();		
 		int count=biz.updateZnxNews(theSender, addressee);
 		if(count>0) {
 			m.put("code", "200");

@@ -1,4 +1,6 @@
-
+/*document.write('<script src="/Public/js/Websocket/ajaxlunxun.js""></script>');
+document.write('<script src="/Public/js/layer/layer.js"></script>');
+*/
 $(".top_right").html("");
 $.getJSON("/c/gsq/user/queryAUser",function(data){
 	if(data==null){
