@@ -1,5 +1,5 @@
 $(function(){
-	
+	 
 //当键盘键被松开时发送Ajax获取数据
 		$('#text').keyup(function(){
 			
